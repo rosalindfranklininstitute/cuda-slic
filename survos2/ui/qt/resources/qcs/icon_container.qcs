@@ -1,0 +1,32 @@
+
+
+#icon_container {
+    width: 64px;
+    min-width: 64px;
+    max-width: 64px;
+    background-color: #0D47A1;
+}
+
+QLabel {
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    qproperty-alignment: AlignCenter;
+}
+
+QToolButton {
+    width: 100%;
+    color: white;
+    font-size: 7pt;
+    padding-top: 3px;
+    padding-bottom: 5px;
+}
+
+QToolButton:hover {
+    background-color: #00ACC1;
+}
+
+QToolButton:checked {
+    background-color: #00838F;
+}

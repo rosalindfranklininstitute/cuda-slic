@@ -1,0 +1,6 @@
+
+#viewer {
+    margin: 10px;
+    border-radius: 10px;
+    background-color: #FAFAFA;
+}

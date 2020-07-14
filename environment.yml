@@ -1,0 +1,25 @@
+name: sv2
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.6
+  - pip
+  - cudatoolkit=10.1
+  - cudatoolkit-dev=10.1
+  - numpy
+  - h5py
+  - cython
+  - pytools
+  - pytest
+  - pywget
+  - hug
+  - pyyaml
+  - mrcfile
+  - dask
+  - matplotlib
+  - scikit-image
+  - tensorly
+  - pytest
+  - pip:
+    - pycuda

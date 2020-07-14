@@ -1,0 +1,55 @@
+
+
+#modal_manager {
+    background-color: #AAE3F2FD;
+}
+
+#modal_manager QWidget[container=true] {
+    min-width: 500px;
+    max-width: 500px;
+    min-height: 200px;
+
+    background-color: #FAFAFA;
+    border: 2px solid #0D47A1;
+}
+
+#modal_manager QLabel {
+    font-size: 11pt;
+}
+
+#modal_manager QWidget[error=true] {
+    border: 2px solid #C62828;
+}
+
+QWidget[error=true] QPushButton {
+    background-color: #C62828;
+    min-width: 100px;
+    min-height: 30px;
+}
+
+QWidget[error=true] QPushButton:hover {
+    background-color: #E53935;
+}
+
+QWidget[error=true] QPushButton:pressed {
+    background-color: #E57373;
+}
+
+
+#modal_manager QWidget[warn=true] {
+    border: 2px solid #FF8F00;
+}
+
+QWidget[warn=true] QPushButton {
+    background-color: #FF8F00;
+    min-width: 100px;
+    min-height: 30px;
+}
+
+QWidget[warn=true] QPushButton:hover {
+    background-color: #FFB300;
+}
+
+QWidget[warn=true] QPushButton:pressed {
+    background-color: #FFD54F;
+}

@@ -1,0 +1,37 @@
+title: 'SuRVoS: Super-Region Volume Segmentation Workbench'
+
+api:
+  plugins:
+    - workspace
+    - annotations
+    - features
+    - regions
+    - render
+
+computing:
+  chunks: true
+  chunk_size: 1024      # 1 Gb
+
+logging:
+  level: info
+
+environments:
+  ###########################################
+  # Set with SURVOS_ENV environment variable
+  # Will overwrite existing configs
+  ###########################################
+  test: # SURVOS_ENV=test
+    api:
+      renderer: mpl
+
+    computing:
+      chunks: true      # Automatic chunking
+      chunk_size: 100   # in MB
+      chunk_size_sparse: 10
+
+    model:
+      chroot: tmp       # will create a temporary directory
+
+    logging:
+      file: /tmp/survos.log
+      level: debug
