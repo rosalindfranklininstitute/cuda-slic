@@ -33,14 +33,14 @@ def slic3d(data, nsp=None, sp_shape=None, compactness=30, sigma=None,
         gpu_slic_expectation = _mod_conv.get_function('expectation')
         gpu_slic_maximization = _mod_conv.get_function('maximization')
 
-    if sp_shape is not None:
+    if sp_shape:
         _sp_shape = list(sp_shape)
         if len(_sp_shape) == 3:
             _sp_grid = (dshape + _sp_shape - 1) // _sp_shape
         else:
             raise ValueError('Incorrect `sp_shape`: {}'.format(sp_shape))
-    elif nsp is not None:
-        sp_size = int(round((np.prod(data.shape) / nsp)**(1./3.)))
+    elif nsp:
+        sp_size = int(round((np.prod(dshape) / nsp)**(1./3.)))
         _sp_shape = list((sp_size, sp_size, sp_size))
         _sp_grid = (dshape + _sp_shape - 1) // _sp_shape
     else:
