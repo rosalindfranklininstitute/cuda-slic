@@ -8,6 +8,7 @@ dependencies:
 - pip
 - cudatoolkit=10.1
 - cudatoolkit-dev=10.1
+- pandas
 - jupyter
 - notebook
 - ipywidgets
