@@ -4,7 +4,11 @@ test:
   tags:
     - gpu
   script:
+    - apt-get update
+    - apt-get install -y g++ gcc
     - conda env create -f environment.yml
     - conda activate gpu-slic
+    - ./make_script.sh
+    - python -m pytest tests-unit
     - nvidia-smi
     - nvcc --version
