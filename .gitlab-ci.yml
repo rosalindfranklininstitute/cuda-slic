@@ -6,6 +6,8 @@ test:
   script:
     - apt-get update
     - apt-get install -y g++ gcc
+    - conda update conda
+    - conda update conda-build
     - conda env create -f environment.yml
     - conda activate gpu-slic
     - ./make_script.sh
