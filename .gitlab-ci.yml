@@ -7,8 +7,9 @@ test:
     - apt-get update
     - apt-get install -y g++ gcc
     - conda update conda
-    - conda env create -f environment.yml
-    - conda activate gpu-slic
+    - conda install -y conda-build
+    - conda env create -n gitlab-env -f environment.yml
+    - conda activate gitlab-env
     - ./make_script.sh
     - python -m pytest tests-unit
     - nvidia-smi
