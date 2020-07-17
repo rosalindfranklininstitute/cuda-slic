@@ -1,33 +1,25 @@
-# SuRVoS2
-Next generation of SuRVoS - Coming soon!
+# cuda-slic: A CUDA implementation of the SLIC Superpixel algorithm
 
+## SLIC
+SLIC stands for __simple linear iteraticve clustering__.
+SLIC uses windowed k-means clustering to segment an input array to a set of super-regions.
+The K-means clustering algo is an embarrasingly parallelizable problem, making it ideally suited for GPU Acceleration.
 
-[![Build Status](https://travis-ci.org/DiamondLightSource/SuRVoS2.svg?branch=master)](https://travis-ci.org/DiamondLightSource/SuRVoS2)
-
-## Run server
-
+## Dependency Management
+We use `conda` as a dependency installer and virtual env manager. A development environment can be created with
 ```bash
-bin/survos server
+conda env create -f environment.yml
+```
+now you can activate the virtual env with `conda activate gpu-slic`, to deactivate use `conda deactivate`.
+To add a dependency, add it to the [environment.yml](environment.yml) file, then you can run
+```bash
+conda env update -f environment.yml
 ```
 
-## Run Qt client
+## Tests
+in the [notebooks](notebooks) folder there are Jupyter notebooks where the clustering algos can be visually inspected.
 
+Our unit-testing framework of choice is [Py.test](https://docs.pytest.org/en/latest/). The unit-tests can be run with
 ```bash
-bin/survos qt [workspace_path] --server [host:port]
+python -m pytest tests-unit
 ```
-
-## Run API command
-
-- Locally:
-
-```bash
-bin/server run [plugin].[command] [param1=value1] [param2=value2]
-```
-
-- Remotely:
-
-```bash
-bin/server run [plugin].[command] --server [host:port] [param1=value1] [param2=value2]
-```
-
-[![](https://codescene.io/projects/3732/status.svg) Get more details at **codescene.io**.](https://codescene.io/projects/3732/jobs/latest-successful/results)
