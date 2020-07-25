@@ -1,39 +1,16 @@
-stages:
-  - build
-  - test
-  - clean
+image: continuumio/miniconda3
 
-variables: &global-variables
-  CONDA_PATH: /scratch/olly/gitlab_wd/test_env
-
-linux-build:
-  stage: build
+test:
   tags:
-    - linux
+    - gpu
   script:
-    - "mkdir -p $CONDA_PATH"
-    - "conda env create -f environment.yml -p $CONDA_PATH"
-    - conda activate $CONDA_PATH
-    - "module load cuda/10.1"
-    - pip install pycuda
-    - bash make_script.sh
-    - conda deactivate
-
-linux-test:
-  stage: test
-  tags:
-    - linux
-  script:
-    - module load cuda/10.1
-    - conda activate $CONDA_PATH
-    - bash make_script.sh
-    - "python -m pytest tests/"
-
-linux-clean:
-  stage: clean
-  tags:
-    - linux
-  script:
-    - conda deactivate
-    - "conda remove -p $CONDA_PATH --all"
-  when: always
+    - apt-get update
+    - apt-get install -y g++ gcc
+    - conda update conda
+    - conda install -y conda-build
+    - conda env create -n gitlab-env -f environment.yml
+    - conda activate gitlab-env
+    - ./make_script.sh
+    - python -m pytest tests-unit
+    - nvidia-smi
+    - nvcc --version
