@@ -76,33 +76,33 @@ void init_clusters(const float* data,
     p.y = r.y = idx.y * sp_shape.y + sp_shape.y / 2;
     p.z = r.x = idx.x * sp_shape.x + sp_shape.x / 2;
 
-    float g, min_g = DLIMIT;
+    // float g, min_g = DLIMIT;
 
-    for ( int u = -3; u <= 3; u++ ) {
-        q.z = p.z + u;
-        if ( q.z < 0 || q.z >= im_shape.z - 2 ) {continue;}
+    // for ( int u = -3; u <= 3; u++ ) {
+    //     q.z = p.z + u;
+    //     if ( q.z < 0 || q.z >= im_shape.z - 2 ) {continue;}
 
-        for ( int v = -3; v <= 3; v ++ ) {
-            q.y = p.y + v;
-            if ( q.y < 0 || q.y >= im_shape.y - 2 ) {continue;}
+    //     for ( int v = -3; v <= 3; v ++ ) {
+    //         q.y = p.y + v;
+    //         if ( q.y < 0 || q.y >= im_shape.y - 2 ) {continue;}
 
-            for ( int w = -3; w <= 3; w++ ) {
-                q.x = p.x + w;
-                if ( q.x < 0 || q.x >= im_shape.x - 2 ) {continue;}
+    //         for ( int w = -3; w <= 3; w++ ) {
+    //             q.x = p.x + w;
+    //             if ( q.x < 0 || q.x >= im_shape.x - 2 ) {continue;}
 
-                g = gradient(data, q, im_shape, n_features);
-                if ( g < min_g ) {
-                    min_g = g; r.z = q.z; r.y = q.y; r.x = q.x;
-                }
-            }
-        }
-    }
+    //             g = gradient(data, q, im_shape, n_features);
+    //             if ( g < min_g ) {
+    //                 min_g = g; r.z = q.z; r.y = q.y; r.x = q.x;
+    //             }
+    //         }
+    //     }
+    // }
 
     int shift = n_features + 3;
-    for ( int k = 0; k < n_features; k++ ) {
-        r.w = k;
-        centers[lidx * shift + k] = at(data, r, im_shape);
-    }
+    // for ( int k = 0; k < n_features; k++ ) {
+    //     r.w = k;
+    //     centers[lidx * shift + k] = at(data, r, im_shape);
+    // }
 
     centers[lidx * shift + n_features + 0] = r.z;
     centers[lidx * shift + n_features + 1] = r.y;
