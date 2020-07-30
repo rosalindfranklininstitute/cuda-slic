@@ -2,12 +2,11 @@
 image: condaforge/linux-anvil-cuda:10.1
 
 before_script:
-  - sudo yum install -y g++ gcc
+  - sudo yum install -y gcc gcc-c++
   - conda init bash
   - source /home/conda/.bashrc
   - conda env create -f gitlab-ci-environment.yml -v
   - conda activate gitlab-ci
-  - python survos2/improc/setup.py build_ext -i
 
 test-nvidia-compilirs:
   tags:
@@ -25,4 +24,5 @@ unit-tests:
   tags:
     - gpu
   script:
+    - python survos2/improc/setup.py build_ext -i
     - pytest
