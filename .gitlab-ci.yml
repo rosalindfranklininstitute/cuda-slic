@@ -2,10 +2,10 @@
 image: condaforge/linux-anvil-cuda:10.1
 
 before_script:
-  - yum install -y g++ gcc
+  - sudo yum install -y g++ gcc
   - conda init bash
-  - source /root/.bashrc
-  - conda env create -f -v gitlab-ci-environment.yml
+  - source /home/conda/.bashrc
+  - conda env create -f gitlab-ci-environment.yml -v
   - conda activate gitlab-ci
   - python survos2/improc/setup.py build_ext -i
 
