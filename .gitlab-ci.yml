@@ -1,16 +1,28 @@
-image: continuumio/miniconda3
+# image: continuumio/miniconda3
+image: condaforge/linux-anvil-cuda
 
-test:
+before_script:
+  - yum install -y g++ gcc
+  - conda init bash
+  - source /root/.bashrc
+  - conda env create -f -v gitlab-ci-environment.yml
+  - conda activate gitlab-ci
+  - python survos2/improc/setup.py build_ext -i
+
+test-nvidia-compilirs:
   tags:
     - gpu
   script:
-    - apt-get update
-    - apt-get install -y g++ gcc
-    - conda update conda
-    - conda install -y conda-build
-    - conda env create -n gitlab-env -f environment.yml
-    - conda activate gitlab-env
-    - ./make_script.sh
-    - python -m pytest tests-unit
-    - nvidia-smi
     - nvcc --version
+
+test-nvidia-smi:
+  tags:
+    - gpu
+  script:
+    - nvidia-smi
+
+unit-tests:
+  tags:
+    - gpu
+  script:
+    - pytest
