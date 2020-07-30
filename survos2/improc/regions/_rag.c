@@ -602,8 +602,8 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__improc__superregions___rag
-#define __PYX_HAVE_API__improc__superregions___rag
+#define __PYX_HAVE__improc__regions___rag
+#define __PYX_HAVE_API__improc__regions___rag
 /* Early includes */
 #include <string.h>
 #include <stdio.h>
@@ -2111,7 +2111,7 @@ static PyTypeObject *__pyx_ptype_5numpy_ndarray = 0;
 static PyTypeObject *__pyx_ptype_5numpy_ufunc = 0;
 static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *, char *, char *, int *); /*proto*/
 
-/* Module declarations from 'improc.superregions._rag' */
+/* Module declarations from 'improc.regions._rag' */
 static PyTypeObject *__pyx_array_type = 0;
 static PyTypeObject *__pyx_MemviewEnum_type = 0;
 static PyTypeObject *__pyx_memoryview_type = 0;
@@ -2158,11 +2158,11 @@ static void __pyx_memoryview__slice_assign_scalar(char *, Py_ssize_t *, Py_ssize
 static PyObject *__pyx_unpickle_Enum__set_state(struct __pyx_MemviewEnum_obj *, PyObject *); /*proto*/
 static __Pyx_TypeInfo __Pyx_TypeInfo_unsigned_int = { "unsigned int", NULL, sizeof(unsigned int), { 0 }, 0, IS_UNSIGNED(unsigned int) ? 'U' : 'I', IS_UNSIGNED(unsigned int), 0 };
 static __Pyx_TypeInfo __Pyx_TypeInfo_int = { "int", NULL, sizeof(int), { 0 }, 0, IS_UNSIGNED(int) ? 'U' : 'I', IS_UNSIGNED(int), 0 };
-#define __Pyx_MODULE_NAME "improc.superregions._rag"
-extern int __pyx_module_is_main_improc__superregions___rag;
-int __pyx_module_is_main_improc__superregions___rag = 0;
+#define __Pyx_MODULE_NAME "improc.regions._rag"
+extern int __pyx_module_is_main_improc__regions___rag;
+int __pyx_module_is_main_improc__regions___rag = 0;
 
-/* Implementation of 'improc.superregions._rag' */
+/* Implementation of 'improc.regions._rag' */
 static PyObject *__pyx_builtin_range;
 static PyObject *__pyx_builtin_ValueError;
 static PyObject *__pyx_builtin_RuntimeError;
@@ -2259,6 +2259,7 @@ static const char __pyx_k_setstate_cython[] = "__setstate_cython__";
 static const char __pyx_k_pyx_unpickle_Enum[] = "__pyx_unpickle_Enum";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_strided_and_direct[] = "<strided and direct>";
+static const char __pyx_k_improc_regions__rag[] = "improc.regions._rag";
 static const char __pyx_k_strided_and_indirect[] = "<strided and indirect>";
 static const char __pyx_k_contiguous_and_direct[] = "<contiguous and direct>";
 static const char __pyx_k_extract_neighbours_2d[] = "_extract_neighbours_2d";
@@ -2267,7 +2268,6 @@ static const char __pyx_k_MemoryView_of_r_object[] = "<MemoryView of %r object>"
 static const char __pyx_k_MemoryView_of_r_at_0x_x[] = "<MemoryView of %r at 0x%x>";
 static const char __pyx_k_contiguous_and_indirect[] = "<contiguous and indirect>";
 static const char __pyx_k_Cannot_index_with_type_s[] = "Cannot index with type '%s'";
-static const char __pyx_k_improc_superregions__rag[] = "improc.superregions._rag";
 static const char __pyx_k_Invalid_shape_in_axis_d_d[] = "Invalid shape in axis %d: %d.";
 static const char __pyx_k_itemsize_0_for_cython_array[] = "itemsize <= 0 for cython.array";
 static const char __pyx_k_ndarray_is_not_C_contiguous[] = "ndarray is not C contiguous";
@@ -2357,7 +2357,7 @@ static PyObject *__pyx_n_s_i;
 static PyObject *__pyx_n_s_id;
 static PyObject *__pyx_n_s_idx;
 static PyObject *__pyx_n_s_import;
-static PyObject *__pyx_n_s_improc_superregions__rag;
+static PyObject *__pyx_n_s_improc_regions__rag;
 static PyObject *__pyx_n_s_int32;
 static PyObject *__pyx_n_s_it;
 static PyObject *__pyx_n_s_itemsize;
@@ -2417,8 +2417,8 @@ static PyObject *__pyx_kp_s_unable_to_allocate_shape_and_str;
 static PyObject *__pyx_kp_u_unknown_dtype_code_in_numpy_pxd;
 static PyObject *__pyx_n_s_unpack;
 static PyObject *__pyx_n_s_update;
-static PyObject *__pyx_pf_6improc_12superregions_4_rag__extract_neighbours_2d(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_splabels, int __pyx_v_connectivity); /* proto */
-static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_splabels, int __pyx_v_connectivity); /* proto */
+static PyObject *__pyx_pf_6improc_7regions_4_rag__extract_neighbours_2d(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_splabels, int __pyx_v_connectivity); /* proto */
+static PyObject *__pyx_pf_6improc_7regions_4_rag_2_extract_neighbours_3d(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_splabels, int __pyx_v_connectivity); /* proto */
 static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, Py_buffer *__pyx_v_info, int __pyx_v_flags); /* proto */
 static void __pyx_pf_5numpy_7ndarray_2__releasebuffer__(PyArrayObject *__pyx_v_self, Py_buffer *__pyx_v_info); /* proto */
 static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __pyx_array_obj *__pyx_v_self, PyObject *__pyx_v_shape, Py_ssize_t __pyx_v_itemsize, PyObject *__pyx_v_format, PyObject *__pyx_v_mode, int __pyx_v_allocate_buffer); /* proto */
@@ -2509,7 +2509,7 @@ static PyObject *__pyx_codeobj__29;
 static PyObject *__pyx_codeobj__36;
 /* Late includes */
 
-/* "survos2/improc/regions/_rag.pyx":11
+/* "improc/regions/_rag.pyx":11
  * 
  * 
  * def _extract_neighbours_2d(unsigned int[:, ::1] splabels, int connectivity):             # <<<<<<<<<<<<<<
@@ -2518,9 +2518,9 @@ static PyObject *__pyx_codeobj__36;
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6improc_12superregions_4_rag_1_extract_neighbours_2d(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_6improc_12superregions_4_rag_1_extract_neighbours_2d = {"_extract_neighbours_2d", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6improc_12superregions_4_rag_1_extract_neighbours_2d, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_6improc_12superregions_4_rag_1_extract_neighbours_2d(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_6improc_7regions_4_rag_1_extract_neighbours_2d(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_6improc_7regions_4_rag_1_extract_neighbours_2d = {"_extract_neighbours_2d", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6improc_7regions_4_rag_1_extract_neighbours_2d, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6improc_7regions_4_rag_1_extract_neighbours_2d(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   __Pyx_memviewslice __pyx_v_splabels = { 0, 0, { 0 }, { 0 }, { 0 } };
   int __pyx_v_connectivity;
   int __pyx_lineno = 0;
@@ -2571,18 +2571,18 @@ static PyObject *__pyx_pw_6improc_12superregions_4_rag_1_extract_neighbours_2d(P
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("_extract_neighbours_2d", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 11, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("improc.superregions._rag._extract_neighbours_2d", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("improc.regions._rag._extract_neighbours_2d", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6improc_12superregions_4_rag__extract_neighbours_2d(__pyx_self, __pyx_v_splabels, __pyx_v_connectivity);
+  __pyx_r = __pyx_pf_6improc_7regions_4_rag__extract_neighbours_2d(__pyx_self, __pyx_v_splabels, __pyx_v_connectivity);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6improc_12superregions_4_rag__extract_neighbours_2d(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_splabels, int __pyx_v_connectivity) {
+static PyObject *__pyx_pf_6improc_7regions_4_rag__extract_neighbours_2d(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_splabels, int __pyx_v_connectivity) {
   Py_ssize_t __pyx_v_i;
   Py_ssize_t __pyx_v_j;
   Py_ssize_t __pyx_v_idx;
@@ -2617,7 +2617,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag__extract_neighbours_2d(CY
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_extract_neighbours_2d", 0);
 
-  /* "survos2/improc/regions/_rag.pyx":14
+  /* "improc/regions/_rag.pyx":14
  *     cdef:
  *         Py_ssize_t i, j, idx
  *         Py_ssize_t rows = splabels.shape[0]             # <<<<<<<<<<<<<<
@@ -2626,7 +2626,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag__extract_neighbours_2d(CY
  */
   __pyx_v_rows = (__pyx_v_splabels.shape[0]);
 
-  /* "survos2/improc/regions/_rag.pyx":15
+  /* "improc/regions/_rag.pyx":15
  *         Py_ssize_t i, j, idx
  *         Py_ssize_t rows = splabels.shape[0]
  *         Py_ssize_t cols = splabels.shape[1]             # <<<<<<<<<<<<<<
@@ -2635,7 +2635,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag__extract_neighbours_2d(CY
  */
   __pyx_v_cols = (__pyx_v_splabels.shape[1]);
 
-  /* "survos2/improc/regions/_rag.pyx":16
+  /* "improc/regions/_rag.pyx":16
  *         Py_ssize_t rows = splabels.shape[0]
  *         Py_ssize_t cols = splabels.shape[1]
  *         Py_ssize_t N = rows * cols             # <<<<<<<<<<<<<<
@@ -2644,7 +2644,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag__extract_neighbours_2d(CY
  */
   __pyx_v_N = (__pyx_v_rows * __pyx_v_cols);
 
-  /* "survos2/improc/regions/_rag.pyx":18
+  /* "improc/regions/_rag.pyx":18
  *         Py_ssize_t N = rows * cols
  *         int target, current
  *         int[::1] nodes = np.empty(N, dtype=np.int32)             # <<<<<<<<<<<<<<
@@ -2683,7 +2683,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag__extract_neighbours_2d(CY
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "survos2/improc/regions/_rag.pyx":19
+  /* "improc/regions/_rag.pyx":19
  *         int target, current
  *         int[::1] nodes = np.empty(N, dtype=np.int32)
  *         int[:, ::1] edges = np.full((N, connectivity//2), -1, dtype=np.int32)             # <<<<<<<<<<<<<<
@@ -2735,7 +2735,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag__extract_neighbours_2d(CY
   __pyx_t_7.memview = NULL;
   __pyx_t_7.data = NULL;
 
-  /* "survos2/improc/regions/_rag.pyx":22
+  /* "improc/regions/_rag.pyx":22
  *         bint it, jt
  * 
  *     for i in range(rows):             # <<<<<<<<<<<<<<
@@ -2747,7 +2747,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag__extract_neighbours_2d(CY
   for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
     __pyx_v_i = __pyx_t_10;
 
-    /* "survos2/improc/regions/_rag.pyx":23
+    /* "improc/regions/_rag.pyx":23
  * 
  *     for i in range(rows):
  *         for j in range(cols):             # <<<<<<<<<<<<<<
@@ -2759,7 +2759,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag__extract_neighbours_2d(CY
     for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
       __pyx_v_j = __pyx_t_13;
 
-      /* "survos2/improc/regions/_rag.pyx":24
+      /* "improc/regions/_rag.pyx":24
  *     for i in range(rows):
  *         for j in range(cols):
  *             idx = i * cols + j             # <<<<<<<<<<<<<<
@@ -2768,7 +2768,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag__extract_neighbours_2d(CY
  */
       __pyx_v_idx = ((__pyx_v_i * __pyx_v_cols) + __pyx_v_j);
 
-      /* "survos2/improc/regions/_rag.pyx":25
+      /* "improc/regions/_rag.pyx":25
  *         for j in range(cols):
  *             idx = i * cols + j
  *             nodes[idx] = splabels[i, j]             # <<<<<<<<<<<<<<
@@ -2780,7 +2780,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag__extract_neighbours_2d(CY
       __pyx_t_16 = __pyx_v_idx;
       *((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_nodes.data) + __pyx_t_16)) )) = (*((unsigned int *) ( /* dim=1 */ ((char *) (((unsigned int *) ( /* dim=0 */ (__pyx_v_splabels.data + __pyx_t_14 * __pyx_v_splabels.strides[0]) )) + __pyx_t_15)) )));
 
-      /* "survos2/improc/regions/_rag.pyx":26
+      /* "improc/regions/_rag.pyx":26
  *             idx = i * cols + j
  *             nodes[idx] = splabels[i, j]
  *             if i < rows - 1:             # <<<<<<<<<<<<<<
@@ -2790,7 +2790,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag__extract_neighbours_2d(CY
       __pyx_t_17 = ((__pyx_v_i < (__pyx_v_rows - 1)) != 0);
       if (__pyx_t_17) {
 
-        /* "survos2/improc/regions/_rag.pyx":27
+        /* "improc/regions/_rag.pyx":27
  *             nodes[idx] = splabels[i, j]
  *             if i < rows - 1:
  *                 edges[idx, 0] = splabels[i+1, j]             # <<<<<<<<<<<<<<
@@ -2803,7 +2803,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag__extract_neighbours_2d(CY
         __pyx_t_18 = 0;
         *((int *) ( /* dim=1 */ ((char *) (((int *) ( /* dim=0 */ (__pyx_v_edges.data + __pyx_t_16 * __pyx_v_edges.strides[0]) )) + __pyx_t_18)) )) = (*((unsigned int *) ( /* dim=1 */ ((char *) (((unsigned int *) ( /* dim=0 */ (__pyx_v_splabels.data + __pyx_t_15 * __pyx_v_splabels.strides[0]) )) + __pyx_t_14)) )));
 
-        /* "survos2/improc/regions/_rag.pyx":26
+        /* "improc/regions/_rag.pyx":26
  *             idx = i * cols + j
  *             nodes[idx] = splabels[i, j]
  *             if i < rows - 1:             # <<<<<<<<<<<<<<
@@ -2812,7 +2812,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag__extract_neighbours_2d(CY
  */
       }
 
-      /* "survos2/improc/regions/_rag.pyx":28
+      /* "improc/regions/_rag.pyx":28
  *             if i < rows - 1:
  *                 edges[idx, 0] = splabels[i+1, j]
  *             if j < cols - 1:             # <<<<<<<<<<<<<<
@@ -2822,7 +2822,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag__extract_neighbours_2d(CY
       __pyx_t_17 = ((__pyx_v_j < (__pyx_v_cols - 1)) != 0);
       if (__pyx_t_17) {
 
-        /* "survos2/improc/regions/_rag.pyx":29
+        /* "improc/regions/_rag.pyx":29
  *                 edges[idx, 0] = splabels[i+1, j]
  *             if j < cols - 1:
  *                 edges[idx, 1] = splabels[i, j+1]             # <<<<<<<<<<<<<<
@@ -2835,7 +2835,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag__extract_neighbours_2d(CY
         __pyx_t_16 = 1;
         *((int *) ( /* dim=1 */ ((char *) (((int *) ( /* dim=0 */ (__pyx_v_edges.data + __pyx_t_18 * __pyx_v_edges.strides[0]) )) + __pyx_t_16)) )) = (*((unsigned int *) ( /* dim=1 */ ((char *) (((unsigned int *) ( /* dim=0 */ (__pyx_v_splabels.data + __pyx_t_14 * __pyx_v_splabels.strides[0]) )) + __pyx_t_15)) )));
 
-        /* "survos2/improc/regions/_rag.pyx":28
+        /* "improc/regions/_rag.pyx":28
  *             if i < rows - 1:
  *                 edges[idx, 0] = splabels[i+1, j]
  *             if j < cols - 1:             # <<<<<<<<<<<<<<
@@ -2844,7 +2844,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag__extract_neighbours_2d(CY
  */
       }
 
-      /* "survos2/improc/regions/_rag.pyx":31
+      /* "improc/regions/_rag.pyx":31
  *                 edges[idx, 1] = splabels[i, j+1]
  * 
  *             if connectivity == 8:             # <<<<<<<<<<<<<<
@@ -2854,7 +2854,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag__extract_neighbours_2d(CY
       __pyx_t_17 = ((__pyx_v_connectivity == 8) != 0);
       if (__pyx_t_17) {
 
-        /* "survos2/improc/regions/_rag.pyx":32
+        /* "improc/regions/_rag.pyx":32
  * 
  *             if connectivity == 8:
  *                 if i < rows - 1 and j < cols - 1:             # <<<<<<<<<<<<<<
@@ -2872,7 +2872,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag__extract_neighbours_2d(CY
         __pyx_L11_bool_binop_done:;
         if (__pyx_t_17) {
 
-          /* "survos2/improc/regions/_rag.pyx":33
+          /* "improc/regions/_rag.pyx":33
  *             if connectivity == 8:
  *                 if i < rows - 1 and j < cols - 1:
  *                     edges[idx, 2] = splabels[i+1, j+1]             # <<<<<<<<<<<<<<
@@ -2885,7 +2885,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag__extract_neighbours_2d(CY
           __pyx_t_18 = 2;
           *((int *) ( /* dim=1 */ ((char *) (((int *) ( /* dim=0 */ (__pyx_v_edges.data + __pyx_t_16 * __pyx_v_edges.strides[0]) )) + __pyx_t_18)) )) = (*((unsigned int *) ( /* dim=1 */ ((char *) (((unsigned int *) ( /* dim=0 */ (__pyx_v_splabels.data + __pyx_t_15 * __pyx_v_splabels.strides[0]) )) + __pyx_t_14)) )));
 
-          /* "survos2/improc/regions/_rag.pyx":32
+          /* "improc/regions/_rag.pyx":32
  * 
  *             if connectivity == 8:
  *                 if i < rows - 1 and j < cols - 1:             # <<<<<<<<<<<<<<
@@ -2894,7 +2894,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag__extract_neighbours_2d(CY
  */
         }
 
-        /* "survos2/improc/regions/_rag.pyx":34
+        /* "improc/regions/_rag.pyx":34
  *                 if i < rows - 1 and j < cols - 1:
  *                     edges[idx, 2] = splabels[i+1, j+1]
  *                 if i > 0 and j < cols - 1:             # <<<<<<<<<<<<<<
@@ -2912,7 +2912,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag__extract_neighbours_2d(CY
         __pyx_L14_bool_binop_done:;
         if (__pyx_t_17) {
 
-          /* "survos2/improc/regions/_rag.pyx":35
+          /* "improc/regions/_rag.pyx":35
  *                     edges[idx, 2] = splabels[i+1, j+1]
  *                 if i > 0 and j < cols - 1:
  *                     edges[idx, 3] = splabels[i-1, j+1]             # <<<<<<<<<<<<<<
@@ -2925,7 +2925,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag__extract_neighbours_2d(CY
           __pyx_t_16 = 3;
           *((int *) ( /* dim=1 */ ((char *) (((int *) ( /* dim=0 */ (__pyx_v_edges.data + __pyx_t_18 * __pyx_v_edges.strides[0]) )) + __pyx_t_16)) )) = (*((unsigned int *) ( /* dim=1 */ ((char *) (((unsigned int *) ( /* dim=0 */ (__pyx_v_splabels.data + __pyx_t_14 * __pyx_v_splabels.strides[0]) )) + __pyx_t_15)) )));
 
-          /* "survos2/improc/regions/_rag.pyx":34
+          /* "improc/regions/_rag.pyx":34
  *                 if i < rows - 1 and j < cols - 1:
  *                     edges[idx, 2] = splabels[i+1, j+1]
  *                 if i > 0 and j < cols - 1:             # <<<<<<<<<<<<<<
@@ -2934,7 +2934,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag__extract_neighbours_2d(CY
  */
         }
 
-        /* "survos2/improc/regions/_rag.pyx":31
+        /* "improc/regions/_rag.pyx":31
  *                 edges[idx, 1] = splabels[i, j+1]
  * 
  *             if connectivity == 8:             # <<<<<<<<<<<<<<
@@ -2945,7 +2945,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag__extract_neighbours_2d(CY
     }
   }
 
-  /* "survos2/improc/regions/_rag.pyx":37
+  /* "improc/regions/_rag.pyx":37
  *                     edges[idx, 3] = splabels[i-1, j+1]
  * 
  *     return np.asarray(nodes), np.asarray(edges)             # <<<<<<<<<<<<<<
@@ -3011,7 +3011,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag__extract_neighbours_2d(CY
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "survos2/improc/regions/_rag.pyx":11
+  /* "improc/regions/_rag.pyx":11
  * 
  * 
  * def _extract_neighbours_2d(unsigned int[:, ::1] splabels, int connectivity):             # <<<<<<<<<<<<<<
@@ -3028,7 +3028,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag__extract_neighbours_2d(CY
   __Pyx_XDECREF(__pyx_t_5);
   __PYX_XDEC_MEMVIEW(&__pyx_t_6, 1);
   __PYX_XDEC_MEMVIEW(&__pyx_t_7, 1);
-  __Pyx_AddTraceback("improc.superregions._rag._extract_neighbours_2d", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("improc.regions._rag._extract_neighbours_2d", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __PYX_XDEC_MEMVIEW(&__pyx_v_nodes, 1);
@@ -3039,7 +3039,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag__extract_neighbours_2d(CY
   return __pyx_r;
 }
 
-/* "survos2/improc/regions/_rag.pyx":40
+/* "improc/regions/_rag.pyx":40
  * 
  * 
  * def _extract_neighbours_3d(unsigned int[:, :, ::1] splabels, int connectivity):             # <<<<<<<<<<<<<<
@@ -3048,9 +3048,9 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag__extract_neighbours_2d(CY
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6improc_12superregions_4_rag_3_extract_neighbours_3d(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_6improc_12superregions_4_rag_3_extract_neighbours_3d = {"_extract_neighbours_3d", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6improc_12superregions_4_rag_3_extract_neighbours_3d, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_6improc_12superregions_4_rag_3_extract_neighbours_3d(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_6improc_7regions_4_rag_3_extract_neighbours_3d(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_6improc_7regions_4_rag_3_extract_neighbours_3d = {"_extract_neighbours_3d", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6improc_7regions_4_rag_3_extract_neighbours_3d, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6improc_7regions_4_rag_3_extract_neighbours_3d(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   __Pyx_memviewslice __pyx_v_splabels = { 0, 0, { 0 }, { 0 }, { 0 } };
   int __pyx_v_connectivity;
   int __pyx_lineno = 0;
@@ -3101,18 +3101,18 @@ static PyObject *__pyx_pw_6improc_12superregions_4_rag_3_extract_neighbours_3d(P
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("_extract_neighbours_3d", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 40, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("improc.superregions._rag._extract_neighbours_3d", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("improc.regions._rag._extract_neighbours_3d", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(__pyx_self, __pyx_v_splabels, __pyx_v_connectivity);
+  __pyx_r = __pyx_pf_6improc_7regions_4_rag_2_extract_neighbours_3d(__pyx_self, __pyx_v_splabels, __pyx_v_connectivity);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_splabels, int __pyx_v_connectivity) {
+static PyObject *__pyx_pf_6improc_7regions_4_rag_2_extract_neighbours_3d(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_splabels, int __pyx_v_connectivity) {
   Py_ssize_t __pyx_v_i;
   Py_ssize_t __pyx_v_j;
   Py_ssize_t __pyx_v_k;
@@ -3153,7 +3153,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_extract_neighbours_3d", 0);
 
-  /* "survos2/improc/regions/_rag.pyx":43
+  /* "improc/regions/_rag.pyx":43
  *     cdef:
  *         Py_ssize_t i, j, k, idx
  *         Py_ssize_t depth = splabels.shape[0]             # <<<<<<<<<<<<<<
@@ -3162,7 +3162,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
  */
   __pyx_v_depth = (__pyx_v_splabels.shape[0]);
 
-  /* "survos2/improc/regions/_rag.pyx":44
+  /* "improc/regions/_rag.pyx":44
  *         Py_ssize_t i, j, k, idx
  *         Py_ssize_t depth = splabels.shape[0]
  *         Py_ssize_t rows = splabels.shape[1]             # <<<<<<<<<<<<<<
@@ -3171,7 +3171,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
  */
   __pyx_v_rows = (__pyx_v_splabels.shape[1]);
 
-  /* "survos2/improc/regions/_rag.pyx":45
+  /* "improc/regions/_rag.pyx":45
  *         Py_ssize_t depth = splabels.shape[0]
  *         Py_ssize_t rows = splabels.shape[1]
  *         Py_ssize_t cols = splabels.shape[2]             # <<<<<<<<<<<<<<
@@ -3180,7 +3180,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
  */
   __pyx_v_cols = (__pyx_v_splabels.shape[2]);
 
-  /* "survos2/improc/regions/_rag.pyx":46
+  /* "improc/regions/_rag.pyx":46
  *         Py_ssize_t rows = splabels.shape[1]
  *         Py_ssize_t cols = splabels.shape[2]
  *         Py_ssize_t N = depth * rows * cols             # <<<<<<<<<<<<<<
@@ -3189,7 +3189,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
  */
   __pyx_v_N = ((__pyx_v_depth * __pyx_v_rows) * __pyx_v_cols);
 
-  /* "survos2/improc/regions/_rag.pyx":48
+  /* "improc/regions/_rag.pyx":48
  *         Py_ssize_t N = depth * rows * cols
  *         int target, current
  *         int[::1] nodes = np.empty(N, dtype=np.int32)             # <<<<<<<<<<<<<<
@@ -3228,7 +3228,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "survos2/improc/regions/_rag.pyx":49
+  /* "improc/regions/_rag.pyx":49
  *         int target, current
  *         int[::1] nodes = np.empty(N, dtype=np.int32)
  *         int[:, ::1] edges = np.full((N, connectivity//2), -1, dtype=np.int32)             # <<<<<<<<<<<<<<
@@ -3280,7 +3280,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
   __pyx_t_7.memview = NULL;
   __pyx_t_7.data = NULL;
 
-  /* "survos2/improc/regions/_rag.pyx":51
+  /* "improc/regions/_rag.pyx":51
  *         int[:, ::1] edges = np.full((N, connectivity//2), -1, dtype=np.int32)
  * 
  *     for k in range(depth):             # <<<<<<<<<<<<<<
@@ -3292,7 +3292,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
   for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
     __pyx_v_k = __pyx_t_10;
 
-    /* "survos2/improc/regions/_rag.pyx":52
+    /* "improc/regions/_rag.pyx":52
  * 
  *     for k in range(depth):
  *         for i in range(rows):             # <<<<<<<<<<<<<<
@@ -3304,7 +3304,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
     for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
       __pyx_v_i = __pyx_t_13;
 
-      /* "survos2/improc/regions/_rag.pyx":53
+      /* "improc/regions/_rag.pyx":53
  *     for k in range(depth):
  *         for i in range(rows):
  *             for j in range(cols):             # <<<<<<<<<<<<<<
@@ -3316,7 +3316,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
       for (__pyx_t_16 = 0; __pyx_t_16 < __pyx_t_15; __pyx_t_16+=1) {
         __pyx_v_j = __pyx_t_16;
 
-        /* "survos2/improc/regions/_rag.pyx":54
+        /* "improc/regions/_rag.pyx":54
  *         for i in range(rows):
  *             for j in range(cols):
  *                 idx = k * rows * cols + i * cols + j             # <<<<<<<<<<<<<<
@@ -3325,7 +3325,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
  */
         __pyx_v_idx = ((((__pyx_v_k * __pyx_v_rows) * __pyx_v_cols) + (__pyx_v_i * __pyx_v_cols)) + __pyx_v_j);
 
-        /* "survos2/improc/regions/_rag.pyx":55
+        /* "improc/regions/_rag.pyx":55
  *             for j in range(cols):
  *                 idx = k * rows * cols + i * cols + j
  *                 nodes[idx] = splabels[k, i, j]             # <<<<<<<<<<<<<<
@@ -3338,7 +3338,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
         __pyx_t_20 = __pyx_v_idx;
         *((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_nodes.data) + __pyx_t_20)) )) = (*((unsigned int *) ( /* dim=2 */ ((char *) (((unsigned int *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_splabels.data + __pyx_t_17 * __pyx_v_splabels.strides[0]) ) + __pyx_t_18 * __pyx_v_splabels.strides[1]) )) + __pyx_t_19)) )));
 
-        /* "survos2/improc/regions/_rag.pyx":57
+        /* "improc/regions/_rag.pyx":57
  *                 nodes[idx] = splabels[k, i, j]
  * 
  *                 if k < depth-1:             # <<<<<<<<<<<<<<
@@ -3348,7 +3348,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
         __pyx_t_21 = ((__pyx_v_k < (__pyx_v_depth - 1)) != 0);
         if (__pyx_t_21) {
 
-          /* "survos2/improc/regions/_rag.pyx":58
+          /* "improc/regions/_rag.pyx":58
  * 
  *                 if k < depth-1:
  *                     edges[idx, 0] = splabels[k+1, i, j]             # <<<<<<<<<<<<<<
@@ -3362,7 +3362,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
           __pyx_t_22 = 0;
           *((int *) ( /* dim=1 */ ((char *) (((int *) ( /* dim=0 */ (__pyx_v_edges.data + __pyx_t_20 * __pyx_v_edges.strides[0]) )) + __pyx_t_22)) )) = (*((unsigned int *) ( /* dim=2 */ ((char *) (((unsigned int *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_splabels.data + __pyx_t_19 * __pyx_v_splabels.strides[0]) ) + __pyx_t_18 * __pyx_v_splabels.strides[1]) )) + __pyx_t_17)) )));
 
-          /* "survos2/improc/regions/_rag.pyx":57
+          /* "improc/regions/_rag.pyx":57
  *                 nodes[idx] = splabels[k, i, j]
  * 
  *                 if k < depth-1:             # <<<<<<<<<<<<<<
@@ -3371,7 +3371,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
  */
         }
 
-        /* "survos2/improc/regions/_rag.pyx":59
+        /* "improc/regions/_rag.pyx":59
  *                 if k < depth-1:
  *                     edges[idx, 0] = splabels[k+1, i, j]
  *                 if i < rows-1:             # <<<<<<<<<<<<<<
@@ -3381,7 +3381,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
         __pyx_t_21 = ((__pyx_v_i < (__pyx_v_rows - 1)) != 0);
         if (__pyx_t_21) {
 
-          /* "survos2/improc/regions/_rag.pyx":60
+          /* "improc/regions/_rag.pyx":60
  *                     edges[idx, 0] = splabels[k+1, i, j]
  *                 if i < rows-1:
  *                     edges[idx, 1] = splabels[k, i+1, j]             # <<<<<<<<<<<<<<
@@ -3395,7 +3395,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
           __pyx_t_20 = 1;
           *((int *) ( /* dim=1 */ ((char *) (((int *) ( /* dim=0 */ (__pyx_v_edges.data + __pyx_t_22 * __pyx_v_edges.strides[0]) )) + __pyx_t_20)) )) = (*((unsigned int *) ( /* dim=2 */ ((char *) (((unsigned int *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_splabels.data + __pyx_t_17 * __pyx_v_splabels.strides[0]) ) + __pyx_t_18 * __pyx_v_splabels.strides[1]) )) + __pyx_t_19)) )));
 
-          /* "survos2/improc/regions/_rag.pyx":59
+          /* "improc/regions/_rag.pyx":59
  *                 if k < depth-1:
  *                     edges[idx, 0] = splabels[k+1, i, j]
  *                 if i < rows-1:             # <<<<<<<<<<<<<<
@@ -3404,7 +3404,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
  */
         }
 
-        /* "survos2/improc/regions/_rag.pyx":61
+        /* "improc/regions/_rag.pyx":61
  *                 if i < rows-1:
  *                     edges[idx, 1] = splabels[k, i+1, j]
  *                 if j < cols-1:             # <<<<<<<<<<<<<<
@@ -3414,7 +3414,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
         __pyx_t_21 = ((__pyx_v_j < (__pyx_v_cols - 1)) != 0);
         if (__pyx_t_21) {
 
-          /* "survos2/improc/regions/_rag.pyx":62
+          /* "improc/regions/_rag.pyx":62
  *                     edges[idx, 1] = splabels[k, i+1, j]
  *                 if j < cols-1:
  *                     edges[idx, 2] = splabels[k, i, j+1]             # <<<<<<<<<<<<<<
@@ -3428,7 +3428,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
           __pyx_t_22 = 2;
           *((int *) ( /* dim=1 */ ((char *) (((int *) ( /* dim=0 */ (__pyx_v_edges.data + __pyx_t_20 * __pyx_v_edges.strides[0]) )) + __pyx_t_22)) )) = (*((unsigned int *) ( /* dim=2 */ ((char *) (((unsigned int *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_splabels.data + __pyx_t_19 * __pyx_v_splabels.strides[0]) ) + __pyx_t_18 * __pyx_v_splabels.strides[1]) )) + __pyx_t_17)) )));
 
-          /* "survos2/improc/regions/_rag.pyx":61
+          /* "improc/regions/_rag.pyx":61
  *                 if i < rows-1:
  *                     edges[idx, 1] = splabels[k, i+1, j]
  *                 if j < cols-1:             # <<<<<<<<<<<<<<
@@ -3437,7 +3437,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
  */
         }
 
-        /* "survos2/improc/regions/_rag.pyx":64
+        /* "improc/regions/_rag.pyx":64
  *                     edges[idx, 2] = splabels[k, i, j+1]
  * 
  *                 if connectivity > 6:             # <<<<<<<<<<<<<<
@@ -3447,7 +3447,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
         __pyx_t_21 = ((__pyx_v_connectivity > 6) != 0);
         if (__pyx_t_21) {
 
-          /* "survos2/improc/regions/_rag.pyx":65
+          /* "improc/regions/_rag.pyx":65
  * 
  *                 if connectivity > 6:
  *                     if k < depth-1 and i < rows-1:             # <<<<<<<<<<<<<<
@@ -3465,7 +3465,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
           __pyx_L14_bool_binop_done:;
           if (__pyx_t_21) {
 
-            /* "survos2/improc/regions/_rag.pyx":66
+            /* "improc/regions/_rag.pyx":66
  *                 if connectivity > 6:
  *                     if k < depth-1 and i < rows-1:
  *                         edges[idx, 3] = splabels[k+1, i+1, j]             # <<<<<<<<<<<<<<
@@ -3479,7 +3479,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
             __pyx_t_20 = 3;
             *((int *) ( /* dim=1 */ ((char *) (((int *) ( /* dim=0 */ (__pyx_v_edges.data + __pyx_t_22 * __pyx_v_edges.strides[0]) )) + __pyx_t_20)) )) = (*((unsigned int *) ( /* dim=2 */ ((char *) (((unsigned int *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_splabels.data + __pyx_t_17 * __pyx_v_splabels.strides[0]) ) + __pyx_t_18 * __pyx_v_splabels.strides[1]) )) + __pyx_t_19)) )));
 
-            /* "survos2/improc/regions/_rag.pyx":65
+            /* "improc/regions/_rag.pyx":65
  * 
  *                 if connectivity > 6:
  *                     if k < depth-1 and i < rows-1:             # <<<<<<<<<<<<<<
@@ -3488,7 +3488,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
  */
           }
 
-          /* "survos2/improc/regions/_rag.pyx":67
+          /* "improc/regions/_rag.pyx":67
  *                     if k < depth-1 and i < rows-1:
  *                         edges[idx, 3] = splabels[k+1, i+1, j]
  *                     if k > 0 and i < rows-1:             # <<<<<<<<<<<<<<
@@ -3506,7 +3506,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
           __pyx_L17_bool_binop_done:;
           if (__pyx_t_21) {
 
-            /* "survos2/improc/regions/_rag.pyx":68
+            /* "improc/regions/_rag.pyx":68
  *                         edges[idx, 3] = splabels[k+1, i+1, j]
  *                     if k > 0 and i < rows-1:
  *                         edges[idx, 4] = splabels[k-1, i+1, j]             # <<<<<<<<<<<<<<
@@ -3520,7 +3520,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
             __pyx_t_22 = 4;
             *((int *) ( /* dim=1 */ ((char *) (((int *) ( /* dim=0 */ (__pyx_v_edges.data + __pyx_t_20 * __pyx_v_edges.strides[0]) )) + __pyx_t_22)) )) = (*((unsigned int *) ( /* dim=2 */ ((char *) (((unsigned int *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_splabels.data + __pyx_t_19 * __pyx_v_splabels.strides[0]) ) + __pyx_t_18 * __pyx_v_splabels.strides[1]) )) + __pyx_t_17)) )));
 
-            /* "survos2/improc/regions/_rag.pyx":67
+            /* "improc/regions/_rag.pyx":67
  *                     if k < depth-1 and i < rows-1:
  *                         edges[idx, 3] = splabels[k+1, i+1, j]
  *                     if k > 0 and i < rows-1:             # <<<<<<<<<<<<<<
@@ -3529,7 +3529,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
  */
           }
 
-          /* "survos2/improc/regions/_rag.pyx":70
+          /* "improc/regions/_rag.pyx":70
  *                         edges[idx, 4] = splabels[k-1, i+1, j]
  * 
  *                     if k < depth-1 and j < cols-1:             # <<<<<<<<<<<<<<
@@ -3547,7 +3547,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
           __pyx_L20_bool_binop_done:;
           if (__pyx_t_21) {
 
-            /* "survos2/improc/regions/_rag.pyx":71
+            /* "improc/regions/_rag.pyx":71
  * 
  *                     if k < depth-1 and j < cols-1:
  *                         edges[idx, 5] = splabels[k+1, i, j+1]             # <<<<<<<<<<<<<<
@@ -3561,7 +3561,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
             __pyx_t_20 = 5;
             *((int *) ( /* dim=1 */ ((char *) (((int *) ( /* dim=0 */ (__pyx_v_edges.data + __pyx_t_22 * __pyx_v_edges.strides[0]) )) + __pyx_t_20)) )) = (*((unsigned int *) ( /* dim=2 */ ((char *) (((unsigned int *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_splabels.data + __pyx_t_17 * __pyx_v_splabels.strides[0]) ) + __pyx_t_18 * __pyx_v_splabels.strides[1]) )) + __pyx_t_19)) )));
 
-            /* "survos2/improc/regions/_rag.pyx":70
+            /* "improc/regions/_rag.pyx":70
  *                         edges[idx, 4] = splabels[k-1, i+1, j]
  * 
  *                     if k < depth-1 and j < cols-1:             # <<<<<<<<<<<<<<
@@ -3570,7 +3570,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
  */
           }
 
-          /* "survos2/improc/regions/_rag.pyx":72
+          /* "improc/regions/_rag.pyx":72
  *                     if k < depth-1 and j < cols-1:
  *                         edges[idx, 5] = splabels[k+1, i, j+1]
  *                     if k > 0 and j < cols-1:             # <<<<<<<<<<<<<<
@@ -3588,7 +3588,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
           __pyx_L23_bool_binop_done:;
           if (__pyx_t_21) {
 
-            /* "survos2/improc/regions/_rag.pyx":73
+            /* "improc/regions/_rag.pyx":73
  *                         edges[idx, 5] = splabels[k+1, i, j+1]
  *                     if k > 0 and j < cols-1:
  *                         edges[idx, 6] = splabels[k-1, i, j+1]             # <<<<<<<<<<<<<<
@@ -3602,7 +3602,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
             __pyx_t_22 = 6;
             *((int *) ( /* dim=1 */ ((char *) (((int *) ( /* dim=0 */ (__pyx_v_edges.data + __pyx_t_20 * __pyx_v_edges.strides[0]) )) + __pyx_t_22)) )) = (*((unsigned int *) ( /* dim=2 */ ((char *) (((unsigned int *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_splabels.data + __pyx_t_19 * __pyx_v_splabels.strides[0]) ) + __pyx_t_18 * __pyx_v_splabels.strides[1]) )) + __pyx_t_17)) )));
 
-            /* "survos2/improc/regions/_rag.pyx":72
+            /* "improc/regions/_rag.pyx":72
  *                     if k < depth-1 and j < cols-1:
  *                         edges[idx, 5] = splabels[k+1, i, j+1]
  *                     if k > 0 and j < cols-1:             # <<<<<<<<<<<<<<
@@ -3611,7 +3611,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
  */
           }
 
-          /* "survos2/improc/regions/_rag.pyx":75
+          /* "improc/regions/_rag.pyx":75
  *                         edges[idx, 6] = splabels[k-1, i, j+1]
  * 
  *                     if i < rows-1 and j < cols-1:             # <<<<<<<<<<<<<<
@@ -3629,7 +3629,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
           __pyx_L26_bool_binop_done:;
           if (__pyx_t_21) {
 
-            /* "survos2/improc/regions/_rag.pyx":76
+            /* "improc/regions/_rag.pyx":76
  * 
  *                     if i < rows-1 and j < cols-1:
  *                         edges[idx, 7] = splabels[k, i+1, j+1]             # <<<<<<<<<<<<<<
@@ -3643,7 +3643,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
             __pyx_t_20 = 7;
             *((int *) ( /* dim=1 */ ((char *) (((int *) ( /* dim=0 */ (__pyx_v_edges.data + __pyx_t_22 * __pyx_v_edges.strides[0]) )) + __pyx_t_20)) )) = (*((unsigned int *) ( /* dim=2 */ ((char *) (((unsigned int *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_splabels.data + __pyx_t_17 * __pyx_v_splabels.strides[0]) ) + __pyx_t_18 * __pyx_v_splabels.strides[1]) )) + __pyx_t_19)) )));
 
-            /* "survos2/improc/regions/_rag.pyx":75
+            /* "improc/regions/_rag.pyx":75
  *                         edges[idx, 6] = splabels[k-1, i, j+1]
  * 
  *                     if i < rows-1 and j < cols-1:             # <<<<<<<<<<<<<<
@@ -3652,7 +3652,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
  */
           }
 
-          /* "survos2/improc/regions/_rag.pyx":77
+          /* "improc/regions/_rag.pyx":77
  *                     if i < rows-1 and j < cols-1:
  *                         edges[idx, 7] = splabels[k, i+1, j+1]
  *                     if i > 0 and j < cols-1:             # <<<<<<<<<<<<<<
@@ -3670,7 +3670,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
           __pyx_L29_bool_binop_done:;
           if (__pyx_t_21) {
 
-            /* "survos2/improc/regions/_rag.pyx":78
+            /* "improc/regions/_rag.pyx":78
  *                         edges[idx, 7] = splabels[k, i+1, j+1]
  *                     if i > 0 and j < cols-1:
  *                         edges[idx, 8] = splabels[k, i-1, j+1]             # <<<<<<<<<<<<<<
@@ -3684,7 +3684,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
             __pyx_t_22 = 8;
             *((int *) ( /* dim=1 */ ((char *) (((int *) ( /* dim=0 */ (__pyx_v_edges.data + __pyx_t_20 * __pyx_v_edges.strides[0]) )) + __pyx_t_22)) )) = (*((unsigned int *) ( /* dim=2 */ ((char *) (((unsigned int *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_splabels.data + __pyx_t_19 * __pyx_v_splabels.strides[0]) ) + __pyx_t_18 * __pyx_v_splabels.strides[1]) )) + __pyx_t_17)) )));
 
-            /* "survos2/improc/regions/_rag.pyx":77
+            /* "improc/regions/_rag.pyx":77
  *                     if i < rows-1 and j < cols-1:
  *                         edges[idx, 7] = splabels[k, i+1, j+1]
  *                     if i > 0 and j < cols-1:             # <<<<<<<<<<<<<<
@@ -3693,7 +3693,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
  */
           }
 
-          /* "survos2/improc/regions/_rag.pyx":64
+          /* "improc/regions/_rag.pyx":64
  *                     edges[idx, 2] = splabels[k, i, j+1]
  * 
  *                 if connectivity > 6:             # <<<<<<<<<<<<<<
@@ -3702,7 +3702,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
  */
         }
 
-        /* "survos2/improc/regions/_rag.pyx":80
+        /* "improc/regions/_rag.pyx":80
  *                         edges[idx, 8] = splabels[k, i-1, j+1]
  * 
  *                 if connectivity > 18:             # <<<<<<<<<<<<<<
@@ -3712,7 +3712,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
         __pyx_t_21 = ((__pyx_v_connectivity > 18) != 0);
         if (__pyx_t_21) {
 
-          /* "survos2/improc/regions/_rag.pyx":81
+          /* "improc/regions/_rag.pyx":81
  * 
  *                 if connectivity > 18:
  *                     if k < depth-1 and i < rows-1 and j < cols-1:             # <<<<<<<<<<<<<<
@@ -3736,7 +3736,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
           __pyx_L33_bool_binop_done:;
           if (__pyx_t_21) {
 
-            /* "survos2/improc/regions/_rag.pyx":82
+            /* "improc/regions/_rag.pyx":82
  *                 if connectivity > 18:
  *                     if k < depth-1 and i < rows-1 and j < cols-1:
  *                         edges[idx, 9] = splabels[k+1, i+1, j+1]             # <<<<<<<<<<<<<<
@@ -3750,7 +3750,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
             __pyx_t_20 = 9;
             *((int *) ( /* dim=1 */ ((char *) (((int *) ( /* dim=0 */ (__pyx_v_edges.data + __pyx_t_22 * __pyx_v_edges.strides[0]) )) + __pyx_t_20)) )) = (*((unsigned int *) ( /* dim=2 */ ((char *) (((unsigned int *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_splabels.data + __pyx_t_17 * __pyx_v_splabels.strides[0]) ) + __pyx_t_18 * __pyx_v_splabels.strides[1]) )) + __pyx_t_19)) )));
 
-            /* "survos2/improc/regions/_rag.pyx":81
+            /* "improc/regions/_rag.pyx":81
  * 
  *                 if connectivity > 18:
  *                     if k < depth-1 and i < rows-1 and j < cols-1:             # <<<<<<<<<<<<<<
@@ -3759,7 +3759,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
  */
           }
 
-          /* "survos2/improc/regions/_rag.pyx":83
+          /* "improc/regions/_rag.pyx":83
  *                     if k < depth-1 and i < rows-1 and j < cols-1:
  *                         edges[idx, 9] = splabels[k+1, i+1, j+1]
  *                     if k < depth-1 and i < rows-1 and j > 0:             # <<<<<<<<<<<<<<
@@ -3783,7 +3783,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
           __pyx_L37_bool_binop_done:;
           if (__pyx_t_21) {
 
-            /* "survos2/improc/regions/_rag.pyx":84
+            /* "improc/regions/_rag.pyx":84
  *                         edges[idx, 9] = splabels[k+1, i+1, j+1]
  *                     if k < depth-1 and i < rows-1 and j > 0:
  *                         edges[idx, 10] = splabels[k+1, i+1, j-1]             # <<<<<<<<<<<<<<
@@ -3797,7 +3797,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
             __pyx_t_22 = 10;
             *((int *) ( /* dim=1 */ ((char *) (((int *) ( /* dim=0 */ (__pyx_v_edges.data + __pyx_t_20 * __pyx_v_edges.strides[0]) )) + __pyx_t_22)) )) = (*((unsigned int *) ( /* dim=2 */ ((char *) (((unsigned int *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_splabels.data + __pyx_t_19 * __pyx_v_splabels.strides[0]) ) + __pyx_t_18 * __pyx_v_splabels.strides[1]) )) + __pyx_t_17)) )));
 
-            /* "survos2/improc/regions/_rag.pyx":83
+            /* "improc/regions/_rag.pyx":83
  *                     if k < depth-1 and i < rows-1 and j < cols-1:
  *                         edges[idx, 9] = splabels[k+1, i+1, j+1]
  *                     if k < depth-1 and i < rows-1 and j > 0:             # <<<<<<<<<<<<<<
@@ -3806,7 +3806,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
  */
           }
 
-          /* "survos2/improc/regions/_rag.pyx":85
+          /* "improc/regions/_rag.pyx":85
  *                     if k < depth-1 and i < rows-1 and j > 0:
  *                         edges[idx, 10] = splabels[k+1, i+1, j-1]
  *                     if k < depth-1 and i > 0 and j < cols-1:             # <<<<<<<<<<<<<<
@@ -3830,7 +3830,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
           __pyx_L41_bool_binop_done:;
           if (__pyx_t_21) {
 
-            /* "survos2/improc/regions/_rag.pyx":86
+            /* "improc/regions/_rag.pyx":86
  *                         edges[idx, 10] = splabels[k+1, i+1, j-1]
  *                     if k < depth-1 and i > 0 and j < cols-1:
  *                         edges[idx, 11] = splabels[k+1, i-1, j+1]             # <<<<<<<<<<<<<<
@@ -3844,7 +3844,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
             __pyx_t_20 = 11;
             *((int *) ( /* dim=1 */ ((char *) (((int *) ( /* dim=0 */ (__pyx_v_edges.data + __pyx_t_22 * __pyx_v_edges.strides[0]) )) + __pyx_t_20)) )) = (*((unsigned int *) ( /* dim=2 */ ((char *) (((unsigned int *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_splabels.data + __pyx_t_17 * __pyx_v_splabels.strides[0]) ) + __pyx_t_18 * __pyx_v_splabels.strides[1]) )) + __pyx_t_19)) )));
 
-            /* "survos2/improc/regions/_rag.pyx":85
+            /* "improc/regions/_rag.pyx":85
  *                     if k < depth-1 and i < rows-1 and j > 0:
  *                         edges[idx, 10] = splabels[k+1, i+1, j-1]
  *                     if k < depth-1 and i > 0 and j < cols-1:             # <<<<<<<<<<<<<<
@@ -3853,7 +3853,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
  */
           }
 
-          /* "survos2/improc/regions/_rag.pyx":87
+          /* "improc/regions/_rag.pyx":87
  *                     if k < depth-1 and i > 0 and j < cols-1:
  *                         edges[idx, 11] = splabels[k+1, i-1, j+1]
  *                     if k > 0 and i < rows-1 and j < cols-1:             # <<<<<<<<<<<<<<
@@ -3877,7 +3877,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
           __pyx_L45_bool_binop_done:;
           if (__pyx_t_21) {
 
-            /* "survos2/improc/regions/_rag.pyx":88
+            /* "improc/regions/_rag.pyx":88
  *                         edges[idx, 11] = splabels[k+1, i-1, j+1]
  *                     if k > 0 and i < rows-1 and j < cols-1:
  *                         edges[idx, 12] = splabels[k-1, i+1, j+1]             # <<<<<<<<<<<<<<
@@ -3891,7 +3891,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
             __pyx_t_22 = 12;
             *((int *) ( /* dim=1 */ ((char *) (((int *) ( /* dim=0 */ (__pyx_v_edges.data + __pyx_t_20 * __pyx_v_edges.strides[0]) )) + __pyx_t_22)) )) = (*((unsigned int *) ( /* dim=2 */ ((char *) (((unsigned int *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_splabels.data + __pyx_t_19 * __pyx_v_splabels.strides[0]) ) + __pyx_t_18 * __pyx_v_splabels.strides[1]) )) + __pyx_t_17)) )));
 
-            /* "survos2/improc/regions/_rag.pyx":87
+            /* "improc/regions/_rag.pyx":87
  *                     if k < depth-1 and i > 0 and j < cols-1:
  *                         edges[idx, 11] = splabels[k+1, i-1, j+1]
  *                     if k > 0 and i < rows-1 and j < cols-1:             # <<<<<<<<<<<<<<
@@ -3900,7 +3900,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
  */
           }
 
-          /* "survos2/improc/regions/_rag.pyx":80
+          /* "improc/regions/_rag.pyx":80
  *                         edges[idx, 8] = splabels[k, i-1, j+1]
  * 
  *                 if connectivity > 18:             # <<<<<<<<<<<<<<
@@ -3912,7 +3912,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
     }
   }
 
-  /* "survos2/improc/regions/_rag.pyx":90
+  /* "improc/regions/_rag.pyx":90
  *                         edges[idx, 12] = splabels[k-1, i+1, j+1]
  * 
  *     return np.asarray(nodes), np.asarray(edges)             # <<<<<<<<<<<<<<
@@ -3976,7 +3976,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "survos2/improc/regions/_rag.pyx":40
+  /* "improc/regions/_rag.pyx":40
  * 
  * 
  * def _extract_neighbours_3d(unsigned int[:, :, ::1] splabels, int connectivity):             # <<<<<<<<<<<<<<
@@ -3993,7 +3993,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_rag_2_extract_neighbours_3d(C
   __Pyx_XDECREF(__pyx_t_5);
   __PYX_XDEC_MEMVIEW(&__pyx_t_6, 1);
   __PYX_XDEC_MEMVIEW(&__pyx_t_7, 1);
-  __Pyx_AddTraceback("improc.superregions._rag._extract_neighbours_3d", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("improc.regions._rag._extract_neighbours_3d", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __PYX_XDEC_MEMVIEW(&__pyx_v_nodes, 1);
@@ -19592,7 +19592,7 @@ static PyBufferProcs __pyx_tp_as_buffer_array = {
 
 static PyTypeObject __pyx_type___pyx_array = {
   PyVarObject_HEAD_INIT(0, 0)
-  "improc.superregions._rag.array", /*tp_name*/
+  "improc.regions._rag.array", /*tp_name*/
   sizeof(struct __pyx_array_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_array, /*tp_dealloc*/
@@ -19711,7 +19711,7 @@ static PyMethodDef __pyx_methods_Enum[] = {
 
 static PyTypeObject __pyx_type___pyx_MemviewEnum = {
   PyVarObject_HEAD_INIT(0, 0)
-  "improc.superregions._rag.Enum", /*tp_name*/
+  "improc.regions._rag.Enum", /*tp_name*/
   sizeof(struct __pyx_MemviewEnum_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_Enum, /*tp_dealloc*/
@@ -19972,7 +19972,7 @@ static PyBufferProcs __pyx_tp_as_buffer_memoryview = {
 
 static PyTypeObject __pyx_type___pyx_memoryview = {
   PyVarObject_HEAD_INIT(0, 0)
-  "improc.superregions._rag.memoryview", /*tp_name*/
+  "improc.regions._rag.memoryview", /*tp_name*/
   sizeof(struct __pyx_memoryview_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_memoryview, /*tp_dealloc*/
@@ -20110,7 +20110,7 @@ static struct PyGetSetDef __pyx_getsets__memoryviewslice[] = {
 
 static PyTypeObject __pyx_type___pyx_memoryviewslice = {
   PyVarObject_HEAD_INIT(0, 0)
-  "improc.superregions._rag._memoryviewslice", /*tp_name*/
+  "improc.regions._rag._memoryviewslice", /*tp_name*/
   sizeof(struct __pyx_memoryviewslice_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc__memoryviewslice, /*tp_dealloc*/
@@ -20294,7 +20294,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_id, __pyx_k_id, sizeof(__pyx_k_id), 0, 0, 1, 1},
   {&__pyx_n_s_idx, __pyx_k_idx, sizeof(__pyx_k_idx), 0, 0, 1, 1},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
-  {&__pyx_n_s_improc_superregions__rag, __pyx_k_improc_superregions__rag, sizeof(__pyx_k_improc_superregions__rag), 0, 0, 1, 1},
+  {&__pyx_n_s_improc_regions__rag, __pyx_k_improc_regions__rag, sizeof(__pyx_k_improc_regions__rag), 0, 0, 1, 1},
   {&__pyx_n_s_int32, __pyx_k_int32, sizeof(__pyx_k_int32), 0, 0, 1, 1},
   {&__pyx_n_s_it, __pyx_k_it, sizeof(__pyx_k_it), 0, 0, 1, 1},
   {&__pyx_n_s_itemsize, __pyx_k_itemsize, sizeof(__pyx_k_itemsize), 0, 0, 1, 1},
@@ -20645,7 +20645,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__25);
   __Pyx_GIVEREF(__pyx_tuple__25);
 
-  /* "survos2/improc/regions/_rag.pyx":11
+  /* "improc/regions/_rag.pyx":11
  * 
  * 
  * def _extract_neighbours_2d(unsigned int[:, ::1] splabels, int connectivity):             # <<<<<<<<<<<<<<
@@ -20657,7 +20657,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GIVEREF(__pyx_tuple__26);
   __pyx_codeobj__27 = (PyObject*)__Pyx_PyCode_New(2, 0, 14, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__26, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_survos2_improc_regions__rag_pyx, __pyx_n_s_extract_neighbours_2d, 11, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__27)) __PYX_ERR(0, 11, __pyx_L1_error)
 
-  /* "survos2/improc/regions/_rag.pyx":40
+  /* "improc/regions/_rag.pyx":40
  * 
  * 
  * def _extract_neighbours_3d(unsigned int[:, :, ::1] splabels, int connectivity):             # <<<<<<<<<<<<<<
@@ -21084,14 +21084,14 @@ if (!__Pyx_RefNanny) {
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_improc__superregions___rag) {
+  if (__pyx_module_is_main_improc__regions___rag) {
     if (PyObject_SetAttr(__pyx_m, __pyx_n_s_name_2, __pyx_n_s_main) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "improc.superregions._rag")) {
-      if (unlikely(PyDict_SetItemString(modules, "improc.superregions._rag", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "improc.regions._rag")) {
+      if (unlikely(PyDict_SetItemString(modules, "improc.regions._rag", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -21112,7 +21112,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "survos2/improc/regions/_rag.pyx":7
+  /* "improc/regions/_rag.pyx":7
  * 
  * 
  * import numpy as np             # <<<<<<<<<<<<<<
@@ -21124,31 +21124,31 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_np, __pyx_t_1) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "survos2/improc/regions/_rag.pyx":11
+  /* "improc/regions/_rag.pyx":11
  * 
  * 
  * def _extract_neighbours_2d(unsigned int[:, ::1] splabels, int connectivity):             # <<<<<<<<<<<<<<
  *     cdef:
  *         Py_ssize_t i, j, idx
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_6improc_12superregions_4_rag_1_extract_neighbours_2d, NULL, __pyx_n_s_improc_superregions__rag); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 11, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_6improc_7regions_4_rag_1_extract_neighbours_2d, NULL, __pyx_n_s_improc_regions__rag); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 11, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_extract_neighbours_2d, __pyx_t_1) < 0) __PYX_ERR(0, 11, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "survos2/improc/regions/_rag.pyx":40
+  /* "improc/regions/_rag.pyx":40
  * 
  * 
  * def _extract_neighbours_3d(unsigned int[:, :, ::1] splabels, int connectivity):             # <<<<<<<<<<<<<<
  *     cdef:
  *         Py_ssize_t i, j, k, idx
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_6improc_12superregions_4_rag_3_extract_neighbours_3d, NULL, __pyx_n_s_improc_superregions__rag); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_6improc_7regions_4_rag_3_extract_neighbours_3d, NULL, __pyx_n_s_improc_regions__rag); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 40, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_extract_neighbours_3d, __pyx_t_1) < 0) __PYX_ERR(0, 40, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "survos2/improc/regions/_rag.pyx":1
+  /* "improc/regions/_rag.pyx":1
  * #cython: cdivision=True             # <<<<<<<<<<<<<<
  * #cython: boundscheck=False
  * #cython: nonecheck=False
@@ -21318,11 +21318,11 @@ if (!__Pyx_RefNanny) {
   __Pyx_XDECREF(__pyx_t_1);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init improc.superregions._rag", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init improc.regions._rag", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     Py_CLEAR(__pyx_m);
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init improc.superregions._rag");
+    PyErr_SetString(PyExc_ImportError, "init improc.regions._rag");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();

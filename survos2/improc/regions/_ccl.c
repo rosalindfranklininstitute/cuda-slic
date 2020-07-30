@@ -602,8 +602,8 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__improc__superregions___ccl
-#define __PYX_HAVE_API__improc__superregions___ccl
+#define __PYX_HAVE__improc__regions___ccl
+#define __PYX_HAVE_API__improc__regions___ccl
 /* Early includes */
 #include <string.h>
 #include <stdio.h>
@@ -1145,23 +1145,23 @@ typedef npy_double __pyx_t_5numpy_double_t;
  */
 typedef npy_longdouble __pyx_t_5numpy_longdouble_t;
 
-/* "survos2/improc/regions/_ccl.pyx":13
+/* "improc/regions/_ccl.pyx":13
  * cdef float DMAX = 9999999
  * 
  * ctypedef unsigned int uint32             # <<<<<<<<<<<<<<
  * ctypedef unsigned short uint16
  * 
  */
-typedef unsigned int __pyx_t_6improc_12superregions_4_ccl_uint32;
+typedef unsigned int __pyx_t_6improc_7regions_4_ccl_uint32;
 
-/* "survos2/improc/regions/_ccl.pyx":14
+/* "improc/regions/_ccl.pyx":14
  * 
  * ctypedef unsigned int uint32
  * ctypedef unsigned short uint16             # <<<<<<<<<<<<<<
  * 
  * 
  */
-typedef unsigned short __pyx_t_6improc_12superregions_4_ccl_uint16;
+typedef unsigned short __pyx_t_6improc_7regions_4_ccl_uint16;
 /* Declarations.proto */
 #if CYTHON_CCOMPLEX
   #ifdef __cplusplus
@@ -1945,13 +1945,13 @@ static int __Pyx_ValidateAndInit_memviewslice(
                 PyObject *original_obj);
 
 /* ObjectToMemviewSlice.proto */
-static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_6improc_12superregions_4_ccl_uint32(PyObject *, int writable_flag);
+static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_6improc_7regions_4_ccl_uint32(PyObject *, int writable_flag);
 
 /* ObjectToMemviewSlice.proto */
 static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_d_d_d_dc_float(PyObject *, int writable_flag);
 
 /* ObjectToMemviewSlice.proto */
-static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_nn___pyx_t_6improc_12superregions_4_ccl_uint32(PyObject *, int writable_flag);
+static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_nn___pyx_t_6improc_7regions_4_ccl_uint32(PyObject *, int writable_flag);
 
 /* CIntToPy.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyInt_From_int(int value);
@@ -1967,8 +1967,8 @@ static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value);
 static CYTHON_INLINE PyObject* __Pyx_PyInt_From_unsigned_int(unsigned int value);
 
 /* MemviewDtypeToObject.proto */
-static CYTHON_INLINE PyObject *__pyx_memview_get_nn___pyx_t_6improc_12superregions_4_ccl_uint32(const char *itemp);
-static CYTHON_INLINE int __pyx_memview_set_nn___pyx_t_6improc_12superregions_4_ccl_uint32(const char *itemp, PyObject *obj);
+static CYTHON_INLINE PyObject *__pyx_memview_get_nn___pyx_t_6improc_7regions_4_ccl_uint32(const char *itemp);
+static CYTHON_INLINE int __pyx_memview_set_nn___pyx_t_6improc_7regions_4_ccl_uint32(const char *itemp, PyObject *obj);
 
 /* RealImag.proto */
 #if CYTHON_CCOMPLEX
@@ -2100,7 +2100,7 @@ static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_d_dc_f
 static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_dc_float(PyObject *, int writable_flag);
 
 /* ObjectToMemviewSlice.proto */
-static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_6improc_12superregions_4_ccl_uint16(PyObject *, int writable_flag);
+static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_6improc_7regions_4_ccl_uint16(PyObject *, int writable_flag);
 
 /* CheckBinaryVersion.proto */
 static int __Pyx_check_binary_version(void);
@@ -2148,12 +2148,12 @@ static PyTypeObject *__pyx_ptype_5numpy_ndarray = 0;
 static PyTypeObject *__pyx_ptype_5numpy_ufunc = 0;
 static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *, char *, char *, int *); /*proto*/
 
-/* Module declarations from 'improc.superregions._ccl' */
+/* Module declarations from 'improc.regions._ccl' */
 static PyTypeObject *__pyx_array_type = 0;
 static PyTypeObject *__pyx_MemviewEnum_type = 0;
 static PyTypeObject *__pyx_memoryview_type = 0;
 static PyTypeObject *__pyx_memoryviewslice_type = 0;
-static float __pyx_v_6improc_12superregions_4_ccl_DMAX;
+static float __pyx_v_6improc_7regions_4_ccl_DMAX;
 static PyObject *generic = 0;
 static PyObject *strided = 0;
 static PyObject *indirect = 0;
@@ -2161,10 +2161,10 @@ static PyObject *contiguous = 0;
 static PyObject *indirect_contiguous = 0;
 static int __pyx_memoryview_thread_locks_used;
 static PyThread_type_lock __pyx_memoryview_thread_locks[8];
-static __pyx_t_6improc_12superregions_4_ccl_uint32 __pyx_f_6improc_12superregions_4_ccl__find_root(__Pyx_memviewslice, __pyx_t_6improc_12superregions_4_ccl_uint32); /*proto*/
-static void __pyx_f_6improc_12superregions_4_ccl__join_trees(__Pyx_memviewslice, __Pyx_memviewslice, __pyx_t_6improc_12superregions_4_ccl_uint32, __pyx_t_6improc_12superregions_4_ccl_uint32); /*proto*/
-static void __pyx_f_6improc_12superregions_4_ccl__cremap(__Pyx_memviewslice, __Pyx_memviewslice); /*proto*/
-static float __pyx_f_6improc_12superregions_4_ccl___compute_dist(__Pyx_memviewslice, int, int); /*proto*/
+static __pyx_t_6improc_7regions_4_ccl_uint32 __pyx_f_6improc_7regions_4_ccl__find_root(__Pyx_memviewslice, __pyx_t_6improc_7regions_4_ccl_uint32); /*proto*/
+static void __pyx_f_6improc_7regions_4_ccl__join_trees(__Pyx_memviewslice, __Pyx_memviewslice, __pyx_t_6improc_7regions_4_ccl_uint32, __pyx_t_6improc_7regions_4_ccl_uint32); /*proto*/
+static void __pyx_f_6improc_7regions_4_ccl__cremap(__Pyx_memviewslice, __Pyx_memviewslice); /*proto*/
+static float __pyx_f_6improc_7regions_4_ccl___compute_dist(__Pyx_memviewslice, int, int); /*proto*/
 static struct __pyx_array_obj *__pyx_array_new(PyObject *, Py_ssize_t, char *, char *, char *); /*proto*/
 static void *__pyx_align_pointer(void *, size_t); /*proto*/
 static PyObject *__pyx_memoryview_new(PyObject *, int, int, __Pyx_TypeInfo *); /*proto*/
@@ -2198,15 +2198,15 @@ static void __pyx_memoryview_refcount_objects_in_slice(char *, Py_ssize_t *, Py_
 static void __pyx_memoryview_slice_assign_scalar(__Pyx_memviewslice *, int, size_t, void *, int); /*proto*/
 static void __pyx_memoryview__slice_assign_scalar(char *, Py_ssize_t *, Py_ssize_t *, int, size_t, void *); /*proto*/
 static PyObject *__pyx_unpickle_Enum__set_state(struct __pyx_MemviewEnum_obj *, PyObject *); /*proto*/
-static __Pyx_TypeInfo __Pyx_TypeInfo_nn___pyx_t_6improc_12superregions_4_ccl_uint32 = { "uint32", NULL, sizeof(__pyx_t_6improc_12superregions_4_ccl_uint32), { 0 }, 0, IS_UNSIGNED(__pyx_t_6improc_12superregions_4_ccl_uint32) ? 'U' : 'I', IS_UNSIGNED(__pyx_t_6improc_12superregions_4_ccl_uint32), 0 };
+static __Pyx_TypeInfo __Pyx_TypeInfo_nn___pyx_t_6improc_7regions_4_ccl_uint32 = { "uint32", NULL, sizeof(__pyx_t_6improc_7regions_4_ccl_uint32), { 0 }, 0, IS_UNSIGNED(__pyx_t_6improc_7regions_4_ccl_uint32) ? 'U' : 'I', IS_UNSIGNED(__pyx_t_6improc_7regions_4_ccl_uint32), 0 };
 static __Pyx_TypeInfo __Pyx_TypeInfo_float = { "float", NULL, sizeof(float), { 0 }, 0, 'R', 0, 0 };
 static __Pyx_TypeInfo __Pyx_TypeInfo_int = { "int", NULL, sizeof(int), { 0 }, 0, IS_UNSIGNED(int) ? 'U' : 'I', IS_UNSIGNED(int), 0 };
-static __Pyx_TypeInfo __Pyx_TypeInfo_nn___pyx_t_6improc_12superregions_4_ccl_uint16 = { "uint16", NULL, sizeof(__pyx_t_6improc_12superregions_4_ccl_uint16), { 0 }, 0, IS_UNSIGNED(__pyx_t_6improc_12superregions_4_ccl_uint16) ? 'U' : 'I', IS_UNSIGNED(__pyx_t_6improc_12superregions_4_ccl_uint16), 0 };
-#define __Pyx_MODULE_NAME "improc.superregions._ccl"
-extern int __pyx_module_is_main_improc__superregions___ccl;
-int __pyx_module_is_main_improc__superregions___ccl = 0;
+static __Pyx_TypeInfo __Pyx_TypeInfo_nn___pyx_t_6improc_7regions_4_ccl_uint16 = { "uint16", NULL, sizeof(__pyx_t_6improc_7regions_4_ccl_uint16), { 0 }, 0, IS_UNSIGNED(__pyx_t_6improc_7regions_4_ccl_uint16) ? 'U' : 'I', IS_UNSIGNED(__pyx_t_6improc_7regions_4_ccl_uint16), 0 };
+#define __Pyx_MODULE_NAME "improc.regions._ccl"
+extern int __pyx_module_is_main_improc__regions___ccl;
+int __pyx_module_is_main_improc__regions___ccl = 0;
 
-/* Implementation of 'improc.superregions._ccl' */
+/* Implementation of 'improc.regions._ccl' */
 static PyObject *__pyx_builtin_range;
 static PyObject *__pyx_builtin_ValueError;
 static PyObject *__pyx_builtin_RuntimeError;
@@ -2329,13 +2329,13 @@ static const char __pyx_k_setstate_cython[] = "__setstate_cython__";
 static const char __pyx_k_pyx_unpickle_Enum[] = "__pyx_unpickle_Enum";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_strided_and_direct[] = "<strided and direct>";
+static const char __pyx_k_improc_regions__ccl[] = "improc.regions._ccl";
 static const char __pyx_k_strided_and_indirect[] = "<strided and indirect>";
 static const char __pyx_k_contiguous_and_direct[] = "<contiguous and direct>";
 static const char __pyx_k_MemoryView_of_r_object[] = "<MemoryView of %r object>";
 static const char __pyx_k_MemoryView_of_r_at_0x_x[] = "<MemoryView of %r at 0x%x>";
 static const char __pyx_k_contiguous_and_indirect[] = "<contiguous and indirect>";
 static const char __pyx_k_Cannot_index_with_type_s[] = "Cannot index with type '%s'";
-static const char __pyx_k_improc_superregions__ccl[] = "improc.superregions._ccl";
 static const char __pyx_k_Invalid_shape_in_axis_d_d[] = "Invalid shape in axis %d: %d.";
 static const char __pyx_k_itemsize_0_for_cython_array[] = "itemsize <= 0 for cython.array";
 static const char __pyx_k_ndarray_is_not_C_contiguous[] = "ndarray is not C contiguous";
@@ -2426,7 +2426,7 @@ static PyObject *__pyx_n_s_height;
 static PyObject *__pyx_n_s_i;
 static PyObject *__pyx_n_s_id;
 static PyObject *__pyx_n_s_import;
-static PyObject *__pyx_n_s_improc_superregions__ccl;
+static PyObject *__pyx_n_s_improc_regions__ccl;
 static PyObject *__pyx_n_s_int32;
 static PyObject *__pyx_n_s_itemsize;
 static PyObject *__pyx_kp_s_itemsize_0_for_cython_array;
@@ -2509,10 +2509,10 @@ static PyObject *__pyx_n_s_v;
 static PyObject *__pyx_n_s_w;
 static PyObject *__pyx_n_s_width;
 static PyObject *__pyx_n_s_zeros;
-static PyObject *__pyx_pf_6improc_12superregions_4_ccl__remap(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_src); /* proto */
-static PyObject *__pyx_pf_6improc_12superregions_4_ccl_2_relabel2d(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_src, int __pyx_v_width); /* proto */
-static PyObject *__pyx_pf_6improc_12superregions_4_ccl_4_relabel3d(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_src, int __pyx_v_height, int __pyx_v_width); /* proto */
-static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_data, __Pyx_memviewslice __pyx_v_labels, int __pyx_v_nsv, int __pyx_v_min_size); /* proto */
+static PyObject *__pyx_pf_6improc_7regions_4_ccl__remap(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_src); /* proto */
+static PyObject *__pyx_pf_6improc_7regions_4_ccl_2_relabel2d(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_src, int __pyx_v_width); /* proto */
+static PyObject *__pyx_pf_6improc_7regions_4_ccl_4_relabel3d(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_src, int __pyx_v_height, int __pyx_v_width); /* proto */
+static PyObject *__pyx_pf_6improc_7regions_4_ccl_6_merge_small3d(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_data, __Pyx_memviewslice __pyx_v_labels, int __pyx_v_nsv, int __pyx_v_min_size); /* proto */
 static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, Py_buffer *__pyx_v_info, int __pyx_v_flags); /* proto */
 static void __pyx_pf_5numpy_7ndarray_2__releasebuffer__(PyArrayObject *__pyx_v_self, Py_buffer *__pyx_v_info); /* proto */
 static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __pyx_array_obj *__pyx_v_self, PyObject *__pyx_v_shape, Py_ssize_t __pyx_v_itemsize, PyObject *__pyx_v_format, PyObject *__pyx_v_mode, int __pyx_v_allocate_buffer); /* proto */
@@ -2607,7 +2607,7 @@ static PyObject *__pyx_codeobj__33;
 static PyObject *__pyx_codeobj__40;
 /* Late includes */
 
-/* "survos2/improc/regions/_ccl.pyx":17
+/* "improc/regions/_ccl.pyx":17
  * 
  * 
  * cdef uint32 _find_root(uint32[::1] labels, uint32 p):             # <<<<<<<<<<<<<<
@@ -2615,15 +2615,15 @@ static PyObject *__pyx_codeobj__40;
  *     while labels[p] != p:
  */
 
-static __pyx_t_6improc_12superregions_4_ccl_uint32 __pyx_f_6improc_12superregions_4_ccl__find_root(__Pyx_memviewslice __pyx_v_labels, __pyx_t_6improc_12superregions_4_ccl_uint32 __pyx_v_p) {
-  __pyx_t_6improc_12superregions_4_ccl_uint32 __pyx_v_q;
-  __pyx_t_6improc_12superregions_4_ccl_uint32 __pyx_r;
+static __pyx_t_6improc_7regions_4_ccl_uint32 __pyx_f_6improc_7regions_4_ccl__find_root(__Pyx_memviewslice __pyx_v_labels, __pyx_t_6improc_7regions_4_ccl_uint32 __pyx_v_p) {
+  __pyx_t_6improc_7regions_4_ccl_uint32 __pyx_v_q;
+  __pyx_t_6improc_7regions_4_ccl_uint32 __pyx_r;
   __Pyx_RefNannyDeclarations
   size_t __pyx_t_1;
   int __pyx_t_2;
   __Pyx_RefNannySetupContext("_find_root", 0);
 
-  /* "survos2/improc/regions/_ccl.pyx":18
+  /* "improc/regions/_ccl.pyx":18
  * 
  * cdef uint32 _find_root(uint32[::1] labels, uint32 p):
  *     cdef uint32 q = p             # <<<<<<<<<<<<<<
@@ -2632,7 +2632,7 @@ static __pyx_t_6improc_12superregions_4_ccl_uint32 __pyx_f_6improc_12superregion
  */
   __pyx_v_q = __pyx_v_p;
 
-  /* "survos2/improc/regions/_ccl.pyx":19
+  /* "improc/regions/_ccl.pyx":19
  * cdef uint32 _find_root(uint32[::1] labels, uint32 p):
  *     cdef uint32 q = p
  *     while labels[p] != p:             # <<<<<<<<<<<<<<
@@ -2641,10 +2641,10 @@ static __pyx_t_6improc_12superregions_4_ccl_uint32 __pyx_f_6improc_12superregion
  */
   while (1) {
     __pyx_t_1 = __pyx_v_p;
-    __pyx_t_2 = (((*((__pyx_t_6improc_12superregions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_12superregions_4_ccl_uint32 *) __pyx_v_labels.data) + __pyx_t_1)) ))) != __pyx_v_p) != 0);
+    __pyx_t_2 = (((*((__pyx_t_6improc_7regions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_7regions_4_ccl_uint32 *) __pyx_v_labels.data) + __pyx_t_1)) ))) != __pyx_v_p) != 0);
     if (!__pyx_t_2) break;
 
-    /* "survos2/improc/regions/_ccl.pyx":20
+    /* "improc/regions/_ccl.pyx":20
  *     cdef uint32 q = p
  *     while labels[p] != p:
  *         p = labels[p]             # <<<<<<<<<<<<<<
@@ -2652,10 +2652,10 @@ static __pyx_t_6improc_12superregions_4_ccl_uint32 __pyx_f_6improc_12superregion
  *     return p
  */
     __pyx_t_1 = __pyx_v_p;
-    __pyx_v_p = (*((__pyx_t_6improc_12superregions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_12superregions_4_ccl_uint32 *) __pyx_v_labels.data) + __pyx_t_1)) )));
+    __pyx_v_p = (*((__pyx_t_6improc_7regions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_7regions_4_ccl_uint32 *) __pyx_v_labels.data) + __pyx_t_1)) )));
   }
 
-  /* "survos2/improc/regions/_ccl.pyx":21
+  /* "improc/regions/_ccl.pyx":21
  *     while labels[p] != p:
  *         p = labels[p]
  *     labels[q] = p             # <<<<<<<<<<<<<<
@@ -2663,9 +2663,9 @@ static __pyx_t_6improc_12superregions_4_ccl_uint32 __pyx_f_6improc_12superregion
  * 
  */
   __pyx_t_1 = __pyx_v_q;
-  *((__pyx_t_6improc_12superregions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_12superregions_4_ccl_uint32 *) __pyx_v_labels.data) + __pyx_t_1)) )) = __pyx_v_p;
+  *((__pyx_t_6improc_7regions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_7regions_4_ccl_uint32 *) __pyx_v_labels.data) + __pyx_t_1)) )) = __pyx_v_p;
 
-  /* "survos2/improc/regions/_ccl.pyx":22
+  /* "improc/regions/_ccl.pyx":22
  *         p = labels[p]
  *     labels[q] = p
  *     return p             # <<<<<<<<<<<<<<
@@ -2675,7 +2675,7 @@ static __pyx_t_6improc_12superregions_4_ccl_uint32 __pyx_f_6improc_12superregion
   __pyx_r = __pyx_v_p;
   goto __pyx_L0;
 
-  /* "survos2/improc/regions/_ccl.pyx":17
+  /* "improc/regions/_ccl.pyx":17
  * 
  * 
  * cdef uint32 _find_root(uint32[::1] labels, uint32 p):             # <<<<<<<<<<<<<<
@@ -2689,7 +2689,7 @@ static __pyx_t_6improc_12superregions_4_ccl_uint32 __pyx_f_6improc_12superregion
   return __pyx_r;
 }
 
-/* "survos2/improc/regions/_ccl.pyx":25
+/* "improc/regions/_ccl.pyx":25
  * 
  * 
  * cdef void _join_trees(uint32[::1] labels, uint32[::1] sizes, uint32 p, uint32 q):             # <<<<<<<<<<<<<<
@@ -2697,14 +2697,14 @@ static __pyx_t_6improc_12superregions_4_ccl_uint32 __pyx_f_6improc_12superregion
  *         return
  */
 
-static void __pyx_f_6improc_12superregions_4_ccl__join_trees(__Pyx_memviewslice __pyx_v_labels, __Pyx_memviewslice __pyx_v_sizes, __pyx_t_6improc_12superregions_4_ccl_uint32 __pyx_v_p, __pyx_t_6improc_12superregions_4_ccl_uint32 __pyx_v_q) {
+static void __pyx_f_6improc_7regions_4_ccl__join_trees(__Pyx_memviewslice __pyx_v_labels, __Pyx_memviewslice __pyx_v_sizes, __pyx_t_6improc_7regions_4_ccl_uint32 __pyx_v_p, __pyx_t_6improc_7regions_4_ccl_uint32 __pyx_v_q) {
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
   size_t __pyx_t_2;
   size_t __pyx_t_3;
   __Pyx_RefNannySetupContext("_join_trees", 0);
 
-  /* "survos2/improc/regions/_ccl.pyx":26
+  /* "improc/regions/_ccl.pyx":26
  * 
  * cdef void _join_trees(uint32[::1] labels, uint32[::1] sizes, uint32 p, uint32 q):
  *     if p == q:             # <<<<<<<<<<<<<<
@@ -2714,7 +2714,7 @@ static void __pyx_f_6improc_12superregions_4_ccl__join_trees(__Pyx_memviewslice 
   __pyx_t_1 = ((__pyx_v_p == __pyx_v_q) != 0);
   if (__pyx_t_1) {
 
-    /* "survos2/improc/regions/_ccl.pyx":27
+    /* "improc/regions/_ccl.pyx":27
  * cdef void _join_trees(uint32[::1] labels, uint32[::1] sizes, uint32 p, uint32 q):
  *     if p == q:
  *         return             # <<<<<<<<<<<<<<
@@ -2723,7 +2723,7 @@ static void __pyx_f_6improc_12superregions_4_ccl__join_trees(__Pyx_memviewslice 
  */
     goto __pyx_L0;
 
-    /* "survos2/improc/regions/_ccl.pyx":26
+    /* "improc/regions/_ccl.pyx":26
  * 
  * cdef void _join_trees(uint32[::1] labels, uint32[::1] sizes, uint32 p, uint32 q):
  *     if p == q:             # <<<<<<<<<<<<<<
@@ -2732,7 +2732,7 @@ static void __pyx_f_6improc_12superregions_4_ccl__join_trees(__Pyx_memviewslice 
  */
   }
 
-  /* "survos2/improc/regions/_ccl.pyx":29
+  /* "improc/regions/_ccl.pyx":29
  *         return
  * 
  *     if sizes[p] < sizes[q]:             # <<<<<<<<<<<<<<
@@ -2741,10 +2741,10 @@ static void __pyx_f_6improc_12superregions_4_ccl__join_trees(__Pyx_memviewslice 
  */
   __pyx_t_2 = __pyx_v_p;
   __pyx_t_3 = __pyx_v_q;
-  __pyx_t_1 = (((*((__pyx_t_6improc_12superregions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_12superregions_4_ccl_uint32 *) __pyx_v_sizes.data) + __pyx_t_2)) ))) < (*((__pyx_t_6improc_12superregions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_12superregions_4_ccl_uint32 *) __pyx_v_sizes.data) + __pyx_t_3)) )))) != 0);
+  __pyx_t_1 = (((*((__pyx_t_6improc_7regions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_7regions_4_ccl_uint32 *) __pyx_v_sizes.data) + __pyx_t_2)) ))) < (*((__pyx_t_6improc_7regions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_7regions_4_ccl_uint32 *) __pyx_v_sizes.data) + __pyx_t_3)) )))) != 0);
   if (__pyx_t_1) {
 
-    /* "survos2/improc/regions/_ccl.pyx":30
+    /* "improc/regions/_ccl.pyx":30
  * 
  *     if sizes[p] < sizes[q]:
  *         labels[p] = q             # <<<<<<<<<<<<<<
@@ -2752,9 +2752,9 @@ static void __pyx_f_6improc_12superregions_4_ccl__join_trees(__Pyx_memviewslice 
  *     else:
  */
     __pyx_t_3 = __pyx_v_p;
-    *((__pyx_t_6improc_12superregions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_12superregions_4_ccl_uint32 *) __pyx_v_labels.data) + __pyx_t_3)) )) = __pyx_v_q;
+    *((__pyx_t_6improc_7regions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_7regions_4_ccl_uint32 *) __pyx_v_labels.data) + __pyx_t_3)) )) = __pyx_v_q;
 
-    /* "survos2/improc/regions/_ccl.pyx":31
+    /* "improc/regions/_ccl.pyx":31
  *     if sizes[p] < sizes[q]:
  *         labels[p] = q
  *         sizes[q] += sizes[p]             # <<<<<<<<<<<<<<
@@ -2763,9 +2763,9 @@ static void __pyx_f_6improc_12superregions_4_ccl__join_trees(__Pyx_memviewslice 
  */
     __pyx_t_3 = __pyx_v_p;
     __pyx_t_2 = __pyx_v_q;
-    *((__pyx_t_6improc_12superregions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_12superregions_4_ccl_uint32 *) __pyx_v_sizes.data) + __pyx_t_2)) )) += (*((__pyx_t_6improc_12superregions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_12superregions_4_ccl_uint32 *) __pyx_v_sizes.data) + __pyx_t_3)) )));
+    *((__pyx_t_6improc_7regions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_7regions_4_ccl_uint32 *) __pyx_v_sizes.data) + __pyx_t_2)) )) += (*((__pyx_t_6improc_7regions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_7regions_4_ccl_uint32 *) __pyx_v_sizes.data) + __pyx_t_3)) )));
 
-    /* "survos2/improc/regions/_ccl.pyx":29
+    /* "improc/regions/_ccl.pyx":29
  *         return
  * 
  *     if sizes[p] < sizes[q]:             # <<<<<<<<<<<<<<
@@ -2775,7 +2775,7 @@ static void __pyx_f_6improc_12superregions_4_ccl__join_trees(__Pyx_memviewslice 
     goto __pyx_L4;
   }
 
-  /* "survos2/improc/regions/_ccl.pyx":33
+  /* "improc/regions/_ccl.pyx":33
  *         sizes[q] += sizes[p]
  *     else:
  *         labels[q] = p             # <<<<<<<<<<<<<<
@@ -2784,9 +2784,9 @@ static void __pyx_f_6improc_12superregions_4_ccl__join_trees(__Pyx_memviewslice 
  */
   /*else*/ {
     __pyx_t_3 = __pyx_v_q;
-    *((__pyx_t_6improc_12superregions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_12superregions_4_ccl_uint32 *) __pyx_v_labels.data) + __pyx_t_3)) )) = __pyx_v_p;
+    *((__pyx_t_6improc_7regions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_7regions_4_ccl_uint32 *) __pyx_v_labels.data) + __pyx_t_3)) )) = __pyx_v_p;
 
-    /* "survos2/improc/regions/_ccl.pyx":34
+    /* "improc/regions/_ccl.pyx":34
  *     else:
  *         labels[q] = p
  *         sizes[p] += sizes[q]             # <<<<<<<<<<<<<<
@@ -2795,11 +2795,11 @@ static void __pyx_f_6improc_12superregions_4_ccl__join_trees(__Pyx_memviewslice 
  */
     __pyx_t_3 = __pyx_v_q;
     __pyx_t_2 = __pyx_v_p;
-    *((__pyx_t_6improc_12superregions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_12superregions_4_ccl_uint32 *) __pyx_v_sizes.data) + __pyx_t_2)) )) += (*((__pyx_t_6improc_12superregions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_12superregions_4_ccl_uint32 *) __pyx_v_sizes.data) + __pyx_t_3)) )));
+    *((__pyx_t_6improc_7regions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_7regions_4_ccl_uint32 *) __pyx_v_sizes.data) + __pyx_t_2)) )) += (*((__pyx_t_6improc_7regions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_7regions_4_ccl_uint32 *) __pyx_v_sizes.data) + __pyx_t_3)) )));
   }
   __pyx_L4:;
 
-  /* "survos2/improc/regions/_ccl.pyx":25
+  /* "improc/regions/_ccl.pyx":25
  * 
  * 
  * cdef void _join_trees(uint32[::1] labels, uint32[::1] sizes, uint32 p, uint32 q):             # <<<<<<<<<<<<<<
@@ -2812,7 +2812,7 @@ static void __pyx_f_6improc_12superregions_4_ccl__join_trees(__Pyx_memviewslice 
   __Pyx_RefNannyFinishContext();
 }
 
-/* "survos2/improc/regions/_ccl.pyx":37
+/* "improc/regions/_ccl.pyx":37
  * 
  * 
  * cdef void _cremap(uint32[::1] src, int[::1] out):             # <<<<<<<<<<<<<<
@@ -2820,7 +2820,7 @@ static void __pyx_f_6improc_12superregions_4_ccl__join_trees(__Pyx_memviewslice 
  *     cdef int p, n
  */
 
-static void __pyx_f_6improc_12superregions_4_ccl__cremap(__Pyx_memviewslice __pyx_v_src, __Pyx_memviewslice __pyx_v_out) {
+static void __pyx_f_6improc_7regions_4_ccl__cremap(__Pyx_memviewslice __pyx_v_src, __Pyx_memviewslice __pyx_v_out) {
   int __pyx_v_N;
   int __pyx_v_p;
   int __pyx_v_n;
@@ -2834,7 +2834,7 @@ static void __pyx_f_6improc_12superregions_4_ccl__cremap(__Pyx_memviewslice __py
   int __pyx_t_5;
   __Pyx_RefNannySetupContext("_cremap", 0);
 
-  /* "survos2/improc/regions/_ccl.pyx":38
+  /* "improc/regions/_ccl.pyx":38
  * 
  * cdef void _cremap(uint32[::1] src, int[::1] out):
  *     cdef int N = src.shape[0]             # <<<<<<<<<<<<<<
@@ -2843,7 +2843,7 @@ static void __pyx_f_6improc_12superregions_4_ccl__cremap(__Pyx_memviewslice __py
  */
   __pyx_v_N = (__pyx_v_src.shape[0]);
 
-  /* "survos2/improc/regions/_ccl.pyx":40
+  /* "improc/regions/_ccl.pyx":40
  *     cdef int N = src.shape[0]
  *     cdef int p, n
  *     cdef int curr_label = 0, new_label             # <<<<<<<<<<<<<<
@@ -2852,7 +2852,7 @@ static void __pyx_f_6improc_12superregions_4_ccl__cremap(__Pyx_memviewslice __py
  */
   __pyx_v_curr_label = 0;
 
-  /* "survos2/improc/regions/_ccl.pyx":42
+  /* "improc/regions/_ccl.pyx":42
  *     cdef int curr_label = 0, new_label
  * 
  *     for n in range(N):             # <<<<<<<<<<<<<<
@@ -2864,16 +2864,16 @@ static void __pyx_f_6improc_12superregions_4_ccl__cremap(__Pyx_memviewslice __py
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_n = __pyx_t_3;
 
-    /* "survos2/improc/regions/_ccl.pyx":43
+    /* "improc/regions/_ccl.pyx":43
  * 
  *     for n in range(N):
  *         p = _find_root(src, n)             # <<<<<<<<<<<<<<
  *         if out[p] < 0:
  *             new_label = curr_label
  */
-    __pyx_v_p = __pyx_f_6improc_12superregions_4_ccl__find_root(__pyx_v_src, __pyx_v_n);
+    __pyx_v_p = __pyx_f_6improc_7regions_4_ccl__find_root(__pyx_v_src, __pyx_v_n);
 
-    /* "survos2/improc/regions/_ccl.pyx":44
+    /* "improc/regions/_ccl.pyx":44
  *     for n in range(N):
  *         p = _find_root(src, n)
  *         if out[p] < 0:             # <<<<<<<<<<<<<<
@@ -2884,7 +2884,7 @@ static void __pyx_f_6improc_12superregions_4_ccl__cremap(__Pyx_memviewslice __py
     __pyx_t_5 = (((*((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_out.data) + __pyx_t_4)) ))) < 0) != 0);
     if (__pyx_t_5) {
 
-      /* "survos2/improc/regions/_ccl.pyx":45
+      /* "improc/regions/_ccl.pyx":45
  *         p = _find_root(src, n)
  *         if out[p] < 0:
  *             new_label = curr_label             # <<<<<<<<<<<<<<
@@ -2893,7 +2893,7 @@ static void __pyx_f_6improc_12superregions_4_ccl__cremap(__Pyx_memviewslice __py
  */
       __pyx_v_new_label = __pyx_v_curr_label;
 
-      /* "survos2/improc/regions/_ccl.pyx":46
+      /* "improc/regions/_ccl.pyx":46
  *         if out[p] < 0:
  *             new_label = curr_label
  *             out[p] = new_label             # <<<<<<<<<<<<<<
@@ -2903,7 +2903,7 @@ static void __pyx_f_6improc_12superregions_4_ccl__cremap(__Pyx_memviewslice __py
       __pyx_t_4 = __pyx_v_p;
       *((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_out.data) + __pyx_t_4)) )) = __pyx_v_new_label;
 
-      /* "survos2/improc/regions/_ccl.pyx":47
+      /* "improc/regions/_ccl.pyx":47
  *             new_label = curr_label
  *             out[p] = new_label
  *             curr_label += 1             # <<<<<<<<<<<<<<
@@ -2912,7 +2912,7 @@ static void __pyx_f_6improc_12superregions_4_ccl__cremap(__Pyx_memviewslice __py
  */
       __pyx_v_curr_label = (__pyx_v_curr_label + 1);
 
-      /* "survos2/improc/regions/_ccl.pyx":44
+      /* "improc/regions/_ccl.pyx":44
  *     for n in range(N):
  *         p = _find_root(src, n)
  *         if out[p] < 0:             # <<<<<<<<<<<<<<
@@ -2922,7 +2922,7 @@ static void __pyx_f_6improc_12superregions_4_ccl__cremap(__Pyx_memviewslice __py
       goto __pyx_L5;
     }
 
-    /* "survos2/improc/regions/_ccl.pyx":49
+    /* "improc/regions/_ccl.pyx":49
  *             curr_label += 1
  *         else:
  *             new_label = out[p]             # <<<<<<<<<<<<<<
@@ -2935,7 +2935,7 @@ static void __pyx_f_6improc_12superregions_4_ccl__cremap(__Pyx_memviewslice __py
     }
     __pyx_L5:;
 
-    /* "survos2/improc/regions/_ccl.pyx":50
+    /* "improc/regions/_ccl.pyx":50
  *         else:
  *             new_label = out[p]
  *         out[n] = new_label             # <<<<<<<<<<<<<<
@@ -2946,7 +2946,7 @@ static void __pyx_f_6improc_12superregions_4_ccl__cremap(__Pyx_memviewslice __py
     *((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_out.data) + __pyx_t_4)) )) = __pyx_v_new_label;
   }
 
-  /* "survos2/improc/regions/_ccl.pyx":37
+  /* "improc/regions/_ccl.pyx":37
  * 
  * 
  * cdef void _cremap(uint32[::1] src, int[::1] out):             # <<<<<<<<<<<<<<
@@ -2958,7 +2958,7 @@ static void __pyx_f_6improc_12superregions_4_ccl__cremap(__Pyx_memviewslice __py
   __Pyx_RefNannyFinishContext();
 }
 
-/* "survos2/improc/regions/_ccl.pyx":53
+/* "improc/regions/_ccl.pyx":53
  * 
  * 
  * def _remap(uint32[::1] src):             # <<<<<<<<<<<<<<
@@ -2967,9 +2967,9 @@ static void __pyx_f_6improc_12superregions_4_ccl__cremap(__Pyx_memviewslice __py
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6improc_12superregions_4_ccl_1_remap(PyObject *__pyx_self, PyObject *__pyx_arg_src); /*proto*/
-static PyMethodDef __pyx_mdef_6improc_12superregions_4_ccl_1_remap = {"_remap", (PyCFunction)__pyx_pw_6improc_12superregions_4_ccl_1_remap, METH_O, 0};
-static PyObject *__pyx_pw_6improc_12superregions_4_ccl_1_remap(PyObject *__pyx_self, PyObject *__pyx_arg_src) {
+static PyObject *__pyx_pw_6improc_7regions_4_ccl_1_remap(PyObject *__pyx_self, PyObject *__pyx_arg_src); /*proto*/
+static PyMethodDef __pyx_mdef_6improc_7regions_4_ccl_1_remap = {"_remap", (PyCFunction)__pyx_pw_6improc_7regions_4_ccl_1_remap, METH_O, 0};
+static PyObject *__pyx_pw_6improc_7regions_4_ccl_1_remap(PyObject *__pyx_self, PyObject *__pyx_arg_src) {
   __Pyx_memviewslice __pyx_v_src = { 0, 0, { 0 }, { 0 }, { 0 } };
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
@@ -2978,22 +2978,22 @@ static PyObject *__pyx_pw_6improc_12superregions_4_ccl_1_remap(PyObject *__pyx_s
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("_remap (wrapper)", 0);
   assert(__pyx_arg_src); {
-    __pyx_v_src = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_6improc_12superregions_4_ccl_uint32(__pyx_arg_src, PyBUF_WRITABLE); if (unlikely(!__pyx_v_src.memview)) __PYX_ERR(0, 53, __pyx_L3_error)
+    __pyx_v_src = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_6improc_7regions_4_ccl_uint32(__pyx_arg_src, PyBUF_WRITABLE); if (unlikely(!__pyx_v_src.memview)) __PYX_ERR(0, 53, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
-  __Pyx_AddTraceback("improc.superregions._ccl._remap", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("improc.regions._ccl._remap", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6improc_12superregions_4_ccl__remap(__pyx_self, __pyx_v_src);
+  __pyx_r = __pyx_pf_6improc_7regions_4_ccl__remap(__pyx_self, __pyx_v_src);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6improc_12superregions_4_ccl__remap(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_src) {
+static PyObject *__pyx_pf_6improc_7regions_4_ccl__remap(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_src) {
   int __pyx_v_N;
   __Pyx_memviewslice __pyx_v_out = { 0, 0, { 0 }, { 0 }, { 0 } };
   PyObject *__pyx_r = NULL;
@@ -3011,7 +3011,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl__remap(CYTHON_UNUSED PyOb
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_remap", 0);
 
-  /* "survos2/improc/regions/_ccl.pyx":54
+  /* "improc/regions/_ccl.pyx":54
  * 
  * def _remap(uint32[::1] src):
  *     cdef int N = src.shape[0]             # <<<<<<<<<<<<<<
@@ -3020,7 +3020,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl__remap(CYTHON_UNUSED PyOb
  */
   __pyx_v_N = (__pyx_v_src.shape[0]);
 
-  /* "survos2/improc/regions/_ccl.pyx":55
+  /* "improc/regions/_ccl.pyx":55
  * def _remap(uint32[::1] src):
  *     cdef int N = src.shape[0]
  *     cdef int[::1] out = np.full(N, -1, np.int32)             # <<<<<<<<<<<<<<
@@ -3097,16 +3097,16 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl__remap(CYTHON_UNUSED PyOb
   __pyx_t_8.memview = NULL;
   __pyx_t_8.data = NULL;
 
-  /* "survos2/improc/regions/_ccl.pyx":56
+  /* "improc/regions/_ccl.pyx":56
  *     cdef int N = src.shape[0]
  *     cdef int[::1] out = np.full(N, -1, np.int32)
  *     _cremap(src, out)             # <<<<<<<<<<<<<<
  *     return np.asarray(out, dtype=np.uint32)
  * 
  */
-  __pyx_f_6improc_12superregions_4_ccl__cremap(__pyx_v_src, __pyx_v_out);
+  __pyx_f_6improc_7regions_4_ccl__cremap(__pyx_v_src, __pyx_v_out);
 
-  /* "survos2/improc/regions/_ccl.pyx":57
+  /* "improc/regions/_ccl.pyx":57
  *     cdef int[::1] out = np.full(N, -1, np.int32)
  *     _cremap(src, out)
  *     return np.asarray(out, dtype=np.uint32)             # <<<<<<<<<<<<<<
@@ -3144,7 +3144,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl__remap(CYTHON_UNUSED PyOb
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "survos2/improc/regions/_ccl.pyx":53
+  /* "improc/regions/_ccl.pyx":53
  * 
  * 
  * def _remap(uint32[::1] src):             # <<<<<<<<<<<<<<
@@ -3161,7 +3161,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl__remap(CYTHON_UNUSED PyOb
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_7);
   __PYX_XDEC_MEMVIEW(&__pyx_t_8, 1);
-  __Pyx_AddTraceback("improc.superregions._ccl._remap", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("improc.regions._ccl._remap", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __PYX_XDEC_MEMVIEW(&__pyx_v_src, 1);
@@ -3171,7 +3171,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl__remap(CYTHON_UNUSED PyOb
   return __pyx_r;
 }
 
-/* "survos2/improc/regions/_ccl.pyx":60
+/* "improc/regions/_ccl.pyx":60
  * 
  * 
  * def _relabel2d(uint32[::1] src, int width):             # <<<<<<<<<<<<<<
@@ -3180,9 +3180,9 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl__remap(CYTHON_UNUSED PyOb
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6improc_12superregions_4_ccl_3_relabel2d(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_6improc_12superregions_4_ccl_3_relabel2d = {"_relabel2d", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6improc_12superregions_4_ccl_3_relabel2d, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_6improc_12superregions_4_ccl_3_relabel2d(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_6improc_7regions_4_ccl_3_relabel2d(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_6improc_7regions_4_ccl_3_relabel2d = {"_relabel2d", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6improc_7regions_4_ccl_3_relabel2d, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6improc_7regions_4_ccl_3_relabel2d(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   __Pyx_memviewslice __pyx_v_src = { 0, 0, { 0 }, { 0 }, { 0 } };
   int __pyx_v_width;
   int __pyx_lineno = 0;
@@ -3226,30 +3226,30 @@ static PyObject *__pyx_pw_6improc_12superregions_4_ccl_3_relabel2d(PyObject *__p
       values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
     }
-    __pyx_v_src = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_6improc_12superregions_4_ccl_uint32(values[0], PyBUF_WRITABLE); if (unlikely(!__pyx_v_src.memview)) __PYX_ERR(0, 60, __pyx_L3_error)
+    __pyx_v_src = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_6improc_7regions_4_ccl_uint32(values[0], PyBUF_WRITABLE); if (unlikely(!__pyx_v_src.memview)) __PYX_ERR(0, 60, __pyx_L3_error)
     __pyx_v_width = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_width == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 60, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("_relabel2d", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 60, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("improc.superregions._ccl._relabel2d", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("improc.regions._ccl._relabel2d", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6improc_12superregions_4_ccl_2_relabel2d(__pyx_self, __pyx_v_src, __pyx_v_width);
+  __pyx_r = __pyx_pf_6improc_7regions_4_ccl_2_relabel2d(__pyx_self, __pyx_v_src, __pyx_v_width);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6improc_12superregions_4_ccl_2_relabel2d(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_src, int __pyx_v_width) {
+static PyObject *__pyx_pf_6improc_7regions_4_ccl_2_relabel2d(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_src, int __pyx_v_width) {
   int __pyx_v_N;
-  __pyx_t_6improc_12superregions_4_ccl_uint32 __pyx_v_n;
-  __pyx_t_6improc_12superregions_4_ccl_uint32 __pyx_v_p;
-  __pyx_t_6improc_12superregions_4_ccl_uint32 __pyx_v_q;
-  __pyx_t_6improc_12superregions_4_ccl_uint32 __pyx_v_v;
+  __pyx_t_6improc_7regions_4_ccl_uint32 __pyx_v_n;
+  __pyx_t_6improc_7regions_4_ccl_uint32 __pyx_v_p;
+  __pyx_t_6improc_7regions_4_ccl_uint32 __pyx_v_q;
+  __pyx_t_6improc_7regions_4_ccl_uint32 __pyx_v_v;
   __Pyx_memviewslice __pyx_v_sizes = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_memviewslice __pyx_v_labels = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_memviewslice __pyx_v_out = { 0, 0, { 0 }, { 0 }, { 0 } };
@@ -3265,7 +3265,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_2_relabel2d(CYTHON_UNUSED
   __Pyx_memviewslice __pyx_t_8 = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_memviewslice __pyx_t_9 = { 0, 0, { 0 }, { 0 }, { 0 } };
   int __pyx_t_10;
-  __pyx_t_6improc_12superregions_4_ccl_uint32 __pyx_t_11;
+  __pyx_t_6improc_7regions_4_ccl_uint32 __pyx_t_11;
   size_t __pyx_t_12;
   Py_ssize_t __pyx_t_13;
   int __pyx_t_14;
@@ -3275,7 +3275,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_2_relabel2d(CYTHON_UNUSED
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_relabel2d", 0);
 
-  /* "survos2/improc/regions/_ccl.pyx":61
+  /* "improc/regions/_ccl.pyx":61
  * 
  * def _relabel2d(uint32[::1] src, int width):
  *     cdef int N = src.shape[0]             # <<<<<<<<<<<<<<
@@ -3284,7 +3284,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_2_relabel2d(CYTHON_UNUSED
  */
   __pyx_v_N = (__pyx_v_src.shape[0]);
 
-  /* "survos2/improc/regions/_ccl.pyx":64
+  /* "improc/regions/_ccl.pyx":64
  *     cdef uint32 n, p, q, v
  * 
  *     cdef uint32[::1] sizes = np.ones(N, np.uint32)             # <<<<<<<<<<<<<<
@@ -3352,13 +3352,13 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_2_relabel2d(CYTHON_UNUSED
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_6improc_12superregions_4_ccl_uint32(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 64, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_6improc_7regions_4_ccl_uint32(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 64, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_sizes = __pyx_t_8;
   __pyx_t_8.memview = NULL;
   __pyx_t_8.data = NULL;
 
-  /* "survos2/improc/regions/_ccl.pyx":65
+  /* "improc/regions/_ccl.pyx":65
  * 
  *     cdef uint32[::1] sizes = np.ones(N, np.uint32)
  *     cdef uint32[::1] labels = np.arange(N, np.uint32)             # <<<<<<<<<<<<<<
@@ -3426,13 +3426,13 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_2_relabel2d(CYTHON_UNUSED
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_6improc_12superregions_4_ccl_uint32(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_6improc_7regions_4_ccl_uint32(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 65, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_labels = __pyx_t_8;
   __pyx_t_8.memview = NULL;
   __pyx_t_8.data = NULL;
 
-  /* "survos2/improc/regions/_ccl.pyx":66
+  /* "improc/regions/_ccl.pyx":66
  *     cdef uint32[::1] sizes = np.ones(N, np.uint32)
  *     cdef uint32[::1] labels = np.arange(N, np.uint32)
  *     cdef int[::1] out = np.full(N, -1, np.int32)             # <<<<<<<<<<<<<<
@@ -3509,7 +3509,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_2_relabel2d(CYTHON_UNUSED
   __pyx_t_9.memview = NULL;
   __pyx_t_9.data = NULL;
 
-  /* "survos2/improc/regions/_ccl.pyx":68
+  /* "improc/regions/_ccl.pyx":68
  *     cdef int[::1] out = np.full(N, -1, np.int32)
  * 
  *     for n in range(1, N):             # <<<<<<<<<<<<<<
@@ -3521,7 +3521,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_2_relabel2d(CYTHON_UNUSED
   for (__pyx_t_11 = 1; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
     __pyx_v_n = __pyx_t_11;
 
-    /* "survos2/improc/regions/_ccl.pyx":69
+    /* "improc/regions/_ccl.pyx":69
  * 
  *     for n in range(1, N):
  *         v = src[n]             # <<<<<<<<<<<<<<
@@ -3529,18 +3529,18 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_2_relabel2d(CYTHON_UNUSED
  * 
  */
     __pyx_t_12 = __pyx_v_n;
-    __pyx_v_v = (*((__pyx_t_6improc_12superregions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_12superregions_4_ccl_uint32 *) __pyx_v_src.data) + __pyx_t_12)) )));
+    __pyx_v_v = (*((__pyx_t_6improc_7regions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_7regions_4_ccl_uint32 *) __pyx_v_src.data) + __pyx_t_12)) )));
 
-    /* "survos2/improc/regions/_ccl.pyx":70
+    /* "improc/regions/_ccl.pyx":70
  *     for n in range(1, N):
  *         v = src[n]
  *         p = _find_root(labels, n)             # <<<<<<<<<<<<<<
  * 
  *         # x > 0
  */
-    __pyx_v_p = __pyx_f_6improc_12superregions_4_ccl__find_root(__pyx_v_labels, __pyx_v_n);
+    __pyx_v_p = __pyx_f_6improc_7regions_4_ccl__find_root(__pyx_v_labels, __pyx_v_n);
 
-    /* "survos2/improc/regions/_ccl.pyx":73
+    /* "improc/regions/_ccl.pyx":73
  * 
  *         # x > 0
  *         if src[n - 1] == v:             # <<<<<<<<<<<<<<
@@ -3548,19 +3548,19 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_2_relabel2d(CYTHON_UNUSED
  *             if p != q:
  */
     __pyx_t_13 = (__pyx_v_n - 1);
-    __pyx_t_14 = (((*((__pyx_t_6improc_12superregions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_12superregions_4_ccl_uint32 *) __pyx_v_src.data) + __pyx_t_13)) ))) == __pyx_v_v) != 0);
+    __pyx_t_14 = (((*((__pyx_t_6improc_7regions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_7regions_4_ccl_uint32 *) __pyx_v_src.data) + __pyx_t_13)) ))) == __pyx_v_v) != 0);
     if (__pyx_t_14) {
 
-      /* "survos2/improc/regions/_ccl.pyx":74
+      /* "improc/regions/_ccl.pyx":74
  *         # x > 0
  *         if src[n - 1] == v:
  *             q = _find_root(labels, n - 1)             # <<<<<<<<<<<<<<
  *             if p != q:
  *                 _join_trees(labels, sizes, p, q)
  */
-      __pyx_v_q = __pyx_f_6improc_12superregions_4_ccl__find_root(__pyx_v_labels, (__pyx_v_n - 1));
+      __pyx_v_q = __pyx_f_6improc_7regions_4_ccl__find_root(__pyx_v_labels, (__pyx_v_n - 1));
 
-      /* "survos2/improc/regions/_ccl.pyx":75
+      /* "improc/regions/_ccl.pyx":75
  *         if src[n - 1] == v:
  *             q = _find_root(labels, n - 1)
  *             if p != q:             # <<<<<<<<<<<<<<
@@ -3570,16 +3570,16 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_2_relabel2d(CYTHON_UNUSED
       __pyx_t_14 = ((__pyx_v_p != __pyx_v_q) != 0);
       if (__pyx_t_14) {
 
-        /* "survos2/improc/regions/_ccl.pyx":76
+        /* "improc/regions/_ccl.pyx":76
  *             q = _find_root(labels, n - 1)
  *             if p != q:
  *                 _join_trees(labels, sizes, p, q)             # <<<<<<<<<<<<<<
  * 
  *         # y > 0
  */
-        __pyx_f_6improc_12superregions_4_ccl__join_trees(__pyx_v_labels, __pyx_v_sizes, __pyx_v_p, __pyx_v_q);
+        __pyx_f_6improc_7regions_4_ccl__join_trees(__pyx_v_labels, __pyx_v_sizes, __pyx_v_p, __pyx_v_q);
 
-        /* "survos2/improc/regions/_ccl.pyx":75
+        /* "improc/regions/_ccl.pyx":75
  *         if src[n - 1] == v:
  *             q = _find_root(labels, n - 1)
  *             if p != q:             # <<<<<<<<<<<<<<
@@ -3588,7 +3588,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_2_relabel2d(CYTHON_UNUSED
  */
       }
 
-      /* "survos2/improc/regions/_ccl.pyx":73
+      /* "improc/regions/_ccl.pyx":73
  * 
  *         # x > 0
  *         if src[n - 1] == v:             # <<<<<<<<<<<<<<
@@ -3597,7 +3597,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_2_relabel2d(CYTHON_UNUSED
  */
     }
 
-    /* "survos2/improc/regions/_ccl.pyx":79
+    /* "improc/regions/_ccl.pyx":79
  * 
  *         # y > 0
  *         if n > width and src[n - width] == v:             # <<<<<<<<<<<<<<
@@ -3611,21 +3611,21 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_2_relabel2d(CYTHON_UNUSED
       goto __pyx_L8_bool_binop_done;
     }
     __pyx_t_12 = (__pyx_v_n - __pyx_v_width);
-    __pyx_t_15 = (((*((__pyx_t_6improc_12superregions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_12superregions_4_ccl_uint32 *) __pyx_v_src.data) + __pyx_t_12)) ))) == __pyx_v_v) != 0);
+    __pyx_t_15 = (((*((__pyx_t_6improc_7regions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_7regions_4_ccl_uint32 *) __pyx_v_src.data) + __pyx_t_12)) ))) == __pyx_v_v) != 0);
     __pyx_t_14 = __pyx_t_15;
     __pyx_L8_bool_binop_done:;
     if (__pyx_t_14) {
 
-      /* "survos2/improc/regions/_ccl.pyx":80
+      /* "improc/regions/_ccl.pyx":80
  *         # y > 0
  *         if n > width and src[n - width] == v:
  *             q = _find_root(labels, n - width)             # <<<<<<<<<<<<<<
  *             if p != q:
  *                 _join_trees(labels, sizes, p, q)
  */
-      __pyx_v_q = __pyx_f_6improc_12superregions_4_ccl__find_root(__pyx_v_labels, (__pyx_v_n - __pyx_v_width));
+      __pyx_v_q = __pyx_f_6improc_7regions_4_ccl__find_root(__pyx_v_labels, (__pyx_v_n - __pyx_v_width));
 
-      /* "survos2/improc/regions/_ccl.pyx":81
+      /* "improc/regions/_ccl.pyx":81
  *         if n > width and src[n - width] == v:
  *             q = _find_root(labels, n - width)
  *             if p != q:             # <<<<<<<<<<<<<<
@@ -3635,16 +3635,16 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_2_relabel2d(CYTHON_UNUSED
       __pyx_t_14 = ((__pyx_v_p != __pyx_v_q) != 0);
       if (__pyx_t_14) {
 
-        /* "survos2/improc/regions/_ccl.pyx":82
+        /* "improc/regions/_ccl.pyx":82
  *             q = _find_root(labels, n - width)
  *             if p != q:
  *                 _join_trees(labels, sizes, p, q)             # <<<<<<<<<<<<<<
  * 
  *     _cremap(labels, out)
  */
-        __pyx_f_6improc_12superregions_4_ccl__join_trees(__pyx_v_labels, __pyx_v_sizes, __pyx_v_p, __pyx_v_q);
+        __pyx_f_6improc_7regions_4_ccl__join_trees(__pyx_v_labels, __pyx_v_sizes, __pyx_v_p, __pyx_v_q);
 
-        /* "survos2/improc/regions/_ccl.pyx":81
+        /* "improc/regions/_ccl.pyx":81
  *         if n > width and src[n - width] == v:
  *             q = _find_root(labels, n - width)
  *             if p != q:             # <<<<<<<<<<<<<<
@@ -3653,7 +3653,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_2_relabel2d(CYTHON_UNUSED
  */
       }
 
-      /* "survos2/improc/regions/_ccl.pyx":79
+      /* "improc/regions/_ccl.pyx":79
  * 
  *         # y > 0
  *         if n > width and src[n - width] == v:             # <<<<<<<<<<<<<<
@@ -3663,16 +3663,16 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_2_relabel2d(CYTHON_UNUSED
     }
   }
 
-  /* "survos2/improc/regions/_ccl.pyx":84
+  /* "improc/regions/_ccl.pyx":84
  *                 _join_trees(labels, sizes, p, q)
  * 
  *     _cremap(labels, out)             # <<<<<<<<<<<<<<
  *     return np.asarray(out, dtype=np.uint32)
  * 
  */
-  __pyx_f_6improc_12superregions_4_ccl__cremap(__pyx_v_labels, __pyx_v_out);
+  __pyx_f_6improc_7regions_4_ccl__cremap(__pyx_v_labels, __pyx_v_out);
 
-  /* "survos2/improc/regions/_ccl.pyx":85
+  /* "improc/regions/_ccl.pyx":85
  * 
  *     _cremap(labels, out)
  *     return np.asarray(out, dtype=np.uint32)             # <<<<<<<<<<<<<<
@@ -3710,7 +3710,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_2_relabel2d(CYTHON_UNUSED
   __pyx_t_7 = 0;
   goto __pyx_L0;
 
-  /* "survos2/improc/regions/_ccl.pyx":60
+  /* "improc/regions/_ccl.pyx":60
  * 
  * 
  * def _relabel2d(uint32[::1] src, int width):             # <<<<<<<<<<<<<<
@@ -3728,7 +3728,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_2_relabel2d(CYTHON_UNUSED
   __Pyx_XDECREF(__pyx_t_7);
   __PYX_XDEC_MEMVIEW(&__pyx_t_8, 1);
   __PYX_XDEC_MEMVIEW(&__pyx_t_9, 1);
-  __Pyx_AddTraceback("improc.superregions._ccl._relabel2d", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("improc.regions._ccl._relabel2d", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __PYX_XDEC_MEMVIEW(&__pyx_v_sizes, 1);
@@ -3740,7 +3740,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_2_relabel2d(CYTHON_UNUSED
   return __pyx_r;
 }
 
-/* "survos2/improc/regions/_ccl.pyx":88
+/* "improc/regions/_ccl.pyx":88
  * 
  * 
  * def _relabel3d(uint32[::1] src, int height, int width):             # <<<<<<<<<<<<<<
@@ -3749,9 +3749,9 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_2_relabel2d(CYTHON_UNUSED
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6improc_12superregions_4_ccl_5_relabel3d(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_6improc_12superregions_4_ccl_5_relabel3d = {"_relabel3d", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6improc_12superregions_4_ccl_5_relabel3d, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_6improc_12superregions_4_ccl_5_relabel3d(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_6improc_7regions_4_ccl_5_relabel3d(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_6improc_7regions_4_ccl_5_relabel3d = {"_relabel3d", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6improc_7regions_4_ccl_5_relabel3d, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6improc_7regions_4_ccl_5_relabel3d(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   __Pyx_memviewslice __pyx_v_src = { 0, 0, { 0 }, { 0 }, { 0 } };
   int __pyx_v_height;
   int __pyx_v_width;
@@ -3805,7 +3805,7 @@ static PyObject *__pyx_pw_6improc_12superregions_4_ccl_5_relabel3d(PyObject *__p
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
       values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
     }
-    __pyx_v_src = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_6improc_12superregions_4_ccl_uint32(values[0], PyBUF_WRITABLE); if (unlikely(!__pyx_v_src.memview)) __PYX_ERR(0, 88, __pyx_L3_error)
+    __pyx_v_src = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_6improc_7regions_4_ccl_uint32(values[0], PyBUF_WRITABLE); if (unlikely(!__pyx_v_src.memview)) __PYX_ERR(0, 88, __pyx_L3_error)
     __pyx_v_height = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_height == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 88, __pyx_L3_error)
     __pyx_v_width = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_width == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 88, __pyx_L3_error)
   }
@@ -3813,24 +3813,24 @@ static PyObject *__pyx_pw_6improc_12superregions_4_ccl_5_relabel3d(PyObject *__p
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("_relabel3d", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 88, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("improc.superregions._ccl._relabel3d", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("improc.regions._ccl._relabel3d", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6improc_12superregions_4_ccl_4_relabel3d(__pyx_self, __pyx_v_src, __pyx_v_height, __pyx_v_width);
+  __pyx_r = __pyx_pf_6improc_7regions_4_ccl_4_relabel3d(__pyx_self, __pyx_v_src, __pyx_v_height, __pyx_v_width);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6improc_12superregions_4_ccl_4_relabel3d(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_src, int __pyx_v_height, int __pyx_v_width) {
+static PyObject *__pyx_pf_6improc_7regions_4_ccl_4_relabel3d(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_src, int __pyx_v_height, int __pyx_v_width) {
   int __pyx_v_N;
   int __pyx_v_plane;
-  __pyx_t_6improc_12superregions_4_ccl_uint32 __pyx_v_n;
-  __pyx_t_6improc_12superregions_4_ccl_uint32 __pyx_v_p;
-  __pyx_t_6improc_12superregions_4_ccl_uint32 __pyx_v_q;
-  __pyx_t_6improc_12superregions_4_ccl_uint32 __pyx_v_v;
+  __pyx_t_6improc_7regions_4_ccl_uint32 __pyx_v_n;
+  __pyx_t_6improc_7regions_4_ccl_uint32 __pyx_v_p;
+  __pyx_t_6improc_7regions_4_ccl_uint32 __pyx_v_q;
+  __pyx_t_6improc_7regions_4_ccl_uint32 __pyx_v_v;
   __Pyx_memviewslice __pyx_v_sizes = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_memviewslice __pyx_v_labels = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_memviewslice __pyx_v_out = { 0, 0, { 0 }, { 0 }, { 0 } };
@@ -3846,7 +3846,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_4_relabel3d(CYTHON_UNUSED
   __Pyx_memviewslice __pyx_t_8 = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_memviewslice __pyx_t_9 = { 0, 0, { 0 }, { 0 }, { 0 } };
   int __pyx_t_10;
-  __pyx_t_6improc_12superregions_4_ccl_uint32 __pyx_t_11;
+  __pyx_t_6improc_7regions_4_ccl_uint32 __pyx_t_11;
   size_t __pyx_t_12;
   Py_ssize_t __pyx_t_13;
   int __pyx_t_14;
@@ -3856,7 +3856,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_4_relabel3d(CYTHON_UNUSED
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_relabel3d", 0);
 
-  /* "survos2/improc/regions/_ccl.pyx":89
+  /* "improc/regions/_ccl.pyx":89
  * 
  * def _relabel3d(uint32[::1] src, int height, int width):
  *     cdef int N = src.shape[0]             # <<<<<<<<<<<<<<
@@ -3865,7 +3865,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_4_relabel3d(CYTHON_UNUSED
  */
   __pyx_v_N = (__pyx_v_src.shape[0]);
 
-  /* "survos2/improc/regions/_ccl.pyx":90
+  /* "improc/regions/_ccl.pyx":90
  * def _relabel3d(uint32[::1] src, int height, int width):
  *     cdef int N = src.shape[0]
  *     cdef int plane = height * width             # <<<<<<<<<<<<<<
@@ -3874,7 +3874,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_4_relabel3d(CYTHON_UNUSED
  */
   __pyx_v_plane = (__pyx_v_height * __pyx_v_width);
 
-  /* "survos2/improc/regions/_ccl.pyx":93
+  /* "improc/regions/_ccl.pyx":93
  *     cdef uint32 n, p, q, v
  * 
  *     cdef uint32[::1] sizes = np.ones(N, np.uint32)             # <<<<<<<<<<<<<<
@@ -3942,13 +3942,13 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_4_relabel3d(CYTHON_UNUSED
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_6improc_12superregions_4_ccl_uint32(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 93, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_6improc_7regions_4_ccl_uint32(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 93, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_sizes = __pyx_t_8;
   __pyx_t_8.memview = NULL;
   __pyx_t_8.data = NULL;
 
-  /* "survos2/improc/regions/_ccl.pyx":94
+  /* "improc/regions/_ccl.pyx":94
  * 
  *     cdef uint32[::1] sizes = np.ones(N, np.uint32)
  *     cdef uint32[::1] labels = np.arange(N, dtype=np.uint32)             # <<<<<<<<<<<<<<
@@ -3981,13 +3981,13 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_4_relabel3d(CYTHON_UNUSED
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_6improc_12superregions_4_ccl_uint32(__pyx_t_2, PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 94, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_6improc_7regions_4_ccl_uint32(__pyx_t_2, PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 94, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_labels = __pyx_t_8;
   __pyx_t_8.memview = NULL;
   __pyx_t_8.data = NULL;
 
-  /* "survos2/improc/regions/_ccl.pyx":96
+  /* "improc/regions/_ccl.pyx":96
  *     cdef uint32[::1] labels = np.arange(N, dtype=np.uint32)
  *     cdef uint32[::1] tmplabels
  *     cdef int[::1] out = np.full(N, -1, np.int32)             # <<<<<<<<<<<<<<
@@ -4064,7 +4064,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_4_relabel3d(CYTHON_UNUSED
   __pyx_t_9.memview = NULL;
   __pyx_t_9.data = NULL;
 
-  /* "survos2/improc/regions/_ccl.pyx":98
+  /* "improc/regions/_ccl.pyx":98
  *     cdef int[::1] out = np.full(N, -1, np.int32)
  * 
  *     for n in range(1, N):             # <<<<<<<<<<<<<<
@@ -4076,7 +4076,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_4_relabel3d(CYTHON_UNUSED
   for (__pyx_t_11 = 1; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
     __pyx_v_n = __pyx_t_11;
 
-    /* "survos2/improc/regions/_ccl.pyx":99
+    /* "improc/regions/_ccl.pyx":99
  * 
  *     for n in range(1, N):
  *         v = src[n]             # <<<<<<<<<<<<<<
@@ -4084,18 +4084,18 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_4_relabel3d(CYTHON_UNUSED
  * 
  */
     __pyx_t_12 = __pyx_v_n;
-    __pyx_v_v = (*((__pyx_t_6improc_12superregions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_12superregions_4_ccl_uint32 *) __pyx_v_src.data) + __pyx_t_12)) )));
+    __pyx_v_v = (*((__pyx_t_6improc_7regions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_7regions_4_ccl_uint32 *) __pyx_v_src.data) + __pyx_t_12)) )));
 
-    /* "survos2/improc/regions/_ccl.pyx":100
+    /* "improc/regions/_ccl.pyx":100
  *     for n in range(1, N):
  *         v = src[n]
  *         p = _find_root(labels, n)             # <<<<<<<<<<<<<<
  * 
  *         # x > 0
  */
-    __pyx_v_p = __pyx_f_6improc_12superregions_4_ccl__find_root(__pyx_v_labels, __pyx_v_n);
+    __pyx_v_p = __pyx_f_6improc_7regions_4_ccl__find_root(__pyx_v_labels, __pyx_v_n);
 
-    /* "survos2/improc/regions/_ccl.pyx":103
+    /* "improc/regions/_ccl.pyx":103
  * 
  *         # x > 0
  *         if src[n - 1] == v:             # <<<<<<<<<<<<<<
@@ -4103,19 +4103,19 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_4_relabel3d(CYTHON_UNUSED
  *             if p != q:
  */
     __pyx_t_13 = (__pyx_v_n - 1);
-    __pyx_t_14 = (((*((__pyx_t_6improc_12superregions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_12superregions_4_ccl_uint32 *) __pyx_v_src.data) + __pyx_t_13)) ))) == __pyx_v_v) != 0);
+    __pyx_t_14 = (((*((__pyx_t_6improc_7regions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_7regions_4_ccl_uint32 *) __pyx_v_src.data) + __pyx_t_13)) ))) == __pyx_v_v) != 0);
     if (__pyx_t_14) {
 
-      /* "survos2/improc/regions/_ccl.pyx":104
+      /* "improc/regions/_ccl.pyx":104
  *         # x > 0
  *         if src[n - 1] == v:
  *             q = _find_root(labels, n - 1)             # <<<<<<<<<<<<<<
  *             if p != q:
  *                 _join_trees(labels, sizes, p, q)
  */
-      __pyx_v_q = __pyx_f_6improc_12superregions_4_ccl__find_root(__pyx_v_labels, (__pyx_v_n - 1));
+      __pyx_v_q = __pyx_f_6improc_7regions_4_ccl__find_root(__pyx_v_labels, (__pyx_v_n - 1));
 
-      /* "survos2/improc/regions/_ccl.pyx":105
+      /* "improc/regions/_ccl.pyx":105
  *         if src[n - 1] == v:
  *             q = _find_root(labels, n - 1)
  *             if p != q:             # <<<<<<<<<<<<<<
@@ -4125,16 +4125,16 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_4_relabel3d(CYTHON_UNUSED
       __pyx_t_14 = ((__pyx_v_p != __pyx_v_q) != 0);
       if (__pyx_t_14) {
 
-        /* "survos2/improc/regions/_ccl.pyx":106
+        /* "improc/regions/_ccl.pyx":106
  *             q = _find_root(labels, n - 1)
  *             if p != q:
  *                 _join_trees(labels, sizes, p, q)             # <<<<<<<<<<<<<<
  * 
  *         # y > 0
  */
-        __pyx_f_6improc_12superregions_4_ccl__join_trees(__pyx_v_labels, __pyx_v_sizes, __pyx_v_p, __pyx_v_q);
+        __pyx_f_6improc_7regions_4_ccl__join_trees(__pyx_v_labels, __pyx_v_sizes, __pyx_v_p, __pyx_v_q);
 
-        /* "survos2/improc/regions/_ccl.pyx":105
+        /* "improc/regions/_ccl.pyx":105
  *         if src[n - 1] == v:
  *             q = _find_root(labels, n - 1)
  *             if p != q:             # <<<<<<<<<<<<<<
@@ -4143,7 +4143,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_4_relabel3d(CYTHON_UNUSED
  */
       }
 
-      /* "survos2/improc/regions/_ccl.pyx":103
+      /* "improc/regions/_ccl.pyx":103
  * 
  *         # x > 0
  *         if src[n - 1] == v:             # <<<<<<<<<<<<<<
@@ -4152,7 +4152,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_4_relabel3d(CYTHON_UNUSED
  */
     }
 
-    /* "survos2/improc/regions/_ccl.pyx":109
+    /* "improc/regions/_ccl.pyx":109
  * 
  *         # y > 0
  *         if n > width and src[n - width] == v:             # <<<<<<<<<<<<<<
@@ -4166,21 +4166,21 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_4_relabel3d(CYTHON_UNUSED
       goto __pyx_L8_bool_binop_done;
     }
     __pyx_t_12 = (__pyx_v_n - __pyx_v_width);
-    __pyx_t_15 = (((*((__pyx_t_6improc_12superregions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_12superregions_4_ccl_uint32 *) __pyx_v_src.data) + __pyx_t_12)) ))) == __pyx_v_v) != 0);
+    __pyx_t_15 = (((*((__pyx_t_6improc_7regions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_7regions_4_ccl_uint32 *) __pyx_v_src.data) + __pyx_t_12)) ))) == __pyx_v_v) != 0);
     __pyx_t_14 = __pyx_t_15;
     __pyx_L8_bool_binop_done:;
     if (__pyx_t_14) {
 
-      /* "survos2/improc/regions/_ccl.pyx":110
+      /* "improc/regions/_ccl.pyx":110
  *         # y > 0
  *         if n > width and src[n - width] == v:
  *             q = _find_root(labels, n - width)             # <<<<<<<<<<<<<<
  *             if p != q:
  *                 _join_trees(labels, sizes, p, q)
  */
-      __pyx_v_q = __pyx_f_6improc_12superregions_4_ccl__find_root(__pyx_v_labels, (__pyx_v_n - __pyx_v_width));
+      __pyx_v_q = __pyx_f_6improc_7regions_4_ccl__find_root(__pyx_v_labels, (__pyx_v_n - __pyx_v_width));
 
-      /* "survos2/improc/regions/_ccl.pyx":111
+      /* "improc/regions/_ccl.pyx":111
  *         if n > width and src[n - width] == v:
  *             q = _find_root(labels, n - width)
  *             if p != q:             # <<<<<<<<<<<<<<
@@ -4190,16 +4190,16 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_4_relabel3d(CYTHON_UNUSED
       __pyx_t_14 = ((__pyx_v_p != __pyx_v_q) != 0);
       if (__pyx_t_14) {
 
-        /* "survos2/improc/regions/_ccl.pyx":112
+        /* "improc/regions/_ccl.pyx":112
  *             q = _find_root(labels, n - width)
  *             if p != q:
  *                 _join_trees(labels, sizes, p, q)             # <<<<<<<<<<<<<<
  * 
  *         # z > 0
  */
-        __pyx_f_6improc_12superregions_4_ccl__join_trees(__pyx_v_labels, __pyx_v_sizes, __pyx_v_p, __pyx_v_q);
+        __pyx_f_6improc_7regions_4_ccl__join_trees(__pyx_v_labels, __pyx_v_sizes, __pyx_v_p, __pyx_v_q);
 
-        /* "survos2/improc/regions/_ccl.pyx":111
+        /* "improc/regions/_ccl.pyx":111
  *         if n > width and src[n - width] == v:
  *             q = _find_root(labels, n - width)
  *             if p != q:             # <<<<<<<<<<<<<<
@@ -4208,7 +4208,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_4_relabel3d(CYTHON_UNUSED
  */
       }
 
-      /* "survos2/improc/regions/_ccl.pyx":109
+      /* "improc/regions/_ccl.pyx":109
  * 
  *         # y > 0
  *         if n > width and src[n - width] == v:             # <<<<<<<<<<<<<<
@@ -4217,7 +4217,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_4_relabel3d(CYTHON_UNUSED
  */
     }
 
-    /* "survos2/improc/regions/_ccl.pyx":115
+    /* "improc/regions/_ccl.pyx":115
  * 
  *         # z > 0
  *         if n > plane and src[n - plane] == v:             # <<<<<<<<<<<<<<
@@ -4231,21 +4231,21 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_4_relabel3d(CYTHON_UNUSED
       goto __pyx_L12_bool_binop_done;
     }
     __pyx_t_12 = (__pyx_v_n - __pyx_v_plane);
-    __pyx_t_15 = (((*((__pyx_t_6improc_12superregions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_12superregions_4_ccl_uint32 *) __pyx_v_src.data) + __pyx_t_12)) ))) == __pyx_v_v) != 0);
+    __pyx_t_15 = (((*((__pyx_t_6improc_7regions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_7regions_4_ccl_uint32 *) __pyx_v_src.data) + __pyx_t_12)) ))) == __pyx_v_v) != 0);
     __pyx_t_14 = __pyx_t_15;
     __pyx_L12_bool_binop_done:;
     if (__pyx_t_14) {
 
-      /* "survos2/improc/regions/_ccl.pyx":116
+      /* "improc/regions/_ccl.pyx":116
  *         # z > 0
  *         if n > plane and src[n - plane] == v:
  *             q = _find_root(labels, n - plane)             # <<<<<<<<<<<<<<
  *             if p != q:
  *                 _join_trees(labels, sizes, p, q)
  */
-      __pyx_v_q = __pyx_f_6improc_12superregions_4_ccl__find_root(__pyx_v_labels, (__pyx_v_n - __pyx_v_plane));
+      __pyx_v_q = __pyx_f_6improc_7regions_4_ccl__find_root(__pyx_v_labels, (__pyx_v_n - __pyx_v_plane));
 
-      /* "survos2/improc/regions/_ccl.pyx":117
+      /* "improc/regions/_ccl.pyx":117
  *         if n > plane and src[n - plane] == v:
  *             q = _find_root(labels, n - plane)
  *             if p != q:             # <<<<<<<<<<<<<<
@@ -4255,16 +4255,16 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_4_relabel3d(CYTHON_UNUSED
       __pyx_t_14 = ((__pyx_v_p != __pyx_v_q) != 0);
       if (__pyx_t_14) {
 
-        /* "survos2/improc/regions/_ccl.pyx":118
+        /* "improc/regions/_ccl.pyx":118
  *             q = _find_root(labels, n - plane)
  *             if p != q:
  *                 _join_trees(labels, sizes, p, q)             # <<<<<<<<<<<<<<
  * 
  *     _cremap(labels, out)
  */
-        __pyx_f_6improc_12superregions_4_ccl__join_trees(__pyx_v_labels, __pyx_v_sizes, __pyx_v_p, __pyx_v_q);
+        __pyx_f_6improc_7regions_4_ccl__join_trees(__pyx_v_labels, __pyx_v_sizes, __pyx_v_p, __pyx_v_q);
 
-        /* "survos2/improc/regions/_ccl.pyx":117
+        /* "improc/regions/_ccl.pyx":117
  *         if n > plane and src[n - plane] == v:
  *             q = _find_root(labels, n - plane)
  *             if p != q:             # <<<<<<<<<<<<<<
@@ -4273,7 +4273,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_4_relabel3d(CYTHON_UNUSED
  */
       }
 
-      /* "survos2/improc/regions/_ccl.pyx":115
+      /* "improc/regions/_ccl.pyx":115
  * 
  *         # z > 0
  *         if n > plane and src[n - plane] == v:             # <<<<<<<<<<<<<<
@@ -4283,16 +4283,16 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_4_relabel3d(CYTHON_UNUSED
     }
   }
 
-  /* "survos2/improc/regions/_ccl.pyx":120
+  /* "improc/regions/_ccl.pyx":120
  *                 _join_trees(labels, sizes, p, q)
  * 
  *     _cremap(labels, out)             # <<<<<<<<<<<<<<
  *     return np.asarray(out, dtype=np.uint32)
  * 
  */
-  __pyx_f_6improc_12superregions_4_ccl__cremap(__pyx_v_labels, __pyx_v_out);
+  __pyx_f_6improc_7regions_4_ccl__cremap(__pyx_v_labels, __pyx_v_out);
 
-  /* "survos2/improc/regions/_ccl.pyx":121
+  /* "improc/regions/_ccl.pyx":121
  * 
  *     _cremap(labels, out)
  *     return np.asarray(out, dtype=np.uint32)             # <<<<<<<<<<<<<<
@@ -4330,7 +4330,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_4_relabel3d(CYTHON_UNUSED
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "survos2/improc/regions/_ccl.pyx":88
+  /* "improc/regions/_ccl.pyx":88
  * 
  * 
  * def _relabel3d(uint32[::1] src, int height, int width):             # <<<<<<<<<<<<<<
@@ -4348,7 +4348,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_4_relabel3d(CYTHON_UNUSED
   __Pyx_XDECREF(__pyx_t_7);
   __PYX_XDEC_MEMVIEW(&__pyx_t_8, 1);
   __PYX_XDEC_MEMVIEW(&__pyx_t_9, 1);
-  __Pyx_AddTraceback("improc.superregions._ccl._relabel3d", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("improc.regions._ccl._relabel3d", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __PYX_XDEC_MEMVIEW(&__pyx_v_sizes, 1);
@@ -4360,7 +4360,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_4_relabel3d(CYTHON_UNUSED
   return __pyx_r;
 }
 
-/* "survos2/improc/regions/_ccl.pyx":124
+/* "improc/regions/_ccl.pyx":124
  * 
  * 
  * cdef float __compute_dist(float[:, ::1] data, int i, int j):             # <<<<<<<<<<<<<<
@@ -4368,7 +4368,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_4_relabel3d(CYTHON_UNUSED
  *     cdef float diff = 0, d
  */
 
-static float __pyx_f_6improc_12superregions_4_ccl___compute_dist(__Pyx_memviewslice __pyx_v_data, int __pyx_v_i, int __pyx_v_j) {
+static float __pyx_f_6improc_7regions_4_ccl___compute_dist(__Pyx_memviewslice __pyx_v_data, int __pyx_v_i, int __pyx_v_j) {
   int __pyx_v_C;
   int __pyx_v_w;
   float __pyx_v_diff;
@@ -4384,7 +4384,7 @@ static float __pyx_f_6improc_12superregions_4_ccl___compute_dist(__Pyx_memviewsl
   Py_ssize_t __pyx_t_7;
   __Pyx_RefNannySetupContext("__compute_dist", 0);
 
-  /* "survos2/improc/regions/_ccl.pyx":125
+  /* "improc/regions/_ccl.pyx":125
  * 
  * cdef float __compute_dist(float[:, ::1] data, int i, int j):
  *     cdef int C = data.shape[1], w             # <<<<<<<<<<<<<<
@@ -4393,7 +4393,7 @@ static float __pyx_f_6improc_12superregions_4_ccl___compute_dist(__Pyx_memviewsl
  */
   __pyx_v_C = (__pyx_v_data.shape[1]);
 
-  /* "survos2/improc/regions/_ccl.pyx":126
+  /* "improc/regions/_ccl.pyx":126
  * cdef float __compute_dist(float[:, ::1] data, int i, int j):
  *     cdef int C = data.shape[1], w
  *     cdef float diff = 0, d             # <<<<<<<<<<<<<<
@@ -4402,7 +4402,7 @@ static float __pyx_f_6improc_12superregions_4_ccl___compute_dist(__Pyx_memviewsl
  */
   __pyx_v_diff = 0.0;
 
-  /* "survos2/improc/regions/_ccl.pyx":127
+  /* "improc/regions/_ccl.pyx":127
  *     cdef int C = data.shape[1], w
  *     cdef float diff = 0, d
  *     for w in range(C):             # <<<<<<<<<<<<<<
@@ -4414,7 +4414,7 @@ static float __pyx_f_6improc_12superregions_4_ccl___compute_dist(__Pyx_memviewsl
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_w = __pyx_t_3;
 
-    /* "survos2/improc/regions/_ccl.pyx":128
+    /* "improc/regions/_ccl.pyx":128
  *     cdef float diff = 0, d
  *     for w in range(C):
  *         d = data[i, w] - data[j, w]             # <<<<<<<<<<<<<<
@@ -4427,7 +4427,7 @@ static float __pyx_f_6improc_12superregions_4_ccl___compute_dist(__Pyx_memviewsl
     __pyx_t_7 = __pyx_v_w;
     __pyx_v_d = ((*((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_data.data + __pyx_t_4 * __pyx_v_data.strides[0]) )) + __pyx_t_5)) ))) - (*((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_data.data + __pyx_t_6 * __pyx_v_data.strides[0]) )) + __pyx_t_7)) ))));
 
-    /* "survos2/improc/regions/_ccl.pyx":129
+    /* "improc/regions/_ccl.pyx":129
  *     for w in range(C):
  *         d = data[i, w] - data[j, w]
  *         diff += (d * d)             # <<<<<<<<<<<<<<
@@ -4437,7 +4437,7 @@ static float __pyx_f_6improc_12superregions_4_ccl___compute_dist(__Pyx_memviewsl
     __pyx_v_diff = (__pyx_v_diff + (__pyx_v_d * __pyx_v_d));
   }
 
-  /* "survos2/improc/regions/_ccl.pyx":130
+  /* "improc/regions/_ccl.pyx":130
  *         d = data[i, w] - data[j, w]
  *         diff += (d * d)
  *     return diff             # <<<<<<<<<<<<<<
@@ -4447,7 +4447,7 @@ static float __pyx_f_6improc_12superregions_4_ccl___compute_dist(__Pyx_memviewsl
   __pyx_r = __pyx_v_diff;
   goto __pyx_L0;
 
-  /* "survos2/improc/regions/_ccl.pyx":124
+  /* "improc/regions/_ccl.pyx":124
  * 
  * 
  * cdef float __compute_dist(float[:, ::1] data, int i, int j):             # <<<<<<<<<<<<<<
@@ -4461,7 +4461,7 @@ static float __pyx_f_6improc_12superregions_4_ccl___compute_dist(__Pyx_memviewsl
   return __pyx_r;
 }
 
-/* "survos2/improc/regions/_ccl.pyx":133
+/* "improc/regions/_ccl.pyx":133
  * 
  * 
  * def _merge_small3d(float[:, :, :, ::1] data,             # <<<<<<<<<<<<<<
@@ -4470,9 +4470,9 @@ static float __pyx_f_6improc_12superregions_4_ccl___compute_dist(__Pyx_memviewsl
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6improc_12superregions_4_ccl_7_merge_small3d(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_6improc_12superregions_4_ccl_7_merge_small3d = {"_merge_small3d", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6improc_12superregions_4_ccl_7_merge_small3d, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_6improc_12superregions_4_ccl_7_merge_small3d(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_6improc_7regions_4_ccl_7_merge_small3d(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_6improc_7regions_4_ccl_7_merge_small3d = {"_merge_small3d", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_6improc_7regions_4_ccl_7_merge_small3d, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6improc_7regions_4_ccl_7_merge_small3d(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   __Pyx_memviewslice __pyx_v_data = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_memviewslice __pyx_v_labels = { 0, 0, { 0 }, { 0 }, { 0 } };
   int __pyx_v_nsv;
@@ -4537,7 +4537,7 @@ static PyObject *__pyx_pw_6improc_12superregions_4_ccl_7_merge_small3d(PyObject 
       values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
     }
     __pyx_v_data = __Pyx_PyObject_to_MemoryviewSlice_d_d_d_dc_float(values[0], PyBUF_WRITABLE); if (unlikely(!__pyx_v_data.memview)) __PYX_ERR(0, 133, __pyx_L3_error)
-    __pyx_v_labels = __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_nn___pyx_t_6improc_12superregions_4_ccl_uint32(values[1], PyBUF_WRITABLE); if (unlikely(!__pyx_v_labels.memview)) __PYX_ERR(0, 134, __pyx_L3_error)
+    __pyx_v_labels = __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_nn___pyx_t_6improc_7regions_4_ccl_uint32(values[1], PyBUF_WRITABLE); if (unlikely(!__pyx_v_labels.memview)) __PYX_ERR(0, 134, __pyx_L3_error)
     __pyx_v_nsv = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_nsv == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 135, __pyx_L3_error)
     __pyx_v_min_size = __Pyx_PyInt_As_int(values[3]); if (unlikely((__pyx_v_min_size == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 135, __pyx_L3_error)
   }
@@ -4545,18 +4545,18 @@ static PyObject *__pyx_pw_6improc_12superregions_4_ccl_7_merge_small3d(PyObject 
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("_merge_small3d", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 133, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("improc.superregions._ccl._merge_small3d", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("improc.regions._ccl._merge_small3d", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(__pyx_self, __pyx_v_data, __pyx_v_labels, __pyx_v_nsv, __pyx_v_min_size);
+  __pyx_r = __pyx_pf_6improc_7regions_4_ccl_6_merge_small3d(__pyx_self, __pyx_v_data, __pyx_v_labels, __pyx_v_nsv, __pyx_v_min_size);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_data, __Pyx_memviewslice __pyx_v_labels, int __pyx_v_nsv, int __pyx_v_min_size) {
+static PyObject *__pyx_pf_6improc_7regions_4_ccl_6_merge_small3d(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_data, __Pyx_memviewslice __pyx_v_labels, int __pyx_v_nsv, int __pyx_v_min_size) {
   int __pyx_v_D;
   int __pyx_v_H;
   int __pyx_v_W;
@@ -4570,10 +4570,10 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
   int __pyx_v_j;
   int __pyx_v_k;
   int __pyx_v_w;
-  __pyx_t_6improc_12superregions_4_ccl_uint32 __pyx_v_r;
-  __pyx_t_6improc_12superregions_4_ccl_uint32 __pyx_v_r2;
-  __pyx_t_6improc_12superregions_4_ccl_uint32 __pyx_v_p;
-  __pyx_t_6improc_12superregions_4_ccl_uint32 __pyx_v_p2;
+  __pyx_t_6improc_7regions_4_ccl_uint32 __pyx_v_r;
+  __pyx_t_6improc_7regions_4_ccl_uint32 __pyx_v_r2;
+  __pyx_t_6improc_7regions_4_ccl_uint32 __pyx_v_p;
+  __pyx_t_6improc_7regions_4_ccl_uint32 __pyx_v_p2;
   float __pyx_v_dist;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -4607,7 +4607,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
   int __pyx_t_28;
   Py_ssize_t __pyx_t_29;
   Py_ssize_t __pyx_t_30;
-  __pyx_t_6improc_12superregions_4_ccl_uint32 __pyx_t_31;
+  __pyx_t_6improc_7regions_4_ccl_uint32 __pyx_t_31;
   int __pyx_t_32;
   size_t __pyx_t_33;
   long __pyx_t_34;
@@ -4622,7 +4622,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_merge_small3d", 0);
 
-  /* "survos2/improc/regions/_ccl.pyx":136
+  /* "improc/regions/_ccl.pyx":136
  *                    uint32[:, :, ::1] labels,
  *                    int nsv, int min_size):
  *     cdef int D = data.shape[0]             # <<<<<<<<<<<<<<
@@ -4631,7 +4631,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
  */
   __pyx_v_D = (__pyx_v_data.shape[0]);
 
-  /* "survos2/improc/regions/_ccl.pyx":137
+  /* "improc/regions/_ccl.pyx":137
  *                    int nsv, int min_size):
  *     cdef int D = data.shape[0]
  *     cdef int H = data.shape[1]             # <<<<<<<<<<<<<<
@@ -4640,7 +4640,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
  */
   __pyx_v_H = (__pyx_v_data.shape[1]);
 
-  /* "survos2/improc/regions/_ccl.pyx":138
+  /* "improc/regions/_ccl.pyx":138
  *     cdef int D = data.shape[0]
  *     cdef int H = data.shape[1]
  *     cdef int W = data.shape[2]             # <<<<<<<<<<<<<<
@@ -4649,7 +4649,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
  */
   __pyx_v_W = (__pyx_v_data.shape[2]);
 
-  /* "survos2/improc/regions/_ccl.pyx":139
+  /* "improc/regions/_ccl.pyx":139
  *     cdef int H = data.shape[1]
  *     cdef int W = data.shape[2]
  *     cdef int C = data.shape[3]             # <<<<<<<<<<<<<<
@@ -4658,7 +4658,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
  */
   __pyx_v_C = (__pyx_v_data.shape[3]);
 
-  /* "survos2/improc/regions/_ccl.pyx":140
+  /* "improc/regions/_ccl.pyx":140
  *     cdef int W = data.shape[2]
  *     cdef int C = data.shape[3]
  *     cdef uint32[::1] svlabels = np.arange(nsv, dtype=np.uint32)             # <<<<<<<<<<<<<<
@@ -4691,13 +4691,13 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_6improc_12superregions_4_ccl_uint32(__pyx_t_5, PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 140, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_6improc_7regions_4_ccl_uint32(__pyx_t_5, PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 140, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_svlabels = __pyx_t_6;
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "survos2/improc/regions/_ccl.pyx":141
+  /* "improc/regions/_ccl.pyx":141
  *     cdef int C = data.shape[3]
  *     cdef uint32[::1] svlabels = np.arange(nsv, dtype=np.uint32)
  *     cdef int[::1] svresult = np.full(nsv, -1, dtype=np.int32)             # <<<<<<<<<<<<<<
@@ -4739,7 +4739,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
   __pyx_t_7.memview = NULL;
   __pyx_t_7.data = NULL;
 
-  /* "survos2/improc/regions/_ccl.pyx":142
+  /* "improc/regions/_ccl.pyx":142
  *     cdef uint32[::1] svlabels = np.arange(nsv, dtype=np.uint32)
  *     cdef int[::1] svresult = np.full(nsv, -1, dtype=np.int32)
  *     cdef float[:, ::1] svdesc = np.zeros((nsv, C), dtype=np.float32)             # <<<<<<<<<<<<<<
@@ -4788,7 +4788,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
   __pyx_t_8.memview = NULL;
   __pyx_t_8.data = NULL;
 
-  /* "survos2/improc/regions/_ccl.pyx":143
+  /* "improc/regions/_ccl.pyx":143
  *     cdef int[::1] svresult = np.full(nsv, -1, dtype=np.int32)
  *     cdef float[:, ::1] svdesc = np.zeros((nsv, C), dtype=np.float32)
  *     cdef float[::1] svdist = np.full(nsv, DMAX, np.float32)             # <<<<<<<<<<<<<<
@@ -4802,7 +4802,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_nsv); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 143, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = PyFloat_FromDouble(__pyx_v_6improc_12superregions_4_ccl_DMAX); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 143, __pyx_L1_error)
+  __pyx_t_5 = PyFloat_FromDouble(__pyx_v_6improc_7regions_4_ccl_DMAX); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 143, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 143, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
@@ -4869,7 +4869,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
   __pyx_t_12.memview = NULL;
   __pyx_t_12.data = NULL;
 
-  /* "survos2/improc/regions/_ccl.pyx":144
+  /* "improc/regions/_ccl.pyx":144
  *     cdef float[:, ::1] svdesc = np.zeros((nsv, C), dtype=np.float32)
  *     cdef float[::1] svdist = np.full(nsv, DMAX, np.float32)
  *     cdef uint16[::1] counts = np.zeros(nsv, np.uint16)             # <<<<<<<<<<<<<<
@@ -4937,13 +4937,13 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
   __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-  __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_6improc_12superregions_4_ccl_uint16(__pyx_t_2, PyBUF_WRITABLE); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 144, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_6improc_7regions_4_ccl_uint16(__pyx_t_2, PyBUF_WRITABLE); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 144, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_counts = __pyx_t_13;
   __pyx_t_13.memview = NULL;
   __pyx_t_13.data = NULL;
 
-  /* "survos2/improc/regions/_ccl.pyx":149
+  /* "improc/regions/_ccl.pyx":149
  *     cdef float dist
  * 
  *     for k in range(D):             # <<<<<<<<<<<<<<
@@ -4955,7 +4955,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
   for (__pyx_t_15 = 0; __pyx_t_15 < __pyx_t_14; __pyx_t_15+=1) {
     __pyx_v_k = __pyx_t_15;
 
-    /* "survos2/improc/regions/_ccl.pyx":150
+    /* "improc/regions/_ccl.pyx":150
  * 
  *     for k in range(D):
  *         for i in range(H):             # <<<<<<<<<<<<<<
@@ -4967,7 +4967,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
     for (__pyx_t_18 = 0; __pyx_t_18 < __pyx_t_17; __pyx_t_18+=1) {
       __pyx_v_i = __pyx_t_18;
 
-      /* "survos2/improc/regions/_ccl.pyx":151
+      /* "improc/regions/_ccl.pyx":151
  *     for k in range(D):
  *         for i in range(H):
  *             for j in range(W):             # <<<<<<<<<<<<<<
@@ -4979,7 +4979,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
       for (__pyx_t_21 = 0; __pyx_t_21 < __pyx_t_20; __pyx_t_21+=1) {
         __pyx_v_j = __pyx_t_21;
 
-        /* "survos2/improc/regions/_ccl.pyx":152
+        /* "improc/regions/_ccl.pyx":152
  *         for i in range(H):
  *             for j in range(W):
  *                 r = labels[k, i, j]             # <<<<<<<<<<<<<<
@@ -4989,9 +4989,9 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
         __pyx_t_22 = __pyx_v_k;
         __pyx_t_23 = __pyx_v_i;
         __pyx_t_24 = __pyx_v_j;
-        __pyx_v_r = (*((__pyx_t_6improc_12superregions_4_ccl_uint32 *) ( /* dim=2 */ ((char *) (((__pyx_t_6improc_12superregions_4_ccl_uint32 *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_labels.data + __pyx_t_22 * __pyx_v_labels.strides[0]) ) + __pyx_t_23 * __pyx_v_labels.strides[1]) )) + __pyx_t_24)) )));
+        __pyx_v_r = (*((__pyx_t_6improc_7regions_4_ccl_uint32 *) ( /* dim=2 */ ((char *) (((__pyx_t_6improc_7regions_4_ccl_uint32 *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_labels.data + __pyx_t_22 * __pyx_v_labels.strides[0]) ) + __pyx_t_23 * __pyx_v_labels.strides[1]) )) + __pyx_t_24)) )));
 
-        /* "survos2/improc/regions/_ccl.pyx":153
+        /* "improc/regions/_ccl.pyx":153
  *             for j in range(W):
  *                 r = labels[k, i, j]
  *                 counts[r] += 1             # <<<<<<<<<<<<<<
@@ -4999,9 +4999,9 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
  *                     svdesc[r, w] += data[k, i, j, w]
  */
         __pyx_t_25 = __pyx_v_r;
-        *((__pyx_t_6improc_12superregions_4_ccl_uint16 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_12superregions_4_ccl_uint16 *) __pyx_v_counts.data) + __pyx_t_25)) )) += 1;
+        *((__pyx_t_6improc_7regions_4_ccl_uint16 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_7regions_4_ccl_uint16 *) __pyx_v_counts.data) + __pyx_t_25)) )) += 1;
 
-        /* "survos2/improc/regions/_ccl.pyx":154
+        /* "improc/regions/_ccl.pyx":154
  *                 r = labels[k, i, j]
  *                 counts[r] += 1
  *                 for w in range(C):             # <<<<<<<<<<<<<<
@@ -5013,7 +5013,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
         for (__pyx_t_28 = 0; __pyx_t_28 < __pyx_t_27; __pyx_t_28+=1) {
           __pyx_v_w = __pyx_t_28;
 
-          /* "survos2/improc/regions/_ccl.pyx":155
+          /* "improc/regions/_ccl.pyx":155
  *                 counts[r] += 1
  *                 for w in range(C):
  *                     svdesc[r, w] += data[k, i, j, w]             # <<<<<<<<<<<<<<
@@ -5032,7 +5032,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
     }
   }
 
-  /* "survos2/improc/regions/_ccl.pyx":157
+  /* "improc/regions/_ccl.pyx":157
  *                     svdesc[r, w] += data[k, i, j, w]
  * 
  *     for r in range(nsv):             # <<<<<<<<<<<<<<
@@ -5044,7 +5044,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
   for (__pyx_t_31 = 0; __pyx_t_31 < __pyx_t_14; __pyx_t_31+=1) {
     __pyx_v_r = __pyx_t_31;
 
-    /* "survos2/improc/regions/_ccl.pyx":158
+    /* "improc/regions/_ccl.pyx":158
  * 
  *     for r in range(nsv):
  *         if counts[r] > 0:             # <<<<<<<<<<<<<<
@@ -5052,10 +5052,10 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
  *                 svdesc[r, w] /= counts[r]
  */
     __pyx_t_25 = __pyx_v_r;
-    __pyx_t_32 = (((*((__pyx_t_6improc_12superregions_4_ccl_uint16 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_12superregions_4_ccl_uint16 *) __pyx_v_counts.data) + __pyx_t_25)) ))) > 0) != 0);
+    __pyx_t_32 = (((*((__pyx_t_6improc_7regions_4_ccl_uint16 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_7regions_4_ccl_uint16 *) __pyx_v_counts.data) + __pyx_t_25)) ))) > 0) != 0);
     if (__pyx_t_32) {
 
-      /* "survos2/improc/regions/_ccl.pyx":159
+      /* "improc/regions/_ccl.pyx":159
  *     for r in range(nsv):
  *         if counts[r] > 0:
  *             for w in range(C):             # <<<<<<<<<<<<<<
@@ -5067,7 +5067,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
       for (__pyx_t_17 = 0; __pyx_t_17 < __pyx_t_16; __pyx_t_17+=1) {
         __pyx_v_w = __pyx_t_17;
 
-        /* "survos2/improc/regions/_ccl.pyx":160
+        /* "improc/regions/_ccl.pyx":160
  *         if counts[r] > 0:
  *             for w in range(C):
  *                 svdesc[r, w] /= counts[r]             # <<<<<<<<<<<<<<
@@ -5077,10 +5077,10 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
         __pyx_t_25 = __pyx_v_r;
         __pyx_t_33 = __pyx_v_r;
         __pyx_t_29 = __pyx_v_w;
-        *((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_svdesc.data + __pyx_t_33 * __pyx_v_svdesc.strides[0]) )) + __pyx_t_29)) )) /= (*((__pyx_t_6improc_12superregions_4_ccl_uint16 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_12superregions_4_ccl_uint16 *) __pyx_v_counts.data) + __pyx_t_25)) )));
+        *((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_svdesc.data + __pyx_t_33 * __pyx_v_svdesc.strides[0]) )) + __pyx_t_29)) )) /= (*((__pyx_t_6improc_7regions_4_ccl_uint16 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_7regions_4_ccl_uint16 *) __pyx_v_counts.data) + __pyx_t_25)) )));
       }
 
-      /* "survos2/improc/regions/_ccl.pyx":158
+      /* "improc/regions/_ccl.pyx":158
  * 
  *     for r in range(nsv):
  *         if counts[r] > 0:             # <<<<<<<<<<<<<<
@@ -5090,7 +5090,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
     }
   }
 
-  /* "survos2/improc/regions/_ccl.pyx":162
+  /* "improc/regions/_ccl.pyx":162
  *                 svdesc[r, w] /= counts[r]
  * 
  *     for k in range(D - 1):             # <<<<<<<<<<<<<<
@@ -5102,7 +5102,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
   for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_35; __pyx_t_10+=1) {
     __pyx_v_k = __pyx_t_10;
 
-    /* "survos2/improc/regions/_ccl.pyx":163
+    /* "improc/regions/_ccl.pyx":163
  * 
  *     for k in range(D - 1):
  *         for i in range(H - 1):             # <<<<<<<<<<<<<<
@@ -5114,7 +5114,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
     for (__pyx_t_14 = 0; __pyx_t_14 < __pyx_t_37; __pyx_t_14+=1) {
       __pyx_v_i = __pyx_t_14;
 
-      /* "survos2/improc/regions/_ccl.pyx":164
+      /* "improc/regions/_ccl.pyx":164
  *     for k in range(D - 1):
  *         for i in range(H - 1):
  *             for j in range(W - 1):             # <<<<<<<<<<<<<<
@@ -5126,7 +5126,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
       for (__pyx_t_15 = 0; __pyx_t_15 < __pyx_t_39; __pyx_t_15+=1) {
         __pyx_v_j = __pyx_t_15;
 
-        /* "survos2/improc/regions/_ccl.pyx":165
+        /* "improc/regions/_ccl.pyx":165
  *         for i in range(H - 1):
  *             for j in range(W - 1):
  *                 r = labels[k, i, j]             # <<<<<<<<<<<<<<
@@ -5136,18 +5136,18 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
         __pyx_t_29 = __pyx_v_k;
         __pyx_t_22 = __pyx_v_i;
         __pyx_t_23 = __pyx_v_j;
-        __pyx_v_r = (*((__pyx_t_6improc_12superregions_4_ccl_uint32 *) ( /* dim=2 */ ((char *) (((__pyx_t_6improc_12superregions_4_ccl_uint32 *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_labels.data + __pyx_t_29 * __pyx_v_labels.strides[0]) ) + __pyx_t_22 * __pyx_v_labels.strides[1]) )) + __pyx_t_23)) )));
+        __pyx_v_r = (*((__pyx_t_6improc_7regions_4_ccl_uint32 *) ( /* dim=2 */ ((char *) (((__pyx_t_6improc_7regions_4_ccl_uint32 *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_labels.data + __pyx_t_29 * __pyx_v_labels.strides[0]) ) + __pyx_t_22 * __pyx_v_labels.strides[1]) )) + __pyx_t_23)) )));
 
-        /* "survos2/improc/regions/_ccl.pyx":166
+        /* "improc/regions/_ccl.pyx":166
  *             for j in range(W - 1):
  *                 r = labels[k, i, j]
  *                 p = _find_root(svlabels, r);             # <<<<<<<<<<<<<<
  * 
  *                 # X
  */
-        __pyx_v_p = __pyx_f_6improc_12superregions_4_ccl__find_root(__pyx_v_svlabels, __pyx_v_r);
+        __pyx_v_p = __pyx_f_6improc_7regions_4_ccl__find_root(__pyx_v_svlabels, __pyx_v_r);
 
-        /* "survos2/improc/regions/_ccl.pyx":169
+        /* "improc/regions/_ccl.pyx":169
  * 
  *                 # X
  *                 r2 = labels[k, i, j+1]             # <<<<<<<<<<<<<<
@@ -5157,18 +5157,18 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
         __pyx_t_23 = __pyx_v_k;
         __pyx_t_22 = __pyx_v_i;
         __pyx_t_29 = (__pyx_v_j + 1);
-        __pyx_v_r2 = (*((__pyx_t_6improc_12superregions_4_ccl_uint32 *) ( /* dim=2 */ ((char *) (((__pyx_t_6improc_12superregions_4_ccl_uint32 *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_labels.data + __pyx_t_23 * __pyx_v_labels.strides[0]) ) + __pyx_t_22 * __pyx_v_labels.strides[1]) )) + __pyx_t_29)) )));
+        __pyx_v_r2 = (*((__pyx_t_6improc_7regions_4_ccl_uint32 *) ( /* dim=2 */ ((char *) (((__pyx_t_6improc_7regions_4_ccl_uint32 *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_labels.data + __pyx_t_23 * __pyx_v_labels.strides[0]) ) + __pyx_t_22 * __pyx_v_labels.strides[1]) )) + __pyx_t_29)) )));
 
-        /* "survos2/improc/regions/_ccl.pyx":170
+        /* "improc/regions/_ccl.pyx":170
  *                 # X
  *                 r2 = labels[k, i, j+1]
  *                 p2 = _find_root(svlabels, r2)             # <<<<<<<<<<<<<<
  *                 if r != r2 and counts[r2] < min_size and p != p2:
  *                     dist = __compute_dist(svdesc, r, r2)
  */
-        __pyx_v_p2 = __pyx_f_6improc_12superregions_4_ccl__find_root(__pyx_v_svlabels, __pyx_v_r2);
+        __pyx_v_p2 = __pyx_f_6improc_7regions_4_ccl__find_root(__pyx_v_svlabels, __pyx_v_r2);
 
-        /* "survos2/improc/regions/_ccl.pyx":171
+        /* "improc/regions/_ccl.pyx":171
  *                 r2 = labels[k, i, j+1]
  *                 p2 = _find_root(svlabels, r2)
  *                 if r != r2 and counts[r2] < min_size and p != p2:             # <<<<<<<<<<<<<<
@@ -5182,7 +5182,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
           goto __pyx_L23_bool_binop_done;
         }
         __pyx_t_25 = __pyx_v_r2;
-        __pyx_t_40 = (((*((__pyx_t_6improc_12superregions_4_ccl_uint16 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_12superregions_4_ccl_uint16 *) __pyx_v_counts.data) + __pyx_t_25)) ))) < __pyx_v_min_size) != 0);
+        __pyx_t_40 = (((*((__pyx_t_6improc_7regions_4_ccl_uint16 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_7regions_4_ccl_uint16 *) __pyx_v_counts.data) + __pyx_t_25)) ))) < __pyx_v_min_size) != 0);
         if (__pyx_t_40) {
         } else {
           __pyx_t_32 = __pyx_t_40;
@@ -5193,16 +5193,16 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
         __pyx_L23_bool_binop_done:;
         if (__pyx_t_32) {
 
-          /* "survos2/improc/regions/_ccl.pyx":172
+          /* "improc/regions/_ccl.pyx":172
  *                 p2 = _find_root(svlabels, r2)
  *                 if r != r2 and counts[r2] < min_size and p != p2:
  *                     dist = __compute_dist(svdesc, r, r2)             # <<<<<<<<<<<<<<
  *                     if dist < svdist[r2]:
  *                         svdist[r2] = dist
  */
-          __pyx_v_dist = __pyx_f_6improc_12superregions_4_ccl___compute_dist(__pyx_v_svdesc, __pyx_v_r, __pyx_v_r2);
+          __pyx_v_dist = __pyx_f_6improc_7regions_4_ccl___compute_dist(__pyx_v_svdesc, __pyx_v_r, __pyx_v_r2);
 
-          /* "survos2/improc/regions/_ccl.pyx":173
+          /* "improc/regions/_ccl.pyx":173
  *                 if r != r2 and counts[r2] < min_size and p != p2:
  *                     dist = __compute_dist(svdesc, r, r2)
  *                     if dist < svdist[r2]:             # <<<<<<<<<<<<<<
@@ -5213,7 +5213,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
           __pyx_t_32 = ((__pyx_v_dist < (*((float *) ( /* dim=0 */ ((char *) (((float *) __pyx_v_svdist.data) + __pyx_t_25)) )))) != 0);
           if (__pyx_t_32) {
 
-            /* "survos2/improc/regions/_ccl.pyx":174
+            /* "improc/regions/_ccl.pyx":174
  *                     dist = __compute_dist(svdesc, r, r2)
  *                     if dist < svdist[r2]:
  *                         svdist[r2] = dist             # <<<<<<<<<<<<<<
@@ -5223,7 +5223,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
             __pyx_t_25 = __pyx_v_r2;
             *((float *) ( /* dim=0 */ ((char *) (((float *) __pyx_v_svdist.data) + __pyx_t_25)) )) = __pyx_v_dist;
 
-            /* "survos2/improc/regions/_ccl.pyx":175
+            /* "improc/regions/_ccl.pyx":175
  *                     if dist < svdist[r2]:
  *                         svdist[r2] = dist
  *                         svlabels[r2] = r             # <<<<<<<<<<<<<<
@@ -5231,9 +5231,9 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
  *                     dist = __compute_dist(svdesc, r, r2)
  */
             __pyx_t_25 = __pyx_v_r2;
-            *((__pyx_t_6improc_12superregions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_12superregions_4_ccl_uint32 *) __pyx_v_svlabels.data) + __pyx_t_25)) )) = __pyx_v_r;
+            *((__pyx_t_6improc_7regions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_7regions_4_ccl_uint32 *) __pyx_v_svlabels.data) + __pyx_t_25)) )) = __pyx_v_r;
 
-            /* "survos2/improc/regions/_ccl.pyx":173
+            /* "improc/regions/_ccl.pyx":173
  *                 if r != r2 and counts[r2] < min_size and p != p2:
  *                     dist = __compute_dist(svdesc, r, r2)
  *                     if dist < svdist[r2]:             # <<<<<<<<<<<<<<
@@ -5242,7 +5242,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
  */
           }
 
-          /* "survos2/improc/regions/_ccl.pyx":171
+          /* "improc/regions/_ccl.pyx":171
  *                 r2 = labels[k, i, j+1]
  *                 p2 = _find_root(svlabels, r2)
  *                 if r != r2 and counts[r2] < min_size and p != p2:             # <<<<<<<<<<<<<<
@@ -5252,7 +5252,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
           goto __pyx_L22;
         }
 
-        /* "survos2/improc/regions/_ccl.pyx":176
+        /* "improc/regions/_ccl.pyx":176
  *                         svdist[r2] = dist
  *                         svlabels[r2] = r
  *                 elif r != r2 and counts[r] < min_size and p != p2:             # <<<<<<<<<<<<<<
@@ -5266,7 +5266,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
           goto __pyx_L27_bool_binop_done;
         }
         __pyx_t_25 = __pyx_v_r;
-        __pyx_t_40 = (((*((__pyx_t_6improc_12superregions_4_ccl_uint16 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_12superregions_4_ccl_uint16 *) __pyx_v_counts.data) + __pyx_t_25)) ))) < __pyx_v_min_size) != 0);
+        __pyx_t_40 = (((*((__pyx_t_6improc_7regions_4_ccl_uint16 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_7regions_4_ccl_uint16 *) __pyx_v_counts.data) + __pyx_t_25)) ))) < __pyx_v_min_size) != 0);
         if (__pyx_t_40) {
         } else {
           __pyx_t_32 = __pyx_t_40;
@@ -5277,16 +5277,16 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
         __pyx_L27_bool_binop_done:;
         if (__pyx_t_32) {
 
-          /* "survos2/improc/regions/_ccl.pyx":177
+          /* "improc/regions/_ccl.pyx":177
  *                         svlabels[r2] = r
  *                 elif r != r2 and counts[r] < min_size and p != p2:
  *                     dist = __compute_dist(svdesc, r, r2)             # <<<<<<<<<<<<<<
  *                     if dist < svdist[r]:
  *                         svdist[r] = dist
  */
-          __pyx_v_dist = __pyx_f_6improc_12superregions_4_ccl___compute_dist(__pyx_v_svdesc, __pyx_v_r, __pyx_v_r2);
+          __pyx_v_dist = __pyx_f_6improc_7regions_4_ccl___compute_dist(__pyx_v_svdesc, __pyx_v_r, __pyx_v_r2);
 
-          /* "survos2/improc/regions/_ccl.pyx":178
+          /* "improc/regions/_ccl.pyx":178
  *                 elif r != r2 and counts[r] < min_size and p != p2:
  *                     dist = __compute_dist(svdesc, r, r2)
  *                     if dist < svdist[r]:             # <<<<<<<<<<<<<<
@@ -5297,7 +5297,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
           __pyx_t_32 = ((__pyx_v_dist < (*((float *) ( /* dim=0 */ ((char *) (((float *) __pyx_v_svdist.data) + __pyx_t_25)) )))) != 0);
           if (__pyx_t_32) {
 
-            /* "survos2/improc/regions/_ccl.pyx":179
+            /* "improc/regions/_ccl.pyx":179
  *                     dist = __compute_dist(svdesc, r, r2)
  *                     if dist < svdist[r]:
  *                         svdist[r] = dist             # <<<<<<<<<<<<<<
@@ -5307,7 +5307,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
             __pyx_t_25 = __pyx_v_r;
             *((float *) ( /* dim=0 */ ((char *) (((float *) __pyx_v_svdist.data) + __pyx_t_25)) )) = __pyx_v_dist;
 
-            /* "survos2/improc/regions/_ccl.pyx":180
+            /* "improc/regions/_ccl.pyx":180
  *                     if dist < svdist[r]:
  *                         svdist[r] = dist
  *                         svlabels[r] = r2             # <<<<<<<<<<<<<<
@@ -5315,9 +5315,9 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
  *                 # Y
  */
             __pyx_t_25 = __pyx_v_r;
-            *((__pyx_t_6improc_12superregions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_12superregions_4_ccl_uint32 *) __pyx_v_svlabels.data) + __pyx_t_25)) )) = __pyx_v_r2;
+            *((__pyx_t_6improc_7regions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_7regions_4_ccl_uint32 *) __pyx_v_svlabels.data) + __pyx_t_25)) )) = __pyx_v_r2;
 
-            /* "survos2/improc/regions/_ccl.pyx":178
+            /* "improc/regions/_ccl.pyx":178
  *                 elif r != r2 and counts[r] < min_size and p != p2:
  *                     dist = __compute_dist(svdesc, r, r2)
  *                     if dist < svdist[r]:             # <<<<<<<<<<<<<<
@@ -5326,7 +5326,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
  */
           }
 
-          /* "survos2/improc/regions/_ccl.pyx":176
+          /* "improc/regions/_ccl.pyx":176
  *                         svdist[r2] = dist
  *                         svlabels[r2] = r
  *                 elif r != r2 and counts[r] < min_size and p != p2:             # <<<<<<<<<<<<<<
@@ -5336,7 +5336,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
         }
         __pyx_L22:;
 
-        /* "survos2/improc/regions/_ccl.pyx":183
+        /* "improc/regions/_ccl.pyx":183
  * 
  *                 # Y
  *                 r2 = labels[k, i+1, j]             # <<<<<<<<<<<<<<
@@ -5346,18 +5346,18 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
         __pyx_t_29 = __pyx_v_k;
         __pyx_t_22 = (__pyx_v_i + 1);
         __pyx_t_23 = __pyx_v_j;
-        __pyx_v_r2 = (*((__pyx_t_6improc_12superregions_4_ccl_uint32 *) ( /* dim=2 */ ((char *) (((__pyx_t_6improc_12superregions_4_ccl_uint32 *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_labels.data + __pyx_t_29 * __pyx_v_labels.strides[0]) ) + __pyx_t_22 * __pyx_v_labels.strides[1]) )) + __pyx_t_23)) )));
+        __pyx_v_r2 = (*((__pyx_t_6improc_7regions_4_ccl_uint32 *) ( /* dim=2 */ ((char *) (((__pyx_t_6improc_7regions_4_ccl_uint32 *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_labels.data + __pyx_t_29 * __pyx_v_labels.strides[0]) ) + __pyx_t_22 * __pyx_v_labels.strides[1]) )) + __pyx_t_23)) )));
 
-        /* "survos2/improc/regions/_ccl.pyx":184
+        /* "improc/regions/_ccl.pyx":184
  *                 # Y
  *                 r2 = labels[k, i+1, j]
  *                 p2 = _find_root(svlabels, r2)             # <<<<<<<<<<<<<<
  *                 if r != r2 and counts[r2] < min_size and p != p2:
  *                     dist = __compute_dist(svdesc, r, r2)
  */
-        __pyx_v_p2 = __pyx_f_6improc_12superregions_4_ccl__find_root(__pyx_v_svlabels, __pyx_v_r2);
+        __pyx_v_p2 = __pyx_f_6improc_7regions_4_ccl__find_root(__pyx_v_svlabels, __pyx_v_r2);
 
-        /* "survos2/improc/regions/_ccl.pyx":185
+        /* "improc/regions/_ccl.pyx":185
  *                 r2 = labels[k, i+1, j]
  *                 p2 = _find_root(svlabels, r2)
  *                 if r != r2 and counts[r2] < min_size and p != p2:             # <<<<<<<<<<<<<<
@@ -5371,7 +5371,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
           goto __pyx_L32_bool_binop_done;
         }
         __pyx_t_25 = __pyx_v_r2;
-        __pyx_t_40 = (((*((__pyx_t_6improc_12superregions_4_ccl_uint16 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_12superregions_4_ccl_uint16 *) __pyx_v_counts.data) + __pyx_t_25)) ))) < __pyx_v_min_size) != 0);
+        __pyx_t_40 = (((*((__pyx_t_6improc_7regions_4_ccl_uint16 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_7regions_4_ccl_uint16 *) __pyx_v_counts.data) + __pyx_t_25)) ))) < __pyx_v_min_size) != 0);
         if (__pyx_t_40) {
         } else {
           __pyx_t_32 = __pyx_t_40;
@@ -5382,16 +5382,16 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
         __pyx_L32_bool_binop_done:;
         if (__pyx_t_32) {
 
-          /* "survos2/improc/regions/_ccl.pyx":186
+          /* "improc/regions/_ccl.pyx":186
  *                 p2 = _find_root(svlabels, r2)
  *                 if r != r2 and counts[r2] < min_size and p != p2:
  *                     dist = __compute_dist(svdesc, r, r2)             # <<<<<<<<<<<<<<
  *                     if dist < svdist[r2]:
  *                         svdist[r2] = dist
  */
-          __pyx_v_dist = __pyx_f_6improc_12superregions_4_ccl___compute_dist(__pyx_v_svdesc, __pyx_v_r, __pyx_v_r2);
+          __pyx_v_dist = __pyx_f_6improc_7regions_4_ccl___compute_dist(__pyx_v_svdesc, __pyx_v_r, __pyx_v_r2);
 
-          /* "survos2/improc/regions/_ccl.pyx":187
+          /* "improc/regions/_ccl.pyx":187
  *                 if r != r2 and counts[r2] < min_size and p != p2:
  *                     dist = __compute_dist(svdesc, r, r2)
  *                     if dist < svdist[r2]:             # <<<<<<<<<<<<<<
@@ -5402,7 +5402,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
           __pyx_t_32 = ((__pyx_v_dist < (*((float *) ( /* dim=0 */ ((char *) (((float *) __pyx_v_svdist.data) + __pyx_t_25)) )))) != 0);
           if (__pyx_t_32) {
 
-            /* "survos2/improc/regions/_ccl.pyx":188
+            /* "improc/regions/_ccl.pyx":188
  *                     dist = __compute_dist(svdesc, r, r2)
  *                     if dist < svdist[r2]:
  *                         svdist[r2] = dist             # <<<<<<<<<<<<<<
@@ -5412,7 +5412,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
             __pyx_t_25 = __pyx_v_r2;
             *((float *) ( /* dim=0 */ ((char *) (((float *) __pyx_v_svdist.data) + __pyx_t_25)) )) = __pyx_v_dist;
 
-            /* "survos2/improc/regions/_ccl.pyx":189
+            /* "improc/regions/_ccl.pyx":189
  *                     if dist < svdist[r2]:
  *                         svdist[r2] = dist
  *                         svlabels[r2] = r             # <<<<<<<<<<<<<<
@@ -5420,9 +5420,9 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
  *                     dist = __compute_dist(svdesc, r, r2)
  */
             __pyx_t_25 = __pyx_v_r2;
-            *((__pyx_t_6improc_12superregions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_12superregions_4_ccl_uint32 *) __pyx_v_svlabels.data) + __pyx_t_25)) )) = __pyx_v_r;
+            *((__pyx_t_6improc_7regions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_7regions_4_ccl_uint32 *) __pyx_v_svlabels.data) + __pyx_t_25)) )) = __pyx_v_r;
 
-            /* "survos2/improc/regions/_ccl.pyx":187
+            /* "improc/regions/_ccl.pyx":187
  *                 if r != r2 and counts[r2] < min_size and p != p2:
  *                     dist = __compute_dist(svdesc, r, r2)
  *                     if dist < svdist[r2]:             # <<<<<<<<<<<<<<
@@ -5431,7 +5431,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
  */
           }
 
-          /* "survos2/improc/regions/_ccl.pyx":185
+          /* "improc/regions/_ccl.pyx":185
  *                 r2 = labels[k, i+1, j]
  *                 p2 = _find_root(svlabels, r2)
  *                 if r != r2 and counts[r2] < min_size and p != p2:             # <<<<<<<<<<<<<<
@@ -5441,7 +5441,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
           goto __pyx_L31;
         }
 
-        /* "survos2/improc/regions/_ccl.pyx":190
+        /* "improc/regions/_ccl.pyx":190
  *                         svdist[r2] = dist
  *                         svlabels[r2] = r
  *                 elif r != r2 and counts[r] < min_size and p != p2:             # <<<<<<<<<<<<<<
@@ -5455,7 +5455,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
           goto __pyx_L36_bool_binop_done;
         }
         __pyx_t_25 = __pyx_v_r;
-        __pyx_t_40 = (((*((__pyx_t_6improc_12superregions_4_ccl_uint16 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_12superregions_4_ccl_uint16 *) __pyx_v_counts.data) + __pyx_t_25)) ))) < __pyx_v_min_size) != 0);
+        __pyx_t_40 = (((*((__pyx_t_6improc_7regions_4_ccl_uint16 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_7regions_4_ccl_uint16 *) __pyx_v_counts.data) + __pyx_t_25)) ))) < __pyx_v_min_size) != 0);
         if (__pyx_t_40) {
         } else {
           __pyx_t_32 = __pyx_t_40;
@@ -5466,16 +5466,16 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
         __pyx_L36_bool_binop_done:;
         if (__pyx_t_32) {
 
-          /* "survos2/improc/regions/_ccl.pyx":191
+          /* "improc/regions/_ccl.pyx":191
  *                         svlabels[r2] = r
  *                 elif r != r2 and counts[r] < min_size and p != p2:
  *                     dist = __compute_dist(svdesc, r, r2)             # <<<<<<<<<<<<<<
  *                     if dist < svdist[r]:
  *                         svdist[r] = dist
  */
-          __pyx_v_dist = __pyx_f_6improc_12superregions_4_ccl___compute_dist(__pyx_v_svdesc, __pyx_v_r, __pyx_v_r2);
+          __pyx_v_dist = __pyx_f_6improc_7regions_4_ccl___compute_dist(__pyx_v_svdesc, __pyx_v_r, __pyx_v_r2);
 
-          /* "survos2/improc/regions/_ccl.pyx":192
+          /* "improc/regions/_ccl.pyx":192
  *                 elif r != r2 and counts[r] < min_size and p != p2:
  *                     dist = __compute_dist(svdesc, r, r2)
  *                     if dist < svdist[r]:             # <<<<<<<<<<<<<<
@@ -5486,7 +5486,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
           __pyx_t_32 = ((__pyx_v_dist < (*((float *) ( /* dim=0 */ ((char *) (((float *) __pyx_v_svdist.data) + __pyx_t_25)) )))) != 0);
           if (__pyx_t_32) {
 
-            /* "survos2/improc/regions/_ccl.pyx":193
+            /* "improc/regions/_ccl.pyx":193
  *                     dist = __compute_dist(svdesc, r, r2)
  *                     if dist < svdist[r]:
  *                         svdist[r] = dist             # <<<<<<<<<<<<<<
@@ -5496,7 +5496,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
             __pyx_t_25 = __pyx_v_r;
             *((float *) ( /* dim=0 */ ((char *) (((float *) __pyx_v_svdist.data) + __pyx_t_25)) )) = __pyx_v_dist;
 
-            /* "survos2/improc/regions/_ccl.pyx":194
+            /* "improc/regions/_ccl.pyx":194
  *                     if dist < svdist[r]:
  *                         svdist[r] = dist
  *                         svlabels[r] = r2             # <<<<<<<<<<<<<<
@@ -5504,9 +5504,9 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
  *                 # Z
  */
             __pyx_t_25 = __pyx_v_r;
-            *((__pyx_t_6improc_12superregions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_12superregions_4_ccl_uint32 *) __pyx_v_svlabels.data) + __pyx_t_25)) )) = __pyx_v_r2;
+            *((__pyx_t_6improc_7regions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_7regions_4_ccl_uint32 *) __pyx_v_svlabels.data) + __pyx_t_25)) )) = __pyx_v_r2;
 
-            /* "survos2/improc/regions/_ccl.pyx":192
+            /* "improc/regions/_ccl.pyx":192
  *                 elif r != r2 and counts[r] < min_size and p != p2:
  *                     dist = __compute_dist(svdesc, r, r2)
  *                     if dist < svdist[r]:             # <<<<<<<<<<<<<<
@@ -5515,7 +5515,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
  */
           }
 
-          /* "survos2/improc/regions/_ccl.pyx":190
+          /* "improc/regions/_ccl.pyx":190
  *                         svdist[r2] = dist
  *                         svlabels[r2] = r
  *                 elif r != r2 and counts[r] < min_size and p != p2:             # <<<<<<<<<<<<<<
@@ -5525,7 +5525,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
         }
         __pyx_L31:;
 
-        /* "survos2/improc/regions/_ccl.pyx":197
+        /* "improc/regions/_ccl.pyx":197
  * 
  *                 # Z
  *                 r2 = labels[k+1, i, j]             # <<<<<<<<<<<<<<
@@ -5535,18 +5535,18 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
         __pyx_t_23 = (__pyx_v_k + 1);
         __pyx_t_22 = __pyx_v_i;
         __pyx_t_29 = __pyx_v_j;
-        __pyx_v_r2 = (*((__pyx_t_6improc_12superregions_4_ccl_uint32 *) ( /* dim=2 */ ((char *) (((__pyx_t_6improc_12superregions_4_ccl_uint32 *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_labels.data + __pyx_t_23 * __pyx_v_labels.strides[0]) ) + __pyx_t_22 * __pyx_v_labels.strides[1]) )) + __pyx_t_29)) )));
+        __pyx_v_r2 = (*((__pyx_t_6improc_7regions_4_ccl_uint32 *) ( /* dim=2 */ ((char *) (((__pyx_t_6improc_7regions_4_ccl_uint32 *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_labels.data + __pyx_t_23 * __pyx_v_labels.strides[0]) ) + __pyx_t_22 * __pyx_v_labels.strides[1]) )) + __pyx_t_29)) )));
 
-        /* "survos2/improc/regions/_ccl.pyx":198
+        /* "improc/regions/_ccl.pyx":198
  *                 # Z
  *                 r2 = labels[k+1, i, j]
  *                 p2 = _find_root(svlabels, r2)             # <<<<<<<<<<<<<<
  *                 if r != r2 and counts[r2] < min_size and p != p2:
  *                     dist = __compute_dist(svdesc, r, r2)
  */
-        __pyx_v_p2 = __pyx_f_6improc_12superregions_4_ccl__find_root(__pyx_v_svlabels, __pyx_v_r2);
+        __pyx_v_p2 = __pyx_f_6improc_7regions_4_ccl__find_root(__pyx_v_svlabels, __pyx_v_r2);
 
-        /* "survos2/improc/regions/_ccl.pyx":199
+        /* "improc/regions/_ccl.pyx":199
  *                 r2 = labels[k+1, i, j]
  *                 p2 = _find_root(svlabels, r2)
  *                 if r != r2 and counts[r2] < min_size and p != p2:             # <<<<<<<<<<<<<<
@@ -5560,7 +5560,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
           goto __pyx_L41_bool_binop_done;
         }
         __pyx_t_25 = __pyx_v_r2;
-        __pyx_t_40 = (((*((__pyx_t_6improc_12superregions_4_ccl_uint16 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_12superregions_4_ccl_uint16 *) __pyx_v_counts.data) + __pyx_t_25)) ))) < __pyx_v_min_size) != 0);
+        __pyx_t_40 = (((*((__pyx_t_6improc_7regions_4_ccl_uint16 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_7regions_4_ccl_uint16 *) __pyx_v_counts.data) + __pyx_t_25)) ))) < __pyx_v_min_size) != 0);
         if (__pyx_t_40) {
         } else {
           __pyx_t_32 = __pyx_t_40;
@@ -5571,16 +5571,16 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
         __pyx_L41_bool_binop_done:;
         if (__pyx_t_32) {
 
-          /* "survos2/improc/regions/_ccl.pyx":200
+          /* "improc/regions/_ccl.pyx":200
  *                 p2 = _find_root(svlabels, r2)
  *                 if r != r2 and counts[r2] < min_size and p != p2:
  *                     dist = __compute_dist(svdesc, r, r2)             # <<<<<<<<<<<<<<
  *                     if dist < svdist[r2]:
  *                         svdist[r2] = dist
  */
-          __pyx_v_dist = __pyx_f_6improc_12superregions_4_ccl___compute_dist(__pyx_v_svdesc, __pyx_v_r, __pyx_v_r2);
+          __pyx_v_dist = __pyx_f_6improc_7regions_4_ccl___compute_dist(__pyx_v_svdesc, __pyx_v_r, __pyx_v_r2);
 
-          /* "survos2/improc/regions/_ccl.pyx":201
+          /* "improc/regions/_ccl.pyx":201
  *                 if r != r2 and counts[r2] < min_size and p != p2:
  *                     dist = __compute_dist(svdesc, r, r2)
  *                     if dist < svdist[r2]:             # <<<<<<<<<<<<<<
@@ -5591,7 +5591,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
           __pyx_t_32 = ((__pyx_v_dist < (*((float *) ( /* dim=0 */ ((char *) (((float *) __pyx_v_svdist.data) + __pyx_t_25)) )))) != 0);
           if (__pyx_t_32) {
 
-            /* "survos2/improc/regions/_ccl.pyx":202
+            /* "improc/regions/_ccl.pyx":202
  *                     dist = __compute_dist(svdesc, r, r2)
  *                     if dist < svdist[r2]:
  *                         svdist[r2] = dist             # <<<<<<<<<<<<<<
@@ -5601,7 +5601,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
             __pyx_t_25 = __pyx_v_r2;
             *((float *) ( /* dim=0 */ ((char *) (((float *) __pyx_v_svdist.data) + __pyx_t_25)) )) = __pyx_v_dist;
 
-            /* "survos2/improc/regions/_ccl.pyx":203
+            /* "improc/regions/_ccl.pyx":203
  *                     if dist < svdist[r2]:
  *                         svdist[r2] = dist
  *                         svlabels[r2] = r             # <<<<<<<<<<<<<<
@@ -5609,9 +5609,9 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
  *                     dist = __compute_dist(svdesc, r, r2)
  */
             __pyx_t_25 = __pyx_v_r2;
-            *((__pyx_t_6improc_12superregions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_12superregions_4_ccl_uint32 *) __pyx_v_svlabels.data) + __pyx_t_25)) )) = __pyx_v_r;
+            *((__pyx_t_6improc_7regions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_7regions_4_ccl_uint32 *) __pyx_v_svlabels.data) + __pyx_t_25)) )) = __pyx_v_r;
 
-            /* "survos2/improc/regions/_ccl.pyx":201
+            /* "improc/regions/_ccl.pyx":201
  *                 if r != r2 and counts[r2] < min_size and p != p2:
  *                     dist = __compute_dist(svdesc, r, r2)
  *                     if dist < svdist[r2]:             # <<<<<<<<<<<<<<
@@ -5620,7 +5620,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
  */
           }
 
-          /* "survos2/improc/regions/_ccl.pyx":199
+          /* "improc/regions/_ccl.pyx":199
  *                 r2 = labels[k+1, i, j]
  *                 p2 = _find_root(svlabels, r2)
  *                 if r != r2 and counts[r2] < min_size and p != p2:             # <<<<<<<<<<<<<<
@@ -5630,7 +5630,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
           goto __pyx_L40;
         }
 
-        /* "survos2/improc/regions/_ccl.pyx":204
+        /* "improc/regions/_ccl.pyx":204
  *                         svdist[r2] = dist
  *                         svlabels[r2] = r
  *                 elif r != r2 and counts[r] < min_size and p != p2:             # <<<<<<<<<<<<<<
@@ -5644,7 +5644,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
           goto __pyx_L45_bool_binop_done;
         }
         __pyx_t_25 = __pyx_v_r;
-        __pyx_t_40 = (((*((__pyx_t_6improc_12superregions_4_ccl_uint16 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_12superregions_4_ccl_uint16 *) __pyx_v_counts.data) + __pyx_t_25)) ))) < __pyx_v_min_size) != 0);
+        __pyx_t_40 = (((*((__pyx_t_6improc_7regions_4_ccl_uint16 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_7regions_4_ccl_uint16 *) __pyx_v_counts.data) + __pyx_t_25)) ))) < __pyx_v_min_size) != 0);
         if (__pyx_t_40) {
         } else {
           __pyx_t_32 = __pyx_t_40;
@@ -5655,16 +5655,16 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
         __pyx_L45_bool_binop_done:;
         if (__pyx_t_32) {
 
-          /* "survos2/improc/regions/_ccl.pyx":205
+          /* "improc/regions/_ccl.pyx":205
  *                         svlabels[r2] = r
  *                 elif r != r2 and counts[r] < min_size and p != p2:
  *                     dist = __compute_dist(svdesc, r, r2)             # <<<<<<<<<<<<<<
  *                     if dist < svdist[r]:
  *                         svdist[r] = dist
  */
-          __pyx_v_dist = __pyx_f_6improc_12superregions_4_ccl___compute_dist(__pyx_v_svdesc, __pyx_v_r, __pyx_v_r2);
+          __pyx_v_dist = __pyx_f_6improc_7regions_4_ccl___compute_dist(__pyx_v_svdesc, __pyx_v_r, __pyx_v_r2);
 
-          /* "survos2/improc/regions/_ccl.pyx":206
+          /* "improc/regions/_ccl.pyx":206
  *                 elif r != r2 and counts[r] < min_size and p != p2:
  *                     dist = __compute_dist(svdesc, r, r2)
  *                     if dist < svdist[r]:             # <<<<<<<<<<<<<<
@@ -5675,7 +5675,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
           __pyx_t_32 = ((__pyx_v_dist < (*((float *) ( /* dim=0 */ ((char *) (((float *) __pyx_v_svdist.data) + __pyx_t_25)) )))) != 0);
           if (__pyx_t_32) {
 
-            /* "survos2/improc/regions/_ccl.pyx":207
+            /* "improc/regions/_ccl.pyx":207
  *                     dist = __compute_dist(svdesc, r, r2)
  *                     if dist < svdist[r]:
  *                         svdist[r] = dist             # <<<<<<<<<<<<<<
@@ -5685,7 +5685,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
             __pyx_t_25 = __pyx_v_r;
             *((float *) ( /* dim=0 */ ((char *) (((float *) __pyx_v_svdist.data) + __pyx_t_25)) )) = __pyx_v_dist;
 
-            /* "survos2/improc/regions/_ccl.pyx":208
+            /* "improc/regions/_ccl.pyx":208
  *                     if dist < svdist[r]:
  *                         svdist[r] = dist
  *                         svlabels[r] = r2             # <<<<<<<<<<<<<<
@@ -5693,9 +5693,9 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
  *     _cremap(svlabels, svresult)
  */
             __pyx_t_25 = __pyx_v_r;
-            *((__pyx_t_6improc_12superregions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_12superregions_4_ccl_uint32 *) __pyx_v_svlabels.data) + __pyx_t_25)) )) = __pyx_v_r2;
+            *((__pyx_t_6improc_7regions_4_ccl_uint32 *) ( /* dim=0 */ ((char *) (((__pyx_t_6improc_7regions_4_ccl_uint32 *) __pyx_v_svlabels.data) + __pyx_t_25)) )) = __pyx_v_r2;
 
-            /* "survos2/improc/regions/_ccl.pyx":206
+            /* "improc/regions/_ccl.pyx":206
  *                 elif r != r2 and counts[r] < min_size and p != p2:
  *                     dist = __compute_dist(svdesc, r, r2)
  *                     if dist < svdist[r]:             # <<<<<<<<<<<<<<
@@ -5704,7 +5704,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
  */
           }
 
-          /* "survos2/improc/regions/_ccl.pyx":204
+          /* "improc/regions/_ccl.pyx":204
  *                         svdist[r2] = dist
  *                         svlabels[r2] = r
  *                 elif r != r2 and counts[r] < min_size and p != p2:             # <<<<<<<<<<<<<<
@@ -5717,16 +5717,16 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
     }
   }
 
-  /* "survos2/improc/regions/_ccl.pyx":210
+  /* "improc/regions/_ccl.pyx":210
  *                         svlabels[r] = r2
  * 
  *     _cremap(svlabels, svresult)             # <<<<<<<<<<<<<<
  *     return np.asarray(svresult, dtype=np.uint32)[labels]
  * 
  */
-  __pyx_f_6improc_12superregions_4_ccl__cremap(__pyx_v_svlabels, __pyx_v_svresult);
+  __pyx_f_6improc_7regions_4_ccl__cremap(__pyx_v_svlabels, __pyx_v_svresult);
 
-  /* "survos2/improc/regions/_ccl.pyx":211
+  /* "improc/regions/_ccl.pyx":211
  * 
  *     _cremap(svlabels, svresult)
  *     return np.asarray(svresult, dtype=np.uint32)[labels]             # <<<<<<<<<<<<<<
@@ -5760,7 +5760,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
   __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_labels, 3, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_6improc_12superregions_4_ccl_uint32, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_6improc_12superregions_4_ccl_uint32, 0);; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 211, __pyx_L1_error)
+  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_labels, 3, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_6improc_7regions_4_ccl_uint32, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_6improc_7regions_4_ccl_uint32, 0);; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 211, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 211, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -5770,7 +5770,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "survos2/improc/regions/_ccl.pyx":133
+  /* "improc/regions/_ccl.pyx":133
  * 
  * 
  * def _merge_small3d(float[:, :, :, ::1] data,             # <<<<<<<<<<<<<<
@@ -5792,7 +5792,7 @@ static PyObject *__pyx_pf_6improc_12superregions_4_ccl_6_merge_small3d(CYTHON_UN
   __Pyx_XDECREF(__pyx_t_11);
   __PYX_XDEC_MEMVIEW(&__pyx_t_12, 1);
   __PYX_XDEC_MEMVIEW(&__pyx_t_13, 1);
-  __Pyx_AddTraceback("improc.superregions._ccl._merge_small3d", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("improc.regions._ccl._merge_small3d", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __PYX_XDEC_MEMVIEW(&__pyx_v_svlabels, 1);
@@ -21395,7 +21395,7 @@ static PyBufferProcs __pyx_tp_as_buffer_array = {
 
 static PyTypeObject __pyx_type___pyx_array = {
   PyVarObject_HEAD_INIT(0, 0)
-  "improc.superregions._ccl.array", /*tp_name*/
+  "improc.regions._ccl.array", /*tp_name*/
   sizeof(struct __pyx_array_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_array, /*tp_dealloc*/
@@ -21514,7 +21514,7 @@ static PyMethodDef __pyx_methods_Enum[] = {
 
 static PyTypeObject __pyx_type___pyx_MemviewEnum = {
   PyVarObject_HEAD_INIT(0, 0)
-  "improc.superregions._ccl.Enum", /*tp_name*/
+  "improc.regions._ccl.Enum", /*tp_name*/
   sizeof(struct __pyx_MemviewEnum_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_Enum, /*tp_dealloc*/
@@ -21775,7 +21775,7 @@ static PyBufferProcs __pyx_tp_as_buffer_memoryview = {
 
 static PyTypeObject __pyx_type___pyx_memoryview = {
   PyVarObject_HEAD_INIT(0, 0)
-  "improc.superregions._ccl.memoryview", /*tp_name*/
+  "improc.regions._ccl.memoryview", /*tp_name*/
   sizeof(struct __pyx_memoryview_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_memoryview, /*tp_dealloc*/
@@ -21913,7 +21913,7 @@ static struct PyGetSetDef __pyx_getsets__memoryviewslice[] = {
 
 static PyTypeObject __pyx_type___pyx_memoryviewslice = {
   PyVarObject_HEAD_INIT(0, 0)
-  "improc.superregions._ccl._memoryviewslice", /*tp_name*/
+  "improc.regions._ccl._memoryviewslice", /*tp_name*/
   sizeof(struct __pyx_memoryviewslice_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc__memoryviewslice, /*tp_dealloc*/
@@ -22098,7 +22098,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_i, __pyx_k_i, sizeof(__pyx_k_i), 0, 0, 1, 1},
   {&__pyx_n_s_id, __pyx_k_id, sizeof(__pyx_k_id), 0, 0, 1, 1},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
-  {&__pyx_n_s_improc_superregions__ccl, __pyx_k_improc_superregions__ccl, sizeof(__pyx_k_improc_superregions__ccl), 0, 0, 1, 1},
+  {&__pyx_n_s_improc_regions__ccl, __pyx_k_improc_regions__ccl, sizeof(__pyx_k_improc_regions__ccl), 0, 0, 1, 1},
   {&__pyx_n_s_int32, __pyx_k_int32, sizeof(__pyx_k_int32), 0, 0, 1, 1},
   {&__pyx_n_s_itemsize, __pyx_k_itemsize, sizeof(__pyx_k_itemsize), 0, 0, 1, 1},
   {&__pyx_kp_s_itemsize_0_for_cython_array, __pyx_k_itemsize_0_for_cython_array, sizeof(__pyx_k_itemsize_0_for_cython_array), 0, 0, 1, 0},
@@ -22472,7 +22472,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__25);
   __Pyx_GIVEREF(__pyx_tuple__25);
 
-  /* "survos2/improc/regions/_ccl.pyx":53
+  /* "improc/regions/_ccl.pyx":53
  * 
  * 
  * def _remap(uint32[::1] src):             # <<<<<<<<<<<<<<
@@ -22484,7 +22484,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GIVEREF(__pyx_tuple__26);
   __pyx_codeobj__27 = (PyObject*)__Pyx_PyCode_New(1, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__26, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_survos2_improc_regions__ccl_pyx, __pyx_n_s_remap, 53, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__27)) __PYX_ERR(0, 53, __pyx_L1_error)
 
-  /* "survos2/improc/regions/_ccl.pyx":60
+  /* "improc/regions/_ccl.pyx":60
  * 
  * 
  * def _relabel2d(uint32[::1] src, int width):             # <<<<<<<<<<<<<<
@@ -22496,7 +22496,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GIVEREF(__pyx_tuple__28);
   __pyx_codeobj__29 = (PyObject*)__Pyx_PyCode_New(2, 0, 10, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__28, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_survos2_improc_regions__ccl_pyx, __pyx_n_s_relabel2d, 60, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__29)) __PYX_ERR(0, 60, __pyx_L1_error)
 
-  /* "survos2/improc/regions/_ccl.pyx":88
+  /* "improc/regions/_ccl.pyx":88
  * 
  * 
  * def _relabel3d(uint32[::1] src, int height, int width):             # <<<<<<<<<<<<<<
@@ -22508,7 +22508,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GIVEREF(__pyx_tuple__30);
   __pyx_codeobj__31 = (PyObject*)__Pyx_PyCode_New(3, 0, 13, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__30, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_survos2_improc_regions__ccl_pyx, __pyx_n_s_relabel3d, 88, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__31)) __PYX_ERR(0, 88, __pyx_L1_error)
 
-  /* "survos2/improc/regions/_ccl.pyx":133
+  /* "improc/regions/_ccl.pyx":133
  * 
  * 
  * def _merge_small3d(float[:, :, :, ::1] data,             # <<<<<<<<<<<<<<
@@ -22935,14 +22935,14 @@ if (!__Pyx_RefNanny) {
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_improc__superregions___ccl) {
+  if (__pyx_module_is_main_improc__regions___ccl) {
     if (PyObject_SetAttr(__pyx_m, __pyx_n_s_name_2, __pyx_n_s_main) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "improc.superregions._ccl")) {
-      if (unlikely(PyDict_SetItemString(modules, "improc.superregions._ccl", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "improc.regions._ccl")) {
+      if (unlikely(PyDict_SetItemString(modules, "improc.regions._ccl", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -22963,7 +22963,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "survos2/improc/regions/_ccl.pyx":7
+  /* "improc/regions/_ccl.pyx":7
  * 
  * 
  * import numpy as np             # <<<<<<<<<<<<<<
@@ -22975,64 +22975,64 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_np, __pyx_t_1) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "survos2/improc/regions/_ccl.pyx":11
+  /* "improc/regions/_ccl.pyx":11
  * 
  * 
  * cdef float DMAX = 9999999             # <<<<<<<<<<<<<<
  * 
  * ctypedef unsigned int uint32
  */
-  __pyx_v_6improc_12superregions_4_ccl_DMAX = 9999999.0;
+  __pyx_v_6improc_7regions_4_ccl_DMAX = 9999999.0;
 
-  /* "survos2/improc/regions/_ccl.pyx":53
+  /* "improc/regions/_ccl.pyx":53
  * 
  * 
  * def _remap(uint32[::1] src):             # <<<<<<<<<<<<<<
  *     cdef int N = src.shape[0]
  *     cdef int[::1] out = np.full(N, -1, np.int32)
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_6improc_12superregions_4_ccl_1_remap, NULL, __pyx_n_s_improc_superregions__ccl); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_6improc_7regions_4_ccl_1_remap, NULL, __pyx_n_s_improc_regions__ccl); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 53, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_remap, __pyx_t_1) < 0) __PYX_ERR(0, 53, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "survos2/improc/regions/_ccl.pyx":60
+  /* "improc/regions/_ccl.pyx":60
  * 
  * 
  * def _relabel2d(uint32[::1] src, int width):             # <<<<<<<<<<<<<<
  *     cdef int N = src.shape[0]
  *     cdef uint32 n, p, q, v
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_6improc_12superregions_4_ccl_3_relabel2d, NULL, __pyx_n_s_improc_superregions__ccl); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 60, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_6improc_7regions_4_ccl_3_relabel2d, NULL, __pyx_n_s_improc_regions__ccl); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 60, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_relabel2d, __pyx_t_1) < 0) __PYX_ERR(0, 60, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "survos2/improc/regions/_ccl.pyx":88
+  /* "improc/regions/_ccl.pyx":88
  * 
  * 
  * def _relabel3d(uint32[::1] src, int height, int width):             # <<<<<<<<<<<<<<
  *     cdef int N = src.shape[0]
  *     cdef int plane = height * width
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_6improc_12superregions_4_ccl_5_relabel3d, NULL, __pyx_n_s_improc_superregions__ccl); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 88, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_6improc_7regions_4_ccl_5_relabel3d, NULL, __pyx_n_s_improc_regions__ccl); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 88, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_relabel3d, __pyx_t_1) < 0) __PYX_ERR(0, 88, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "survos2/improc/regions/_ccl.pyx":133
+  /* "improc/regions/_ccl.pyx":133
  * 
  * 
  * def _merge_small3d(float[:, :, :, ::1] data,             # <<<<<<<<<<<<<<
  *                    uint32[:, :, ::1] labels,
  *                    int nsv, int min_size):
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_6improc_12superregions_4_ccl_7_merge_small3d, NULL, __pyx_n_s_improc_superregions__ccl); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 133, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_6improc_7regions_4_ccl_7_merge_small3d, NULL, __pyx_n_s_improc_regions__ccl); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 133, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_merge_small3d, __pyx_t_1) < 0) __PYX_ERR(0, 133, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "survos2/improc/regions/_ccl.pyx":1
+  /* "improc/regions/_ccl.pyx":1
  * #cython: cdivision=True             # <<<<<<<<<<<<<<
  * #cython: boundscheck=False
  * #cython: nonecheck=False
@@ -23202,11 +23202,11 @@ if (!__Pyx_RefNanny) {
   __Pyx_XDECREF(__pyx_t_1);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init improc.superregions._ccl", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init improc.regions._ccl", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     Py_CLEAR(__pyx_m);
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init improc.superregions._ccl");
+    PyErr_SetString(PyExc_ImportError, "init improc.regions._ccl");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -26225,7 +26225,7 @@ no_fail:
 }
 
 /* ObjectToMemviewSlice */
-  static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_6improc_12superregions_4_ccl_uint32(PyObject *obj, int writable_flag) {
+  static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_6improc_7regions_4_ccl_uint32(PyObject *obj, int writable_flag) {
     __Pyx_memviewslice result = { 0, 0, { 0 }, { 0 }, { 0 } };
     __Pyx_BufFmt_StackElem stack[1];
     int axes_specs[] = { (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_CONTIG) };
@@ -26236,7 +26236,7 @@ no_fail:
     }
     retcode = __Pyx_ValidateAndInit_memviewslice(axes_specs, __Pyx_IS_C_CONTIG,
                                                  (PyBUF_C_CONTIGUOUS | PyBUF_FORMAT) | writable_flag, 1,
-                                                 &__Pyx_TypeInfo_nn___pyx_t_6improc_12superregions_4_ccl_uint32, stack,
+                                                 &__Pyx_TypeInfo_nn___pyx_t_6improc_7regions_4_ccl_uint32, stack,
                                                  &result, obj);
     if (unlikely(retcode == -1))
         goto __pyx_fail;
@@ -26293,7 +26293,7 @@ __pyx_fail:
 }
 
 /* ObjectToMemviewSlice */
-  static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_nn___pyx_t_6improc_12superregions_4_ccl_uint32(PyObject *obj, int writable_flag) {
+  static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_nn___pyx_t_6improc_7regions_4_ccl_uint32(PyObject *obj, int writable_flag) {
     __Pyx_memviewslice result = { 0, 0, { 0 }, { 0 }, { 0 } };
     __Pyx_BufFmt_StackElem stack[1];
     int axes_specs[] = { (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_FOLLOW), (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_FOLLOW), (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_CONTIG) };
@@ -26304,7 +26304,7 @@ __pyx_fail:
     }
     retcode = __Pyx_ValidateAndInit_memviewslice(axes_specs, __Pyx_IS_C_CONTIG,
                                                  (PyBUF_C_CONTIGUOUS | PyBUF_FORMAT) | writable_flag, 3,
-                                                 &__Pyx_TypeInfo_nn___pyx_t_6improc_12superregions_4_ccl_uint32, stack,
+                                                 &__Pyx_TypeInfo_nn___pyx_t_6improc_7regions_4_ccl_uint32, stack,
                                                  &result, obj);
     if (unlikely(retcode == -1))
         goto __pyx_fail;
@@ -26421,14 +26421,14 @@ static CYTHON_INLINE int __pyx_memview_set_int(const char *itemp, PyObject *obj)
 }
 
 /* MemviewDtypeToObject */
-  static CYTHON_INLINE PyObject *__pyx_memview_get_nn___pyx_t_6improc_12superregions_4_ccl_uint32(const char *itemp) {
-    return (PyObject *) __Pyx_PyInt_From_unsigned_int(*(__pyx_t_6improc_12superregions_4_ccl_uint32 *) itemp);
+  static CYTHON_INLINE PyObject *__pyx_memview_get_nn___pyx_t_6improc_7regions_4_ccl_uint32(const char *itemp) {
+    return (PyObject *) __Pyx_PyInt_From_unsigned_int(*(__pyx_t_6improc_7regions_4_ccl_uint32 *) itemp);
 }
-static CYTHON_INLINE int __pyx_memview_set_nn___pyx_t_6improc_12superregions_4_ccl_uint32(const char *itemp, PyObject *obj) {
-    __pyx_t_6improc_12superregions_4_ccl_uint32 value = __Pyx_PyInt_As_unsigned_int(obj);
+static CYTHON_INLINE int __pyx_memview_set_nn___pyx_t_6improc_7regions_4_ccl_uint32(const char *itemp, PyObject *obj) {
+    __pyx_t_6improc_7regions_4_ccl_uint32 value = __Pyx_PyInt_As_unsigned_int(obj);
     if ((value == (unsigned int)-1) && PyErr_Occurred())
         return 0;
-    *(__pyx_t_6improc_12superregions_4_ccl_uint32 *) itemp = value;
+    *(__pyx_t_6improc_7regions_4_ccl_uint32 *) itemp = value;
     return 1;
 }
 
@@ -27664,7 +27664,7 @@ __pyx_fail:
 }
 
 /* ObjectToMemviewSlice */
-  static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_6improc_12superregions_4_ccl_uint16(PyObject *obj, int writable_flag) {
+  static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_dc_nn___pyx_t_6improc_7regions_4_ccl_uint16(PyObject *obj, int writable_flag) {
     __Pyx_memviewslice result = { 0, 0, { 0 }, { 0 }, { 0 } };
     __Pyx_BufFmt_StackElem stack[1];
     int axes_specs[] = { (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_CONTIG) };
@@ -27675,7 +27675,7 @@ __pyx_fail:
     }
     retcode = __Pyx_ValidateAndInit_memviewslice(axes_specs, __Pyx_IS_C_CONTIG,
                                                  (PyBUF_C_CONTIGUOUS | PyBUF_FORMAT) | writable_flag, 1,
-                                                 &__Pyx_TypeInfo_nn___pyx_t_6improc_12superregions_4_ccl_uint16, stack,
+                                                 &__Pyx_TypeInfo_nn___pyx_t_6improc_7regions_4_ccl_uint16, stack,
                                                  &result, obj);
     if (unlikely(retcode == -1))
         goto __pyx_fail;
