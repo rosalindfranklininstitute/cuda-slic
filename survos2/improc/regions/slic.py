@@ -15,11 +15,12 @@ from ..cuda import asgpuarray, grid_kernel_config, flat_kernel_config
 from ..features import gaussian
 
 from skimage.segmentation.slic_superpixels import _get_grid_centroids
+from skimage.segmentation.slic_superpixels import _enforce_label_connectivity_cython
 
 __dirname__ = op.dirname(__file__)
 
 
-@gpuregion
+# @gpuregion
 def slic3d(image, n_segments=100, sp_shape=None, compactness=1.0, sigma=None,
            spacing=(1,1,1), max_iter=5, postprocess=True):
     """
@@ -78,25 +79,29 @@ def slic3d(image, n_segments=100, sp_shape=None, compactness=1.0, sigma=None,
 
     gpu_slic_init(data_gpu, centers_gpu, n_centers, n_features,
         sp_grid, sp_shape, im_shape, block=cblock, grid=cgrid)
+    cuda.Context.synchronize()
 
     for _ in range(max_iter):
         gpu_slic_expectation(data_gpu, centers_gpu, labels_gpu, m, S,
             n_centers, n_features, spacing, sp_grid, sp_shape, im_shape,
             block=vblock, grid=vgrid)
+        cuda.Context.synchronize()
 
         gpu_slic_maximization(data_gpu, labels_gpu, centers_gpu,
             n_centers, n_features, sp_grid, sp_shape, im_shape,
             block=cblock, grid=cgrid)
+        cuda.Context.synchronize()
 
     r = ccl3d(labels_gpu, remap=True)
-
-    labels = labels_gpu.get()
-    binlab = np.bincount(labels.ravel())
-    binlab = np.bincount(r.ravel())
-
     if postprocess:
         min_size = int(np.prod(_sp_shape) / 10.)
-        r = merge_small(asnparray(image), r, min_size)
-        binlab = np.bincount(r.ravel())
+        r = merge_small(asnparray(image), asnparray(r), min_size)
+
+    # r = asnparray(labels_gpu, dtype=np.int)
+    # if postprocess:
+    #     segment_size = np.prod(dshape)/n_centers
+    #     min_size = int(0.4 * segment_size)
+    #     max_size = int(3 * segment_size)
+    #     r = _enforce_label_connectivity_cython(r, min_size, max_size, start_label=0)
 
     return r
