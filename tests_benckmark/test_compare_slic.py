@@ -1,10 +1,9 @@
 import time
 import numpy as np
 
-from survos2.improc.regions.slic import slic3d
+from cuda_slic.slic import slic3d
 
 from skimage import data, color, filters
-from skimage.util import img_as_float32
 
 from skimage.segmentation import slic
 
@@ -18,10 +17,12 @@ def test_compare_slics():
     ratios = []
     for _ in range(5):
         times = {'cuda_slic':[], "scikit_slic":[]}
-        for i in [100]:
-            blob = data.binary_blobs(length=i, n_dim=3, seed=2)
+        n = 3
+        side = 100
+        for i in range(n):
+            blob = data.binary_blobs(length=side, n_dim=3, seed=2)
             blob = np.float32(blob)
-            n_segments = i**3//5**3
+            n_segments = side**3//5**3
             t1, _ = time_func(slic3d, blob, n_segments=n_segments, compactness=0.2)
             times["cuda_slic"].append(t1)
             t2, _ = time_func(slic, blob, n_segments=n_segments,
@@ -29,18 +30,19 @@ def test_compare_slics():
                               max_iter=5, multichannel=False)
             times["scikit_slic"].append(t2)
 
-        cuda = times["cuda_slic"] 
+        cuda = times["cuda_slic"]
         sk = times["scikit_slic"]
-        ratio = sum(sk)/sum(cuda)/len(sk) 
+        print(f"cuda_slic({side})", cuda)
+        print(f"sk_slic({side})", sk)
+        print("mean cuda = {}".format(sum(cuda)/len(cuda)))
+        print("mean sk = {}".format(sum(sk)/len(sk)))
+        ratio = sum(sk)/sum(cuda)
         ratios.append(ratio)
         # print("cuda times: {}".format(cuda))
         # print("skimage times: {}".format(sk))
         # print("ratio skimgae/cude = {}".format(ratio))
         # assert ratio > 5
     print("ratio skimgae/cude = {}".format(np.median(ratios)))
-test_compare_slics()
 
-
-
-
-
+if __name__ == "__main__":
+    test_compare_slics()

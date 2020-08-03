@@ -1,7 +1,7 @@
 import pytest
 import numpy as np
 
-from survos2.improc.regions.slic import slic3d
+from cuda_slic.slic import slic3d
 
 from skimage import data, color, filters
 from skimage import img_as_float32

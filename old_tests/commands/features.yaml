@@ -1,7 +1,0 @@
-- name: Compute Gaussian
-  plugin: features
-  command: compute
-  feature: gaussian
-  src: hdf5:///tmp/data.h5:/data
-  dst: hdf5:///tmp/result.h5:/data
-  sigma: 1

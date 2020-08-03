@@ -11,9 +11,9 @@ import pycuda.gpuarray as gpuarray
 import pycuda.autoinit
 from pycuda.compiler import SourceModule
 
-from ..types import int3
-from ..utils import gpuregion, cpuregion
-from ..cuda import asgpuarray, grid_kernel_config
+from .types import int3
+# from .utils import gpuregion, cpuregion
+from .cuda import asgpuarray, grid_kernel_config
 
 from ._ccl import _remap, _relabel2d, _relabel3d, _merge_small3d
 
@@ -21,7 +21,7 @@ from ._ccl import _remap, _relabel2d, _relabel3d, _merge_small3d
 __dirname__ = op.dirname(__file__)
 
 
-@gpuregion
+# @gpuregion
 def ccl3d(labels, remap=True):
     assert labels.ndim == 3
     assert labels.dtype == np.uint32
@@ -74,7 +74,7 @@ def relabel(labels):
     return new_labels
 
 
-@cpuregion
+# @cpuregion
 def merge_small(data, labels, min_size=1, **kwargs):
     if data.ndim != labels.ndim + 1:
         data = data[..., None]
