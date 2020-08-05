@@ -24,5 +24,14 @@ unit-tests:
   tags:
     - gpu
   script:
-    - python survos2/improc/setup.py build_ext -i
+    - python cuda_slic/setup.py build_ext -i
     - pytest
+
+benchmark:
+  tags:
+    - gpu
+  script:
+    - python cuda_slic/setup.py build_ext -i
+    - python -m tests_benckmark.test_compare_slic
+
+  

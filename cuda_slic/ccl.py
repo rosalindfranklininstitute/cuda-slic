@@ -11,9 +11,9 @@ import pycuda.gpuarray as gpuarray
 import pycuda.autoinit
 from pycuda.compiler import SourceModule
 
-from ..types import int3
-from ..utils import gpuregion, cpuregion
-from ..cuda import asgpuarray, grid_kernel_config
+from .types import int3
+# from .utils import gpuregion, cpuregion
+from .cuda import asgpuarray, grid_kernel_config
 
 from ._ccl import _remap, _relabel2d, _relabel3d, _merge_small3d
 
