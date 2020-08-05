@@ -6,6 +6,7 @@ import numpy as np
 
 import pycuda.driver as cuda
 import pycuda.gpuarray as gpuarray
+import pycuda.autoinit
 from pycuda.compiler import SourceModule
 
 from .ccl import ccl3d, merge_small
