@@ -83,7 +83,9 @@ def asgpuarray(data, dtype=None):
 
 def flat_kernel_config(kernel, shape):
     data_size = int(np.prod(shape))
-    max_threads = kernel.max_threads_per_block
+    # max_threads = kernel.max_threads_per_block
+    max_threads = 512
+
 
     block = (int(max_threads), 1, 1)
     grid = ((data_size + max_threads - 1) // max_threads, 1, 1)
@@ -102,7 +104,8 @@ def grid_kernel_config(kernel, shape, isotropic=False):
     if block.size == 2:
         block = np.r_[block, 1]
 
-    max_threads = kernel.max_threads_per_block
+    # max_threads = kernel.max_threads_per_block
+    max_threads = 512
 
     if isotropic is not True:
         while np.prod(block) > max_threads:
