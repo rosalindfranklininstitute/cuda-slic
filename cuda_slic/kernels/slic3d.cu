@@ -74,7 +74,7 @@ void init_clusters(const float* data,
     int4 p, q, r;
     p.z = r.z = idx.z * sp_shape.z + sp_shape.z / 2;
     p.y = r.y = idx.y * sp_shape.y + sp_shape.y / 2;
-    p.z = r.x = idx.x * sp_shape.x + sp_shape.x / 2;
+    p.x = r.x = idx.x * sp_shape.x + sp_shape.x / 2;
 
     // float g, min_g = DLIMIT;
 
