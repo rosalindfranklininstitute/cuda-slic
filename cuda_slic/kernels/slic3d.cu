@@ -52,8 +52,8 @@ float gradient(const float* data, int4& P, const int3& S, int nf) {
 __global__
 void init_clusters(const float* data,
                    float* centers,
-                   int n_clusters,
-                   int n_features,
+                   const int n_clusters,
+                   const int n_features,
                    const int3 sp_grid,
                    const int3 sp_shape,
                    const int3 im_shape)
@@ -66,44 +66,26 @@ void init_clusters(const float* data,
 
     int3 idx;
     int plane = sp_grid.y * sp_grid.x;
-    int aux = lidx % plane;
     idx.z = lidx / plane;
+    int aux = lidx % plane;
     idx.y = aux / sp_grid.x;
     idx.x = aux % sp_grid.x;
+
+    int3 jdx;
+    int volume_linear_idx = lidx;
+    jdx.z =  volume_linear_idx / (sp_grid.x * sp_grid.y);
+    int plane_linear_idx = volume_linear_idx - jdx.z * sp_grid.x * sp_grid.y;
+    jdx.y = plane_linear_idx / sp_grid.x;
+    jdx.x = plane_linear_idx % sp_grid.x;
 
     int4 p, q, r;
     p.z = r.z = idx.z * sp_shape.z + sp_shape.z / 2;
     p.y = r.y = idx.y * sp_shape.y + sp_shape.y / 2;
     p.x = r.x = idx.x * sp_shape.x + sp_shape.x / 2;
 
-    // float g, min_g = DLIMIT;
 
-    // for ( int u = -3; u <= 3; u++ ) {
-    //     q.z = p.z + u;
-    //     if ( q.z < 0 || q.z >= im_shape.z - 2 ) {continue;}
-
-    //     for ( int v = -3; v <= 3; v ++ ) {
-    //         q.y = p.y + v;
-    //         if ( q.y < 0 || q.y >= im_shape.y - 2 ) {continue;}
-
-    //         for ( int w = -3; w <= 3; w++ ) {
-    //             q.x = p.x + w;
-    //             if ( q.x < 0 || q.x >= im_shape.x - 2 ) {continue;}
-
-    //             g = gradient(data, q, im_shape, n_features);
-    //             if ( g < min_g ) {
-    //                 min_g = g; r.z = q.z; r.y = q.y; r.x = q.x;
-    //             }
-    //         }
-    //     }
-    // }
 
     int shift = n_features + 3;
-    // for ( int k = 0; k < n_features; k++ ) {
-    //     r.w = k;
-    //     centers[lidx * shift + k] = at(data, r, im_shape);
-    // }
-
     centers[lidx * shift + n_features + 0] = r.z;
     centers[lidx * shift + n_features + 1] = r.y;
     centers[lidx * shift + n_features + 2] = r.x;
@@ -114,9 +96,9 @@ __global__
 void expectation(const float* data,
                  const float* centers,
                  unsigned int* labels,
-                 float m, float S,
-                 int n_clusters,
-                 int n_features,
+                 const float m, const float S,
+                 const int n_clusters,
+                 const int n_features,
                  const float3 spacing,
                  const int3 sp_grid,
                  const int3 sp_shape,
@@ -129,12 +111,14 @@ void expectation(const float* data,
         return;
     }
 
+    // linear index to 3D pixel index transformation
     int plane = im_shape.y * im_shape.x;
     int aux = gidx % plane;
     idx.z = gidx / plane;
     idx.y = aux / im_shape.x;
     idx.x = aux % im_shape.x;
 
+    // approx center grid positoin
     p.z = __max(0, __min(idx.z / sp_shape.z, sp_grid.z - 1));
     p.y = __max(0, __min(idx.y / sp_shape.y, sp_grid.y - 1));
     p.x = __max(0, __min(idx.x / sp_shape.x, sp_grid.x - 1));
