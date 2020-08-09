@@ -1,0 +1,22 @@
+import time
+import numpy as np
+
+from cuda_slic.slic import slic3d
+
+from skimage import data, color, filters
+
+def test_throughput():
+
+    for length in range(50, 350, 50):
+        blob = data.binary_blobs(length=length, n_dim=3, seed=2)
+        blob = np.float32(blob)
+        n_segments = length**3//5**3
+        size = length**3*4/10**9 # GB
+        print(f"Segmenting a {size} GB image to {n_segments} superpixels:")
+        t = %timeit -n5 -r5 -o slic3d(blob, n_segments=n_segments, compactness=0.2)
+        throughput = size/t.average
+        print("Throughput for size {} GB is {} Gb/s".format(size, throughput))
+        print("")
+
+if __name__ == "__main__":
+    test_throughput()

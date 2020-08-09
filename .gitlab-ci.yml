@@ -8,16 +8,11 @@ before_script:
   - conda env create -f gitlab-ci-environment.yml -v
   - conda activate gitlab-ci
 
-test-nvidia-compilirs:
+nvidia-debug:
   tags:
     - gpu
   script:
     - nvcc --version
-
-test-nvidia-smi:
-  tags:
-    - gpu
-  script:
     - nvidia-smi
 
 unit-tests:
@@ -32,6 +27,7 @@ benchmark:
     - gpu
   script:
     - python cuda_slic/setup.py build_ext -i
-    - python -m tests_benckmark.test_compare_slic
+    - python -m perf_analysis.compare_slic
+    - ipython perf_analysis/throughput.ipy
 
   
