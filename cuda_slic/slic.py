@@ -9,10 +9,8 @@ import pycuda.gpuarray as gpuarray
 import pycuda.autoinit
 from pycuda.compiler import SourceModule
 
-from .ccl import ccl3d, merge_small
 from .types import int3, float3
-from .utils import asnparray #, gpuregion
-from .cuda import asgpuarray, grid_kernel_config, flat_kernel_config
+from .cuda import grid_kernel_config, flat_kernel_config
 
 from skimage.segmentation.slic_superpixels import _get_grid_centroids
 from skimage.segmentation.slic_superpixels import _enforce_label_connectivity_cython
@@ -20,7 +18,6 @@ from skimage.segmentation.slic_superpixels import _enforce_label_connectivity_cy
 __dirname__ = op.dirname(__file__)
 
 
-# @gpuregion
 def slic3d(image, n_segments=100, sp_shape=None, compactness=1.0, sigma=None,
            spacing=(1,1,1), max_iter=5, postprocess=True):
     """
@@ -70,7 +67,7 @@ def slic3d(image, n_segments=100, sp_shape=None, compactness=1.0, sigma=None,
     im_shape = np.asarray(tuple(dshape[::-1]), int3)
     spacing = np.asarray(tuple(spacing[::-1]), float3)
 
-    data_gpu = asgpuarray(image, np.float32)
+    data_gpu = gpuarray.to_gpu(np.float32(image))
     centers_gpu = gpuarray.zeros((n_centers, n_features + 3), np.float32)
     labels_gpu = gpuarray.zeros(dshape, np.uint32)
 
@@ -92,16 +89,11 @@ def slic3d(image, n_segments=100, sp_shape=None, compactness=1.0, sigma=None,
             block=cblock, grid=cgrid)
         cuda.Context.synchronize()
 
-    r = ccl3d(labels_gpu, remap=True)
+    labels = np.asarray(labels_gpu.get(), dtype=np.int)
     if postprocess:
-        min_size = int(np.prod(_sp_shape) / 10.)
-        r = merge_small(asnparray(image), asnparray(r), min_size)
+        segment_size = np.prod(dshape)/n_centers
+        min_size = int(0.4 * segment_size)
+        max_size = int(10* segment_size)
+        labels = _enforce_label_connectivity_cython(labels, min_size, max_size, start_label=0)
 
-    # r = asnparray(labels_gpu, dtype=np.int)
-    # if postprocess:
-    #     segment_size = np.prod(dshape)/n_centers
-    #     min_size = int(0.4 * segment_size)
-    #     max_size = int(3 * segment_size)
-    #     r = _enforce_label_connectivity_cython(r, min_size, max_size, start_label=0)
-
-    return r
+    return labels
