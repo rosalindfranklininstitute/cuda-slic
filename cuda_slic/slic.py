@@ -10,13 +10,55 @@ import pycuda.autoinit
 from pycuda.compiler import SourceModule
 
 from .types import int3, float3
-from .cuda import grid_kernel_config, flat_kernel_config
 
 from skimage.segmentation.slic_superpixels import _get_grid_centroids
 from skimage.segmentation.slic_superpixels import _enforce_label_connectivity_cython
 
 __dirname__ = op.dirname(__file__)
 
+
+
+def flat_kernel_config(kernel, shape):
+    data_size = int(np.prod(shape))
+    # max_threads = kernel.max_threads_per_block
+    max_threads = 128
+
+
+    block = (int(max_threads), 1, 1)
+    grid = ((data_size + max_threads - 1) // max_threads, 1, 1)
+
+    return block, grid
+
+
+def grid_kernel_config(kernel, shape, isotropic=False):
+    if isotropic in [True, False]:
+        block = np.asarray(shape[::-1])  # z, y, x -> x, y, z
+    else:
+        iso = np.asarray(isotropic[::-1], np.float32)
+        iso /= np.abs(iso).sum()
+        block = max(*shape) * iso
+
+    if block.size == 2:
+        block = np.r_[block, 1]
+
+    # max_threads = kernel.max_threads_per_block
+    max_threads = 128
+
+    if isotropic is not True:
+        while np.prod(block) > max_threads:
+            block = np.maximum(1, np.round(block - 0.1 * block)).astype(int)
+    else:
+        max_axis = np.floor(max_threads**(1./len(shape)))
+        block = [max_axis] * len(shape) + [1] * (3 - len(shape))
+
+    block = tuple(map(int, block))
+    grid = tuple(map(int, (
+        (shape[2] + block[0] - 1) // block[0],
+        (shape[1] + block[1] - 1) // block[1],
+        (shape[0] + block[2] - 1) // block[2]
+    )))
+
+    return block, grid
 
 def slic3d(image, n_segments=100, sp_shape=None, compactness=1.0, sigma=None,
            spacing=(1,1,1), max_iter=5, postprocess=True):

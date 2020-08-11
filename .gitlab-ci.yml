@@ -19,14 +19,12 @@ unit-tests:
   tags:
     - gpu
   script:
-    - python cuda_slic/setup.py build_ext -i
     - pytest
 
 benchmark:
   tags:
     - gpu
   script:
-    - python cuda_slic/setup.py build_ext -i
     - python -m perf_analysis.compare_slic
     - ipython perf_analysis/throughput.ipy
 
