@@ -1,4 +1,4 @@
-name: gpu-slic
+name: cuda-slic
 channels:
 - conda-forge
 - default
@@ -6,25 +6,15 @@ channels:
 dependencies:
 - python=3.7
 - pip
-- cudatoolkit=10.1
-- cudatoolkit-dev=10.1
-- pandas
-- jupyter
-- notebook
-- ipywidgets
 - numpy
-- h5py
-- cython
-- pytools
-- pytest
-- pywget
-- hug
-- pyyaml
-- mrcfile
-- dask
-- matplotlib
 - scikit-image
-- tensorly
+# test requirements
 - pytest
+- ipython
+#notebook requirements
+- notebook
+- jupyter
+- ipywidgets
+
 - pip:
-  - pycuda
+  - pycuda==2019.1.2
