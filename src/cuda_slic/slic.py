@@ -11,7 +11,6 @@ from pycuda.compiler import SourceModule
 
 from .types import int3, float3
 
-from skimage.segmentation.slic_superpixels import _get_grid_centroids
 from skimage.segmentation.slic_superpixels import _enforce_label_connectivity_cython
 
 __dirname__ = op.dirname(__file__)
