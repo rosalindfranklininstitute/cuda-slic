@@ -65,6 +65,56 @@ def test_slic3d_raises_value_error_when_input_dimention_more_than_4():
     with pytest.raises(ValueError):
         labels = slic3d(blob, n_segments=100, compactness=3)
 
+
+def test_cherry_picked_results_with_postprocess():
+    plane = [[1,1,0,0],
+             [1,1,0,0],
+             [1,1,1,1],
+             [1,1,1,1]]
+
+    vol = np.asarray([plane, plane, plane])
+    expected = np.array([[[0, 0, 1, 1],
+                          [0, 0, 1, 1],
+                          [0, 0, 2, 2],
+                          [0, 0, 2, 2]],
+
+                          [[0, 0, 1, 1],
+                           [0, 0, 1, 1],
+                           [0, 0, 2, 2],
+                           [0, 0, 2, 2]],
+
+                          [[0, 0, 1, 1],
+                           [0, 0, 1, 1],
+                           [0, 0, 2, 2],
+                           [0, 0, 2, 2]]])
+    labels = slic3d(vol, n_segments=2, compactness=0.1, postprocess=True)
+    assert (labels == expected).all()
+
+def test_cherry_picked_results_without_postprocess():
+    plane = [[1,1,0,0],
+             [1,1,0,0],
+             [1,1,1,1],
+             [1,1,1,1]]
+
+    vol = np.asarray([plane, plane, plane])
+    expected = np.array([[[3, 3, 2, 2],
+                          [3, 3, 2, 2],
+                          [3, 3, 4, 4],
+                          [3, 3, 4, 4]],
+
+                          [[3, 3, 2, 2],
+                           [3, 3, 2, 2],
+                           [3, 3, 4, 4],
+                           [3, 3, 4, 4]],
+
+                          [[3, 3, 2, 2],
+                           [3, 3, 2, 2],
+                           [3, 3, 4, 4],
+                           [3, 3, 4, 4]]])
+    labels = slic3d(vol, n_segments=2, compactness=0.1, postprocess=False)
+    assert (labels == expected).all()
+
+
 def test_stress_test_slic3d():
     lengths = range(100, 200, 3)
     for i in range(len(lengths)):
