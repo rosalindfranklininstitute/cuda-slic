@@ -2,9 +2,9 @@
 image: condaforge/linux-anvil-cuda:10.1
 
 before_script:
-  - sudo yum install -y gcc gcc-c++
+  - sudo yum install -y gcc gcc-c++  # these are pycuda depenencies
   - conda init bash
-  - source /home/conda/.bashrc
+  - source /home/conda/.bashrc  # activate base miniconda environment
 
 nvidia-debug:
   tags:
@@ -17,6 +17,7 @@ tox:
   tags:
     - gpu
   script:
+    - pip install tox
     - tox
 
 unit-tests:
@@ -34,5 +35,6 @@ benchmark:
   script:
     - conda env create -f gitlab-ci-environment.yml -v
     - conda activate gitlab-ci
+    - pip install -e .
     - python -m perf_analysis.compare_slic
     - ipython perf_analysis/throughput.ipy
