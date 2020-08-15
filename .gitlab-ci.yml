@@ -5,8 +5,6 @@ before_script:
   - sudo yum install -y gcc gcc-c++
   - conda init bash
   - source /home/conda/.bashrc
-  - conda env create -f gitlab-ci-environment.yml -v
-  - conda activate gitlab-ci
 
 nvidia-debug:
   tags:
@@ -15,17 +13,26 @@ nvidia-debug:
     - nvcc --version
     - nvidia-smi
 
+tox:
+  tags:
+    - gpu
+  script:
+    - tox
+
 unit-tests:
   tags:
     - gpu
   script:
+    - conda env create -f gitlab-ci-environment.yml -v
+    - conda activate gitlab-ci
+    - pip install -e .
     - pytest
 
 benchmark:
   tags:
     - gpu
   script:
+    - conda env create -f gitlab-ci-environment.yml -v
+    - conda activate gitlab-ci
     - python -m perf_analysis.compare_slic
     - ipython perf_analysis/throughput.ipy
-
-  
