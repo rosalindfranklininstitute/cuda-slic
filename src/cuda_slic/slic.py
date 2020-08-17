@@ -3,6 +3,7 @@
 import os.path as op
 
 import numpy as np
+from jinja2 import Template
 
 import pycuda.driver as cuda
 import pycuda.gpuarray as gpuarray
@@ -13,7 +14,6 @@ from .types import int3, float3
 
 from skimage.segmentation.slic_superpixels import _enforce_label_connectivity_cython
 
-__dirname__ = op.dirname(__file__)
 
 
 
@@ -59,6 +59,9 @@ def grid_kernel_config(kernel, shape, isotropic=False):
 
     return block, grid
 
+
+
+
 def slic3d(image, n_segments=100, sp_shape=None, compactness=1.0, sigma=None,
            spacing=(1,1,1), max_iter=5, postprocess=True):
     """
@@ -69,11 +72,7 @@ def slic3d(image, n_segments=100, sp_shape=None, compactness=1.0, sigma=None,
                           "the image.ndim provided is {}".format(image.ndim)))
     dshape = np.array(image.shape[-3:])
 
-    with open(op.join(__dirname__, 'kernels', 'slic3d.cu'), 'r') as f:
-        _mod_conv = SourceModule(f.read())
-        gpu_slic_init = _mod_conv.get_function('init_clusters')
-        gpu_slic_expectation = _mod_conv.get_function('expectation')
-        gpu_slic_maximization = _mod_conv.get_function('maximization')
+
 
     if sp_shape:
         if isinstance(sp_shape, int):
@@ -112,21 +111,30 @@ def slic3d(image, n_segments=100, sp_shape=None, compactness=1.0, sigma=None,
     centers_gpu = gpuarray.zeros((n_centers, n_features + 3), np.float32)
     labels_gpu = gpuarray.zeros(dshape, np.uint32)
 
+    __dirname__ = op.dirname(__file__)
+    with open(op.join(__dirname__, 'kernels', 'slic3d_template.cu'), 'r') as f:
+        template = Template(f.read()).render(n_features = n_features)
+        _mod_conv = SourceModule(template)
+        gpu_slic_init = _mod_conv.get_function('init_clusters')
+        gpu_slic_expectation = _mod_conv.get_function('expectation')
+        gpu_slic_maximization = _mod_conv.get_function('maximization')
+
+
     vblock, vgrid = flat_kernel_config(gpu_slic_init, dshape)
     cblock, cgrid = flat_kernel_config(gpu_slic_init, _sp_grid)
 
-    gpu_slic_init(data_gpu, centers_gpu, n_centers, n_features,
+    gpu_slic_init(data_gpu, centers_gpu, n_centers,
         sp_grid, sp_shape, im_shape, block=cblock, grid=cgrid)
     cuda.Context.synchronize()
 
     for _ in range(max_iter):
         gpu_slic_expectation(data_gpu, centers_gpu, labels_gpu, m, S,
-            n_centers, n_features, spacing, sp_grid, sp_shape, im_shape,
+            n_centers, spacing, sp_grid, sp_shape, im_shape,
             block=vblock, grid=vgrid)
         cuda.Context.synchronize()
 
         gpu_slic_maximization(data_gpu, labels_gpu, centers_gpu,
-            n_centers, n_features, sp_grid, sp_shape, im_shape,
+            n_centers, sp_grid, sp_shape, im_shape,
             block=cblock, grid=cgrid)
         cuda.Context.synchronize()
 
