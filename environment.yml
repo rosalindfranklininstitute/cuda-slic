@@ -8,6 +8,7 @@ dependencies:
 - pip
 - numpy
 - scikit-image
+- jinja2
 # test requirements
 - pytest
 - ipython
@@ -18,3 +19,4 @@ dependencies:
 
 - pip:
   - pycuda==2019.1.2
+  - -e .

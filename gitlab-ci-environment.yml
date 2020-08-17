@@ -10,5 +10,7 @@ dependencies:
 - pytest
 - scikit-image
 - ipython
+- jinja2
 - pip:
   - pycuda==2019.1.2
+  - -e .

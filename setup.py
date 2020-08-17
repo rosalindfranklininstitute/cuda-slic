@@ -14,6 +14,7 @@ setup(
 
     install_requires=[
         "numpy",
+        "jinja2",
         "scikit-image",
         "pycuda>=2019.1.2",
     ],
