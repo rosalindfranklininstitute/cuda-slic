@@ -15,8 +15,6 @@ from .types import int3, float3
 from skimage.segmentation.slic_superpixels import _enforce_label_connectivity_cython
 
 
-
-
 def flat_kernel_config(threads_total, block_size=128):
     block = (block_size, 1, 1)
     grid = ((threads_total + block_size - 1) // block_size, 1, 1)
@@ -32,8 +30,6 @@ def slic3d(image, n_segments=100, sp_shape=None, compactness=1.0, sigma=None,
         raise ValueError(("input image must be either 3, or 4 dimention."
                           "the image.ndim provided is {}".format(image.ndim)))
     dshape = np.array(image.shape[-3:])
-
-
 
     if sp_shape:
         if isinstance(sp_shape, int):
@@ -55,13 +51,7 @@ def slic3d(image, n_segments=100, sp_shape=None, compactness=1.0, sigma=None,
     sp_grid = np.asarray(tuple(_sp_grid[::-1]), int3)
 
     m = np.float32(compactness)
-
-    # seems that changing this line fixed the memory leak issue
-    # S = np.float32(np.prod(_sp_shape)**(1./3.))
     S = np.float32(np.max(_sp_shape))
-
-    # should be correct according to Achanta 2012
-    #S = np.float32(np.sqrt(np.prod(np.array(data.shape[:-1]))/n_segments))
 
     n_centers = np.int32(np.prod(_sp_grid))
     n_features = np.int32(image.shape[0] if image.ndim == 4 else 1)

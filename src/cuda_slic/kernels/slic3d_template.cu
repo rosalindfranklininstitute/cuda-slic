@@ -1,24 +1,11 @@
-
-
-#include <cstdio>
-
 #define DLIMIT 99999999
 #define N_FEATURES {{ n_features }}
 
-// Cluster Center
-//
-// float* f;  // vector of size #channels
-// float x, y, z;
-//
 
 #define __min(a, b) (((a) < (b)) ? (a) : (b))
 #define __max(a, b) (((a) >= (b)) ? (a) : (b))
 
-/*
- * P = point
- * S = data shape
- * F = data # features
- */
+
 __device__
 float at(const float* data, const int4& P, const int3& S) {
     long s2d = S.y * S.x, s3d = S.z * S.y * S.x;
@@ -26,29 +13,9 @@ float at(const float* data, const int4& P, const int3& S) {
 }
 
 __device__
-float gradient(const float* data, int4& P, const int3& S, int nf) {
-    float d;
-    float3 diff;
-    int4 q; q.z = P.z; q.y = P.y; q.x = P.x;
-
-    for ( int k = 0; k < nf; k++ ) {
-        q.w = P.w = k;
-
-        q.x = P.x + 1;
-        d = at(data, P, S) - at(data, q, S);
-        diff.x += d * d;
-
-        q.x = P.x; q.y = P.y + 1;
-        d = at(data, P, S) - at(data, q, S);
-        diff.y += d * d;
-
-        q.y = P.y; q.z = P.z + 1;
-        d = at(data, P, S) - at(data, q, S);
-        diff.z += d * d;
-    }
-
-    return diff.x + diff.y + diff.z;
-}
+float slic_distance(const int4& idx, const long center_idx,
+                    const float* data, const float* centers,
+                    const int3& im_shape);
 
 __global__
 void init_clusters(const float* data,
@@ -58,37 +25,32 @@ void init_clusters(const float* data,
                    const int3 sp_shape,
                    const int3 im_shape)
 {
-    long lidx = threadIdx.x + (blockIdx.x * blockDim.x);
+    const long linear_idx = threadIdx.x + (blockIdx.x * blockDim.x);
 
-    if ( lidx >= n_clusters ) {
+    if ( linear_idx >= n_clusters ) {
         return;
     }
 
+    // calculating the (0,0,0) index of each superpixel block
+    // using linear to cartesian index transformation
     int3 idx;
-    int plane = sp_grid.y * sp_grid.x;
-    idx.z = lidx / plane;
-    int aux = lidx % plane;
-    idx.y = aux / sp_grid.x;
-    idx.x = aux % sp_grid.x;
+    int plane_size = sp_grid.y * sp_grid.x;
+    idx.z = linear_idx / plane_size;
+    int plane_idx = linear_idx % plane_size;
+    idx.y = plane_idx / sp_grid.x;
+    idx.x = plane_idx % sp_grid.x;
 
-    int3 jdx;
-    int volume_linear_idx = lidx;
-    jdx.z =  volume_linear_idx / (sp_grid.x * sp_grid.y);
-    int plane_linear_idx = volume_linear_idx - jdx.z * sp_grid.x * sp_grid.y;
-    jdx.y = plane_linear_idx / sp_grid.x;
-    jdx.x = plane_linear_idx % sp_grid.x;
+    // centering index to get better spacing
+    idx.z = idx.z * sp_shape.z + sp_shape.z / 2;
+    idx.y = idx.y * sp_shape.y + sp_shape.y / 2;
+    idx.x = idx.x * sp_shape.x + sp_shape.x / 2;
 
-    int4 p, q, r;
-    p.z = r.z = idx.z * sp_shape.z + sp_shape.z / 2;
-    p.y = r.y = idx.y * sp_shape.y + sp_shape.y / 2;
-    p.x = r.x = idx.x * sp_shape.x + sp_shape.x / 2;
-
-
-
-    int shift = N_FEATURES + 3;
-    centers[lidx * shift + N_FEATURES + 0] = r.z;
-    centers[lidx * shift + N_FEATURES + 1] = r.y;
-    centers[lidx * shift + N_FEATURES + 2] = r.x;
+    //saving cluster center positions
+    // note: the color is not initialized, but is kept at zero.
+    const int stride = N_FEATURES + 3;
+    centers[linear_idx * stride + N_FEATURES + 0] = idx.z;
+    centers[linear_idx * stride + N_FEATURES + 1] = idx.y;
+    centers[linear_idx * stride + N_FEATURES + 2] = idx.x;
 }
 
 
@@ -103,14 +65,14 @@ void expectation(const float* data,
                  const int3 sp_shape,
                  const int3 im_shape)
 {
-    int4 idx, p, q;
-    long gidx = threadIdx.x + (blockIdx.x * blockDim.x);
+    const long gidx = threadIdx.x + (blockIdx.x * blockDim.x);
 
     if ( gidx >= im_shape.x * im_shape.y * im_shape.z ) {
         return;
     }
 
     // linear index to 3D pixel index transformation
+    int4 idx;
     int plane = im_shape.y * im_shape.x;
     int aux = gidx % plane;
     idx.z = gidx / plane;
@@ -118,14 +80,16 @@ void expectation(const float* data,
     idx.x = aux % im_shape.x;
 
     // approx center grid positoin
+    int4 p, q;
     p.z = __max(0, __min(idx.z / sp_shape.z, sp_grid.z - 1));
     p.y = __max(0, __min(idx.y / sp_shape.y, sp_grid.y - 1));
     p.x = __max(0, __min(idx.x / sp_shape.x, sp_grid.x - 1));
 
-    float min_d = DLIMIT, d, dist, adiff, pdiff;
-    int R = 2, cshift = N_FEATURES + 3;
-    long cidx, ridx = 0;
+    float min_d = DLIMIT;
+    const int cshift = N_FEATURES + 3;
+    long ridx = 0, cidx;
 
+    const int R = 2;
     for ( int k = -R; k <= R; k++ ) {
         q.z = p.z + k;
         if ( q.z < 0 || q.z >= sp_grid.z ) {continue;}
@@ -145,10 +109,10 @@ void expectation(const float* data,
                 }
 
                 // Appearance diff
-                adiff = 0;
+                float adiff = 0;
                 for ( int w = 0; w < N_FEATURES; w++ ) {
                     idx.w = w;
-                    d = at(data, idx, im_shape) - centers[cidx * cshift + w];
+                    float d = data[gidx + w] - centers[cidx * cshift + w];
                     adiff += d * d;
                 }
 
@@ -157,8 +121,8 @@ void expectation(const float* data,
                 pd.z = (idx.z - centers[cidx * cshift + N_FEATURES + 0]) * spacing.z;
                 pd.y = (idx.y - centers[cidx * cshift + N_FEATURES + 1]) * spacing.y;
                 pd.x = (idx.x - centers[cidx * cshift + N_FEATURES + 2]) * spacing.x;
-                pdiff = pd.z * pd.z + pd.y * pd.y + pd.x * pd.x;
-                dist = adiff / (m * m * N_FEATURES * N_FEATURES) + pdiff / (S * S);
+                float pdiff = pd.z * pd.z + pd.y * pd.y + pd.x * pd.x;
+                float dist = adiff / (m * m * N_FEATURES * N_FEATURES) + pdiff / (S * S);
 
                 // Wrapup
                 if ( dist < min_d ) {
@@ -188,7 +152,7 @@ void maximization(const float* data,
         return;
     }
 
-    int cshift = N_FEATURES + 3;
+    const int cshift = N_FEATURES + 3;
     int3 cidx;
     cidx.z = (int) centers[lidx * cshift + N_FEATURES + 0];
     cidx.y = (int) centers[lidx * cshift + N_FEATURES + 1];
@@ -208,7 +172,7 @@ void maximization(const float* data,
 
     int4 p;
 
-    float f[N_FEATURES + 3];
+    float f[cshift];
     for ( int k = 0; k < cshift; k++ ) {f[k] = 0;}
     long count = 0, offset, s2d = im_shape.x * im_shape.y;
 
