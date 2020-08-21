@@ -75,7 +75,7 @@ def slic3d(image, n_segments=100, sp_shape=None, compactness=1.0, sigma=None,
     cblock, cgrid = flat_kernel_config(int(np.prod(_sp_grid)))
 
     gpu_slic_init(data_gpu, centers_gpu, n_centers,
-        sp_grid, sp_shape, im_shape, block=cblock, grid=cgrid)
+        sp_grid, sp_shape, block=cblock, grid=cgrid)
     cuda.Context.synchronize()
 
     for _ in range(max_iter):

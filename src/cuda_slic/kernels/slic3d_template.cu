@@ -1,6 +1,41 @@
+/*
+Indexing:
+idx = pixel/voxel index in cartesian coordinates
+cidx = center index in cartesian coordinates
+
+linear_idx = pixel/voxel index in flat array
+linear_cidx = center index in flat array
+
+Center Stride:
+c_stride = number_of_features + image_dimention
+center_addr = linear_cidx * c_stride
+
+Image Stride:
+z_stride = image_shape.y * image_shape.x
+y_stride = image_shape.x
+x_stride = 1
+
+
+Transformations 3D:
+linear_idx = idx.z * z_stride + idx.y * y_stride + idx.x
+pixel_addr = linear_idx * n_features
+
+idx.z = linear_idx / z_stride
+plane_idx = linear_idx % z_stride
+idx.y = plane_idx / y_stride
+idx.x = plane_idx % y_stride
+
+Transformations 2D:
+linear_idx = idx.y * y_stride + idx.x
+pixel_addr = linear_idx * n_features
+
+idx.y = linear_idx / y_stride
+idx.x = linear_idx % y_stride
+
+*/
+
 #define DLIMIT 99999999
 #define N_FEATURES {{ n_features }}
-
 
 #define __min(a, b) (((a) < (b)) ? (a) : (b))
 #define __max(a, b) (((a) >= (b)) ? (a) : (b))
@@ -13,44 +48,65 @@ float at(const float* data, const int4& P, const int3& S) {
 }
 
 __device__
-float slic_distance(const int4& idx, const long center_idx,
-                    const float* data, const float* centers,
-                    const int3& im_shape);
+float slic_distance(const int3 idx,
+                    const long pixel_addr, const float* data,
+                    const long center_addr, const float* centers,
+                    const float m, const float S,
+                    const float3 spacing)
+{
+    // Color diff
+    float color_diff = 0;
+    for ( int w = 0; w < N_FEATURES; w++ ) {
+        float d = data[pixel_addr + w] - centers[center_addr + w];
+        color_diff += d * d;
+    }
+
+    // Position diff
+    float3 pd;
+    pd.z = (idx.z - centers[center_addr + N_FEATURES + 0]) * spacing.z;
+    pd.y = (idx.y - centers[center_addr + N_FEATURES + 1]) * spacing.y;
+    pd.x = (idx.x - centers[center_addr + N_FEATURES + 2]) * spacing.x;
+
+    float position_diff = pd.z * pd.z + pd.y * pd.y + pd.x * pd.x;
+    float dist = color_diff / (m * m * N_FEATURES * N_FEATURES) +
+                 position_diff / (S * S);
+    return dist;
+}
+
 
 __global__
 void init_clusters(const float* data,
                    float* centers,
                    const int n_clusters,
                    const int3 sp_grid,
-                   const int3 sp_shape,
-                   const int3 im_shape)
+                   const int3 sp_shape)
 {
-    const long linear_idx = threadIdx.x + (blockIdx.x * blockDim.x);
+    const long linear_cidx = threadIdx.x + (blockIdx.x * blockDim.x);
 
-    if ( linear_idx >= n_clusters ) {
+    if ( linear_cidx >= n_clusters ) {
         return;
     }
 
     // calculating the (0,0,0) index of each superpixel block
     // using linear to cartesian index transformation
-    int3 idx;
+    int3 cidx;
     int plane_size = sp_grid.y * sp_grid.x;
-    idx.z = linear_idx / plane_size;
-    int plane_idx = linear_idx % plane_size;
-    idx.y = plane_idx / sp_grid.x;
-    idx.x = plane_idx % sp_grid.x;
+    cidx.z = linear_cidx / plane_size;
+    int plane_idx = linear_cidx % plane_size;
+    cidx.y = plane_idx / sp_grid.x;
+    cidx.x = plane_idx % sp_grid.x;
 
-    // centering index to get better spacing
-    idx.z = idx.z * sp_shape.z + sp_shape.z / 2;
-    idx.y = idx.y * sp_shape.y + sp_shape.y / 2;
-    idx.x = idx.x * sp_shape.x + sp_shape.x / 2;
+    // centering index into middle of suprepixel block
+    cidx.z = cidx.z * sp_shape.z + sp_shape.z / 2;
+    cidx.y = cidx.y * sp_shape.y + sp_shape.y / 2;
+    cidx.x = cidx.x * sp_shape.x + sp_shape.x / 2;
 
     //saving cluster center positions
     // note: the color is not initialized, but is kept at zero.
     const int stride = N_FEATURES + 3;
-    centers[linear_idx * stride + N_FEATURES + 0] = idx.z;
-    centers[linear_idx * stride + N_FEATURES + 1] = idx.y;
-    centers[linear_idx * stride + N_FEATURES + 2] = idx.x;
+    centers[linear_cidx * stride + N_FEATURES + 0] = cidx.z;
+    centers[linear_cidx * stride + N_FEATURES + 1] = cidx.y;
+    centers[linear_cidx * stride + N_FEATURES + 2] = cidx.x;
 }
 
 
@@ -65,75 +121,71 @@ void expectation(const float* data,
                  const int3 sp_shape,
                  const int3 im_shape)
 {
-    const long gidx = threadIdx.x + (blockIdx.x * blockDim.x);
+    const long linear_idx = threadIdx.x + (blockIdx.x * blockDim.x);
+    const long pixel_addr = linear_idx * N_FEATURES;
 
-    if ( gidx >= im_shape.x * im_shape.y * im_shape.z ) {
+    if ( linear_idx >= im_shape.x * im_shape.y * im_shape.z ) {
         return;
     }
 
-    // linear index to 3D pixel index transformation
-    int4 idx;
-    int plane = im_shape.y * im_shape.x;
-    int aux = gidx % plane;
-    idx.z = gidx / plane;
-    idx.y = aux / im_shape.x;
-    idx.x = aux % im_shape.x;
+    // linear to cartesian index transformation per pixel
+    int3 idx;
+    int plane_size = im_shape.y * im_shape.x;
+    idx.z = linear_idx / plane_size;
+    int plane_idx = linear_idx % plane_size;
+    idx.y = plane_idx / im_shape.x;
+    idx.x = plane_idx % im_shape.x;
+;
+
+    int4 cidx, iter_cidx;
+    long iter_linear_cidx;
+    long closest_linear_cidx = 0;
 
     // approx center grid positoin
-    int4 p, q;
-    p.z = __max(0, __min(idx.z / sp_shape.z, sp_grid.z - 1));
-    p.y = __max(0, __min(idx.y / sp_shape.y, sp_grid.y - 1));
-    p.x = __max(0, __min(idx.x / sp_shape.x, sp_grid.x - 1));
+    cidx.z = __max(0, __min(idx.z / sp_shape.z, sp_grid.z - 1));
+    cidx.y = __max(0, __min(idx.y / sp_shape.y, sp_grid.y - 1));
+    cidx.x = __max(0, __min(idx.x / sp_shape.x, sp_grid.x - 1));
 
-    float min_d = DLIMIT;
-    const int cshift = N_FEATURES + 3;
-    long ridx = 0, cidx;
+    float minimum_distance = DLIMIT;
+    const int c_stride = N_FEATURES + 3;
 
     const int R = 2;
     for ( int k = -R; k <= R; k++ ) {
-        q.z = p.z + k;
-        if ( q.z < 0 || q.z >= sp_grid.z ) {continue;}
+        for ( int j = -R; j <= R; j++ ) {
+            for ( int i = -R; i <= R; i++ ) {
+                iter_cidx.z = cidx.z + k;
+                iter_cidx.y = cidx.y + j;
+                iter_cidx.x = cidx.x + i;
 
-        for ( int i = -R; i <= R; i++ ) {
-            q.y = p.y + i;
-            if ( q.y < 0 || q.y >= sp_grid.y ) {continue;}
+                if ( iter_cidx.y < 0 || iter_cidx.y >= sp_grid.y || 
+                     iter_cidx.z < 0 || iter_cidx.z >= sp_grid.z ||
+                     iter_cidx.x < 0 || iter_cidx.x >= sp_grid.x ) {continue;}
 
-            for ( int j = -R; j <= R; j++ ) {
-                q.x = p.x + j;
-                if ( q.x < 0 || q.x >= sp_grid.x ) {continue;}
+                iter_linear_cidx = iter_cidx.z * sp_grid.y * sp_grid.x +
+                                   iter_cidx.y * sp_grid.x +
+                                   iter_cidx.x;
+                long iter_center_addr = iter_linear_cidx * c_stride;
 
-                cidx = q.z * sp_grid.y * sp_grid.x + q.y * sp_grid.x + q.x;
-
-                if ( centers[cidx * cshift] == DLIMIT ) {
+                if ( centers[iter_center_addr] == DLIMIT ) {
                     continue;
                 }
 
-                // Appearance diff
-                float adiff = 0;
-                for ( int w = 0; w < N_FEATURES; w++ ) {
-                    idx.w = w;
-                    float d = data[gidx + w] - centers[cidx * cshift + w];
-                    adiff += d * d;
-                }
-
-                // Position diff
-                float3 pd;
-                pd.z = (idx.z - centers[cidx * cshift + N_FEATURES + 0]) * spacing.z;
-                pd.y = (idx.y - centers[cidx * cshift + N_FEATURES + 1]) * spacing.y;
-                pd.x = (idx.x - centers[cidx * cshift + N_FEATURES + 2]) * spacing.x;
-                float pdiff = pd.z * pd.z + pd.y * pd.y + pd.x * pd.x;
-                float dist = adiff / (m * m * N_FEATURES * N_FEATURES) + pdiff / (S * S);
+                float dist = slic_distance(idx,
+                                           pixel_addr, data,
+                                           iter_center_addr, centers,
+                                           m, S,
+                                           spacing);
 
                 // Wrapup
-                if ( dist < min_d ) {
-                    min_d = dist;
-                    ridx = cidx;
+                if ( dist < minimum_distance ) {
+                    minimum_distance = dist;
+                    closest_linear_cidx = iter_linear_cidx;
                 }
             }
         }
     }
 
-    labels[gidx] = ridx + 1;
+    labels[linear_idx] = closest_linear_cidx + 1;
 }
 
 
@@ -146,17 +198,16 @@ void maximization(const float* data,
                   const int3 sp_shape,
                   const int3 im_shape)
 {
-    long lidx = threadIdx.x + (blockIdx.x * blockDim.x);
+    const long linear_cidx = threadIdx.x + (blockIdx.x * blockDim.x);
+    const int c_stride = N_FEATURES + 3;
+    const long center_addr = linear_cidx * c_stride;
 
-    if ( lidx >= n_clusters ) {
-        return;
-    }
+    if ( linear_cidx >= n_clusters ) { return; }
 
-    const int cshift = N_FEATURES + 3;
     int3 cidx;
-    cidx.z = (int) centers[lidx * cshift + N_FEATURES + 0];
-    cidx.y = (int) centers[lidx * cshift + N_FEATURES + 1];
-    cidx.x = (int) centers[lidx * cshift + N_FEATURES + 2];
+    cidx.z = (int) centers[center_addr + N_FEATURES + 0];
+    cidx.y = (int) centers[center_addr + N_FEATURES + 1];
+    cidx.x = (int) centers[center_addr + N_FEATURES + 2];
 
     float ratio = 2.0f;
 
@@ -170,21 +221,24 @@ void maximization(const float* data,
     to.y = __min(cidx.y + sp_shape.y * ratio, im_shape.y);
     to.x = __min(cidx.x + sp_shape.x * ratio, im_shape.x);
 
-    int4 p;
 
-    float f[cshift];
-    for ( int k = 0; k < cshift; k++ ) {f[k] = 0;}
-    long count = 0, offset, s2d = im_shape.x * im_shape.y;
+    float f[c_stride];
+    for ( int k = 0; k < c_stride; k++ ) {f[k] = 0;}
 
+    long z_stride = im_shape.x * im_shape.y;
+    long y_stride = im_shape.x;
+
+    long count = 0;
+    int3 p;
     for ( p.z = from.z; p.z < to.z; p.z++ ) {
         for ( p.y = from.y; p.y < to.y; p.y++ ) {
             for ( p.x = from.x; p.x < to.x; p.x++ ) {
-                offset = p.z * s2d + p.y * im_shape.x + p.x;
+                long linear_idx = p.z * z_stride + p.y * y_stride + p.x;
+                long pixel_addr = linear_idx * N_FEATURES;
 
-                if ( labels[offset] == lidx + 1 ) {
+                if ( labels[linear_idx] == linear_cidx + 1 ) {
                     for ( int w = 0; w < N_FEATURES; w++ ) {
-                        p.w = w;
-                        f[w] += at(data, p, im_shape);
+                        f[w] += data[pixel_addr + w];
                     }
                     f[N_FEATURES + 0] += p.z;
                     f[N_FEATURES + 1] += p.y;
@@ -197,10 +251,10 @@ void maximization(const float* data,
     }
 
     if ( count > 0 ) {
-        for ( int w = 0; w < cshift; w++ ) {
-            centers[lidx * cshift + w] = f[w] / count;
+        for ( int w = 0; w < c_stride; w++ ) {
+            centers[center_addr + w] = f[w] / count;
         }
     } else {
-        centers[lidx * cshift] = DLIMIT;
+        centers[center_addr] = DLIMIT;
     }
 }
