@@ -9,7 +9,8 @@ pytest-cov = "*"
 tox = "*"
 check-manifest = "*"
 coverage = "*"
-
+black = "*"
+isort = "*"
 
 ipython = "*"
 
