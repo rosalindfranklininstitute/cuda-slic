@@ -16,7 +16,7 @@ def test_slic3d_grayscale_runs():
 
 def test_slic3d_3channels_runs():
     blob = data.binary_blobs(length=50, n_dim=4, seed=2)
-    blob = blob[:3]
+    blob = blob[..., :3]
     blob = filters.gaussian(blob)
     blob = img_as_float32(blob)
     labels = slic3d(blob, n_segments=100, compactness=3)
@@ -56,8 +56,8 @@ def test_slic3d_with_sp_shape_int():
     assert len(np.unique(labels)) < upper_bound
 
 
-def test_slic3d_raises_value_error_when_input_dimention_less_than_3():
-    blob = data.binary_blobs(length=33, n_dim=2, seed=2)
+def test_slic3d_raises_value_error_when_input_dimention_less_than_2():
+    blob = data.binary_blobs(length=33, n_dim=1, seed=2)
     blob = np.float32(blob)
     with pytest.raises(ValueError):
         labels = slic3d(blob, n_segments=100, compactness=3)

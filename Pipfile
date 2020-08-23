@@ -15,7 +15,6 @@ ipython = "*"
 setuptools = "*"
 wheel = "*"
 cuda-slic = {editable = true,path = "."}
-twine = "*"
 
 [packages]
 numpy = "*"
