@@ -1,16 +1,17 @@
 import os.path as op
 
 import numpy as np
-from jinja2 import Template
-
+import pycuda.autoinit
 import pycuda.driver as cuda
 import pycuda.gpuarray as gpuarray
-import pycuda.autoinit
+
+from jinja2 import Template
 from pycuda.compiler import SourceModule
+from skimage.segmentation.slic_superpixels import (
+    _enforce_label_connectivity_cython,
+)
 
-from .types import int3, float3
-
-from skimage.segmentation.slic_superpixels import _enforce_label_connectivity_cython
+from .types import float3, int3
 
 
 def flat_kernel_config(threads_total, block_size=128):
@@ -48,7 +49,9 @@ def slic3d(
         elif len(sp_shape) == 3 and isinstance(sp_shape, tuple):
             _sp_shape = np.array(sp_shape)
         else:
-            raise ValueError(("sp_shape must be scalar int or tuple of length 3"))
+            raise ValueError(
+                ("sp_shape must be scalar int or tuple of length 3")
+            )
 
         _sp_grid = (dshape + _sp_shape - 1) // _sp_shape
 
@@ -84,7 +87,13 @@ def slic3d(
     cblock, cgrid = flat_kernel_config(int(np.prod(_sp_grid)))
 
     gpu_slic_init(
-        data_gpu, centers_gpu, n_centers, sp_grid, sp_shape, block=cblock, grid=cgrid
+        data_gpu,
+        centers_gpu,
+        n_centers,
+        sp_grid,
+        sp_shape,
+        block=cblock,
+        grid=cgrid,
     )
     cuda.Context.synchronize()
 

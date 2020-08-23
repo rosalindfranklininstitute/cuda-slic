@@ -6,6 +6,13 @@ before_script:
   - conda init bash
   - source /home/conda/.bashrc  # activate base miniconda environment
 
+style-check:
+  script:
+    - pip install black
+    - pip install isort
+    - isort --recursive --check-only .
+    - black --diff .
+
 nvidia-debug:
   tags:
     - gpu

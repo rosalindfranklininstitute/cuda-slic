@@ -1,13 +1,14 @@
-import time
 import logging
+import time
 
-from math import ceil
+from functools import partial, wraps
 from itertools import product
-from functools import wraps, partial
+from math import ceil
 
-import yaml
-import numpy as np
 import dask.array as da
+import numpy as np
+import yaml
+
 
 # from dask.array.core import slices_from_chunks
 

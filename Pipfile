@@ -6,20 +6,22 @@ verify_ssl = true
 [dev-packages]
 pytest = "*"
 pytest-cov = "*"
-tox = "*"
 check-manifest = "*"
 coverage = "*"
 black = "*"
+tox = "*"
 isort = "*"
-
 ipython = "*"
-
 setuptools = "*"
 wheel = "*"
 cuda-slic = {editable = true,path = "."}
+twine = "*"
 
 [packages]
 numpy = "*"
 jinja2 = "*"
 scikit-image = "*"
-pycuda = "==2019.1.2"
+pycuda = ">=2019.1.2"
+
+[pipenv]
+allow_prereleases = true

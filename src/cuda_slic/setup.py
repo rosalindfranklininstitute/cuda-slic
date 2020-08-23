@@ -1,7 +1,8 @@
 import os
+
+from Cython.Build import build_ext
 from numpy.distutils.core import setup
 from numpy.distutils.misc_util import Configuration, get_numpy_include_dirs
-from Cython.Build import build_ext
 
 
 def configuration(parent_package="", top_path=None):

@@ -1,8 +1,9 @@
-from ..slic import slic3d
-
-import pycuda
 import numpy as np
-from skimage import data, color, filters
+import pycuda
+
+from skimage import color, data, filters
+
+from ..slic import slic3d
 
 
 def test_slic3d_grayscale_runs(n=200, sp_size=5):

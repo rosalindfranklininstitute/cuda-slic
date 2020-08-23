@@ -1,7 +1,6 @@
-from survos2.improc.regions.slic import slic3d
+from skimage import color, data, filters, img_as_float32
 
-from skimage import data, color, filters
-from skimage import img_as_float32
+from survos2.improc.regions.slic import slic3d
 
 
 def test_slic3d_grayscale_runs():

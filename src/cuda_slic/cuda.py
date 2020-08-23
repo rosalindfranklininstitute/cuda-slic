@@ -1,9 +1,9 @@
-import logging
-import numpy as np
 import atexit
+import logging
 
 from functools import wraps
 
+import numpy as np
 import pycuda.driver as cuda
 import pycuda.gpuarray as gpuarray
 

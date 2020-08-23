@@ -1,20 +1,16 @@
 import logging
-
 import os.path as op
 
 import numpy as np
-
+import pycuda.autoinit
 import pycuda.driver as cuda
 import pycuda.gpuarray as gpuarray
-import pycuda.autoinit
+
 from pycuda.compiler import SourceModule
 
-from .types import int3
-
-# from .utils import gpuregion, cpuregion
+from ._ccl import _merge_small3d, _relabel2d, _relabel3d, _remap
 from .cuda import asgpuarray, grid_kernel_config
-
-from ._ccl import _remap, _relabel2d, _relabel3d, _merge_small3d
+from .types import int3
 
 
 __dirname__ = op.dirname(__file__)
@@ -38,7 +34,9 @@ def ccl3d(labels, remap=True):
     block, grid = grid_kernel_config(gpu_ccl_local, labels.shape)
     shared = int(np.prod(block) * 8)
 
-    gpu_ccl_local(labels_gpu, result_gpu, shape, block=block, grid=grid, shared=shared)
+    gpu_ccl_local(
+        labels_gpu, result_gpu, shape, block=block, grid=grid, shared=shared
+    )
     gpu_ccl_global(labels_gpu, result_gpu, shape, block=block, grid=grid)
     gpu_ccl_final(result_gpu, shape, block=block, grid=grid)
 
@@ -61,7 +59,9 @@ def relabel(labels):
     if labels.ndim == 2:
         new_labels = _relabel2d(labels.ravel(), labels.shape[1])
     elif labels.ndim == 3:
-        new_labels = _relabel3d(labels.ravel(), labels.shape[1], labels.shape[2])
+        new_labels = _relabel3d(
+            labels.ravel(), labels.shape[1], labels.shape[2]
+        )
     else:
         raise ValueError(
             "Input array has to be 2 or 3 dimensional: {}".format(labels.ndim)

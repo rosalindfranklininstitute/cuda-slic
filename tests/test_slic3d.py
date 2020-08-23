@@ -1,10 +1,9 @@
-import pytest
 import numpy as np
+import pytest
+
+from skimage import color, data, filters, img_as_float32
 
 from cuda_slic.slic import slic3d
-
-from skimage import data, color, filters
-from skimage import img_as_float32
 
 
 def test_slic3d_grayscale_runs():
