@@ -9,9 +9,10 @@ before_script:
 style-check:
   script:
     - pip install black
-    - pip install isort
+    # matching the version available at dls
+    - pip install -Iv isort==4.3.21 
     - isort --recursive --check-only .
-    - black --diff .
+    - black --diff --check .
 
 nvidia-debug:
   tags:

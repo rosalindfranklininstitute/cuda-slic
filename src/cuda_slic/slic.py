@@ -25,39 +25,64 @@ def slic3d(
     n_segments=100,
     sp_shape=None,
     compactness=1.0,
-    sigma=None,
     spacing=(1, 1, 1),
     max_iter=5,
     postprocess=True,
+    multichannel=False,
+    min_size_factor=0.4,
+    max_size_factor=10.0,
 ):
     """
 
     """
-    if image.ndim not in [3, 4]:
+    if image.ndim not in [2, 3, 4]:
         raise ValueError(
             (
-                "input image must be either 3, or 4 dimention."
-                "the image.ndim provided is {}".format(image.ndim)
+                "input image must be either 2, 3, or 4 dimentional.\n"
+                "The input image.ndim is {}".format(image.ndim)
             )
         )
-    dshape = np.array(image.shape[-3:])
+
+    is_2d = False
+
+    if image.ndim == 2:
+        # 2D grayscale image
+        image = image[np.newaxis, ..., np.newaxis]
+        is_2d = True
+    elif image.ndim == 3 and multichannel:
+        # Make 2D multichannel image 3D with depth = 1
+        image = image[np.newaxis, ...]
+        is_2d = True
+    elif image.ndim == 3 and not multichannel:
+        # Add channel as single last dimension
+        image = image[..., np.newaxis]
+
+    depth, height, width = image.shape[:3]
+    dshape = np.array([depth, height, width])
 
     if sp_shape:
         if isinstance(sp_shape, int):
             _sp_shape = np.array([sp_shape, sp_shape, sp_shape])
 
-        elif len(sp_shape) == 3 and isinstance(sp_shape, tuple):
+        elif isinstance(sp_shape, tuple) and len(sp_shape) == 3:
             _sp_shape = np.array(sp_shape)
         else:
             raise ValueError(
                 ("sp_shape must be scalar int or tuple of length 3")
             )
-
         _sp_grid = (dshape + _sp_shape - 1) // _sp_shape
 
     else:
-        sp_size = int(np.ceil((np.prod(dshape) / n_segments) ** (1.0 / 3.0)))
-        _sp_shape = np.array([sp_size, sp_size, sp_size])
+        power = 1 / 2 if is_2d else 1 / 3
+        sp_size = int(np.ceil((np.prod(dshape) / n_segments) ** power))
+        _sp_shape = np.array(
+            [
+                # don't allow sp_shape to be larger than image sides
+                min(depth, sp_size),
+                min(height, sp_size),
+                min(width, sp_size),
+            ]
+        )
         _sp_grid = (dshape + _sp_shape - 1) // _sp_shape
 
     sp_shape = np.asarray(tuple(_sp_shape[::-1]), int3)
@@ -67,7 +92,7 @@ def slic3d(
     S = np.float32(np.max(_sp_shape))
 
     n_centers = np.int32(np.prod(_sp_grid))
-    n_features = np.int32(image.shape[0] if image.ndim == 4 else 1)
+    n_features = np.int32(image.shape[-1])
     im_shape = np.asarray(tuple(dshape[::-1]), int3)
     spacing = np.asarray(tuple(spacing[::-1]), float3)
 
@@ -130,10 +155,13 @@ def slic3d(
     labels = np.asarray(labels_gpu.get(), dtype=np.int)
     if postprocess:
         segment_size = np.prod(dshape) / n_centers
-        min_size = int(0.4 * segment_size)
-        max_size = int(10 * segment_size)
+        min_size = int(min_size_factor * segment_size)
+        max_size = int(max_size_factor * segment_size)
         labels = _enforce_label_connectivity_cython(
             labels, min_size, max_size, start_label=0
         )
+
+    if is_2d:
+        labels = labels[0]
 
     return labels
