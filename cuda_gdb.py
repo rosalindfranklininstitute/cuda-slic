@@ -1,5 +1,4 @@
 from skimage import color, data, filters, img_as_float32
-
 from survos2.improc.regions.slic import slic3d
 
 

@@ -12,11 +12,16 @@ dependencies:
 # test requirements
 - pytest
 - ipython
-#notebook requirements
+# linting requirements
+- flake8
+- black
+- isort
+# notebook requirements
 - notebook
 - jupyter
 - ipywidgets
 
 - pip:
   - pycuda==2019.1.2
+  # test requirements
   - -e .

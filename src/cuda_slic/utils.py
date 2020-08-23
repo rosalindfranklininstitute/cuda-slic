@@ -5,9 +5,8 @@ from functools import partial, wraps
 from itertools import product
 from math import ceil
 
-import numpy as np
-
 import dask.array as da
+import numpy as np
 import yaml
 
 
