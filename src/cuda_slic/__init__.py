@@ -1,1 +1,1 @@
-from .slic import slic3d  # noqa
+from .slic import slic  # noqa

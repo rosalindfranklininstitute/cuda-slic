@@ -7,6 +7,7 @@ import pycuda.gpuarray as gpuarray
 
 from jinja2 import Template
 from pycuda.compiler import SourceModule
+from skimage.color import rgb2lab
 from skimage.segmentation.slic_superpixels import (
     _enforce_label_connectivity_cython,
 )
@@ -20,21 +21,91 @@ def flat_kernel_config(threads_total, block_size=128):
     return block, grid
 
 
-def slic3d(
+def slic(
     image,
     n_segments=100,
-    sp_shape=None,
     compactness=1.0,
     spacing=(1, 1, 1),
     max_iter=5,
-    postprocess=True,
-    multichannel=False,
+    multichannel=True,
+    convert2lab=None,
+    enforce_connectivity=True,
     min_size_factor=0.4,
     max_size_factor=10.0,
 ):
+    """Segments image using k-means clustering in Color-(x,y,z) space.
+    Parameters
+    ----------
+    image : 2D, 3D or 4D ndarray
+        Input image, which can be 2D or 3D, and grayscale or multichannel
+        (see `multichannel` parameter).
+    n_segments : int, optional
+        The (approximate) number of labels in the segmented output image.
+    compactness : float, optional
+        Balances color proximity and space proximity. Higher values give
+        more weight to space proximity, making superpixel shapes more
+        square/cubic. 
+        This parameter depends strongly on image contrast and on the
+        shapes of objects in the image. We recommend exploring possible
+        values on a log scale, e.g., 0.01, 0.1, 1, 10, 100, before
+        refining around a chosen value.
+    max_iter : int, optional
+        Maximum number of iterations of k-means.
+    spacing : (3,) array-like of floats, optional
+        The voxel spacing along each image dimension. By default, `slic`
+        assumes uniform spacing (same voxel resolution along z, y and x).
+        This parameter controls the weights of the distances along z, y,
+        and x during k-means clustering.
+    multichannel : bool, optional
+        Whether the last axis of the image is to be interpreted as multiple
+        channels or another spatial dimension.
+    convert2lab : bool, optional
+        Whether the input should be converted to Lab colorspace prior to
+        segmentation. The input image *must* be RGB. Highly recommended.
+        This option defaults to ``True`` when ``multichannel=True`` *and*
+        ``image.shape[-1] == 3``.
+    enforce_connectivity : bool, optional
+        Whether the generated segments are connected or not
+    min_size_factor : float, optional
+        Proportion of the minimum segment size to be removed with respect
+        to the supposed segment size ```depth*width*height/n_segments```
+    max_size_factor : float, optional
+        Proportion of the maximum connected segment size. A value of 3 works
+        in most of the cases.
+    Returns
+    -------
+    labels : 2D or 3D array
+        Integer mask indicating segment labels.
+    Raises
+    ------
+    ValueError
+        If ``convert2lab`` is set to ``True`` but the last array
+        dimension is not of length 3.
+    ValueError
+        If ``image.ndim`` is not 2, 3 or 4.
+    Notes
+    -----
+    * Images of shape (M, N, 3) are interpreted as 2D RGB images by default. To
+      interpret them as 3D with the last dimension having length 3, use
+      `multichannel=False`.
+
+    References
+    ----------
+    .. [1] Radhakrishna Achanta, Appu Shaji, Kevin Smith, Aurelien Lucchi,
+        Pascal Fua, and Sabine Süsstrunk, SLIC Superpixels Compared to
+        State-of-the-art Superpixel Methods, TPAMI, May 2012.
+        :DOI:`10.1109/TPAMI.2012.120`
+    Examples
+    --------
+    >>> from cuda_slic import slic
+    >>> from skimage import data
+    >>> img = data.astronaut() # 2D RGB image
+    >>> labels = slic(img, n_segments=100, compactness=10)
+    To segment single channel 3D volumes
+    >>> vol = data.binary_blobs(length=50, ndim=3, seed=2)
+    >>> labels = slic(vol, n_segments=100, multichannel=False, compactness=0.1)
     """
 
-    """
     if image.ndim not in [2, 3, 4]:
         raise ValueError(
             (
@@ -57,33 +128,26 @@ def slic3d(
         # Add channel as single last dimension
         image = image[..., np.newaxis]
 
+    if multichannel and (convert2lab or convert2lab is None):
+        if image.shape[-1] != 3 and convert2lab:
+            raise ValueError("Lab colorspace conversion requires a RGB image.")
+        elif image.shape[-1] == 3:
+            image = rgb2lab(image)
+
     depth, height, width = image.shape[:3]
     dshape = np.array([depth, height, width])
 
-    if sp_shape:
-        if isinstance(sp_shape, int):
-            _sp_shape = np.array([sp_shape, sp_shape, sp_shape])
-
-        elif isinstance(sp_shape, tuple) and len(sp_shape) == 3:
-            _sp_shape = np.array(sp_shape)
-        else:
-            raise ValueError(
-                ("sp_shape must be scalar int or tuple of length 3")
-            )
-        _sp_grid = (dshape + _sp_shape - 1) // _sp_shape
-
-    else:
-        power = 1 / 2 if is_2d else 1 / 3
-        sp_size = int(np.ceil((np.prod(dshape) / n_segments) ** power))
-        _sp_shape = np.array(
-            [
-                # don't allow sp_shape to be larger than image sides
-                min(depth, sp_size),
-                min(height, sp_size),
-                min(width, sp_size),
-            ]
-        )
-        _sp_grid = (dshape + _sp_shape - 1) // _sp_shape
+    power = 1 / 2 if is_2d else 1 / 3
+    sp_size = int(np.ceil((np.prod(dshape) / n_segments) ** power))
+    _sp_shape = np.array(
+        [
+            # don't allow sp_shape to be larger than image sides
+            min(depth, sp_size),
+            min(height, sp_size),
+            min(width, sp_size),
+        ]
+    )
+    _sp_grid = (dshape + _sp_shape - 1) // _sp_shape
 
     sp_shape = np.asarray(tuple(_sp_shape[::-1]), int3)
     sp_grid = np.asarray(tuple(_sp_grid[::-1]), int3)
@@ -153,7 +217,7 @@ def slic3d(
         cuda.Context.synchronize()
 
     labels = np.asarray(labels_gpu.get(), dtype=np.int)
-    if postprocess:
+    if enforce_connectivity:
         segment_size = np.prod(dshape) / n_centers
         min_size = int(min_size_factor * segment_size)
         max_size = int(max_size_factor * segment_size)
