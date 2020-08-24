@@ -9,6 +9,12 @@ dependencies:
 - numpy
 - scikit-image
 - jinja2
+# the presence of cudatoolkit and the nvcc compiler is assumed
+# otherwise you can try to uncomment the following two lines
+# be warned conda will likely fail to solve the env with these
+# - cudatoolkit
+# - cudatoolkit-dev
+
 # test requirements
 - pytest
 - ipython
@@ -22,6 +28,7 @@ dependencies:
 - ipywidgets
 
 - pip:
+  # gcc and g++/gcc-c++ are a requirement for pip installing pycuda
   - pycuda==2019.1.2
   # test requirements
   - -e .
