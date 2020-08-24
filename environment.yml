@@ -18,6 +18,7 @@ dependencies:
 # test requirements
 - pytest
 - ipython
+- tox
 # linting requirements
 - flake8
 - black

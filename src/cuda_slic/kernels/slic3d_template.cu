@@ -68,7 +68,7 @@ float slic_distance(const int3 idx,
     pd.x = (idx.x - centers[center_addr + N_FEATURES + 2]) * spacing.x;
 
     float position_diff = pd.z * pd.z + pd.y * pd.y + pd.x * pd.x;
-    float dist = color_diff / (m * m * N_FEATURES * N_FEATURES) +
+    float dist = color_diff / (m * m) +
                  position_diff / (S * S);
     return dist;
 }
@@ -103,10 +103,10 @@ void init_clusters(const float* data,
 
     //saving cluster center positions
     // note: the color is not initialized, but is kept at zero.
-    const int stride = N_FEATURES + 3;
-    centers[linear_cidx * stride + N_FEATURES + 0] = cidx.z;
-    centers[linear_cidx * stride + N_FEATURES + 1] = cidx.y;
-    centers[linear_cidx * stride + N_FEATURES + 2] = cidx.x;
+    const int c_stride = N_FEATURES + 3;
+    centers[linear_cidx * c_stride + N_FEATURES + 0] = cidx.z;
+    centers[linear_cidx * c_stride + N_FEATURES + 1] = cidx.y;
+    centers[linear_cidx * c_stride + N_FEATURES + 2] = cidx.x;
 }
 
 

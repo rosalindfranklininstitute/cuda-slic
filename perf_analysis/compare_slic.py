@@ -26,7 +26,11 @@ def test_compare_slics():
             blob = np.float32(blob)
             n_segments = side ** 3 // 5 ** 3
             t1, _ = time_func(
-                slic3d, blob, n_segments=n_segments, multichannel=False, compactness=0.2
+                slic3d,
+                blob,
+                n_segments=n_segments,
+                multichannel=False,
+                compactness=0.2,
             )
             times["cuda_slic"].append(t1)
             t2, _ = time_func(
