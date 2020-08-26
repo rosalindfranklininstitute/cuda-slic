@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="cuda_slic",
-    version="0.0.1a1",
+    version="0.0.1a2",
     python_requires=">=3.5",
     package_dir={"": "src"},
     packages=find_packages(where="src"),
@@ -19,7 +19,7 @@ setup(
     keywords="segmentation fast cuda slic clustering kmeans",
     url="https://gitlab.stfc.ac.uk/RosalindFranklinInstitute/cuda-slic",  # project home page, if any
     classifiers=[
-        "License :: OSI Approved :: Apache 2.0",
+        "License :: OSI Approved :: Apache Software License",
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",

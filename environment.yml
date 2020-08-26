@@ -16,6 +16,7 @@ dependencies:
 # - cudatoolkit-dev
 
 # test requirements
+- twine
 - pytest
 - ipython
 - tox
