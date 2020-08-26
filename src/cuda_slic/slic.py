@@ -102,7 +102,7 @@ def slic(
     >>> img = data.astronaut() # 2D RGB image
     >>> labels = slic(img, n_segments=100, compactness=10)
     To segment single channel 3D volumes
-    >>> vol = data.binary_blobs(length=50, ndim=3, seed=2)
+    >>> vol = data.binary_blobs(length=50, n_dim=3, seed=2)
     >>> labels = slic(vol, n_segments=100, multichannel=False, compactness=0.1)
     """
 
@@ -216,7 +216,7 @@ def slic(
         )
         cuda.Context.synchronize()
 
-    labels = np.asarray(labels_gpu.get(), dtype=np.int)
+    labels = np.asarray(labels_gpu.get(), dtype=np.intp)
     if enforce_connectivity:
         segment_size = np.prod(dshape) / n_centers
         min_size = int(min_size_factor * segment_size)
