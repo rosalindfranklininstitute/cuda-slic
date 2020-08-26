@@ -7,6 +7,8 @@ before_script:
   - source /home/conda/.bashrc  # activate base miniconda environment
 
 style-check:
+  tags:
+    - gpu
   script:
     - pip install black
     - pip install isort
@@ -31,7 +33,7 @@ unit-tests:
   tags:
     - gpu
   script:
-    - conda env create -f environment.yml -v
+    - conda env create -f environment-cupy.yml -v
     - conda activate cuda-slic
     - pytest
 
@@ -39,7 +41,7 @@ benchmark:
   tags:
     - gpu
   script:
-    - conda env create -f environment.yml -v
+    - conda env create -f environment-cupy.yml -v
     - conda activate cuda-slic
     - python -m perf_analysis.compare_slic
     - ipython perf_analysis/throughput.ipy

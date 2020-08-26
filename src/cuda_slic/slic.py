@@ -1,12 +1,14 @@
 import os.path as op
 
+# import pycuda.autoinit
+# import pycuda.driver as cuda
+# import pycuda.gpuarray as gpuarray
+import cupy as cp
 import numpy as np
-import pycuda.autoinit
-import pycuda.driver as cuda
-import pycuda.gpuarray as gpuarray
 
 from jinja2 import Template
-from pycuda.compiler import SourceModule
+
+# from pycuda.compiler import SourceModule
 from skimage.color import rgb2lab
 from skimage.segmentation.slic_superpixels import (
     _enforce_label_connectivity_cython,
@@ -44,7 +46,7 @@ def slic(
     compactness : float, optional
         Balances color proximity and space proximity. Higher values give
         more weight to space proximity, making superpixel shapes more
-        square/cubic. 
+        square/cubic.
         This parameter depends strongly on image contrast and on the
         shapes of objects in the image. We recommend exploring possible
         values on a log scale, e.g., 0.01, 0.1, 1, 10, 100, before
@@ -149,25 +151,35 @@ def slic(
     )
     _sp_grid = (dshape + _sp_shape - 1) // _sp_shape
 
-    sp_shape = np.asarray(tuple(_sp_shape[::-1]), int3)
-    sp_grid = np.asarray(tuple(_sp_grid[::-1]), int3)
+    sp_shape = np.asarray(tuple(_sp_shape[::-1]), np.int32)
+    sp_grid = np.asarray(tuple(_sp_grid[::-1]), np.int32)
 
     m = np.float32(compactness)
     S = np.float32(np.max(_sp_shape))
 
     n_centers = np.int32(np.prod(_sp_grid))
-    n_features = np.int32(image.shape[-1])
-    im_shape = np.asarray(tuple(dshape[::-1]), int3)
-    spacing = np.asarray(tuple(spacing[::-1]), float3)
+    n_features = image.shape[-1]
+    im_shape = np.asarray(tuple(dshape[::-1]), np.int32)
+    spacing = np.asarray(tuple(spacing[::-1]), np.float32)
 
-    data_gpu = gpuarray.to_gpu(np.float32(image))
-    centers_gpu = gpuarray.zeros((n_centers, n_features + 3), np.float32)
-    labels_gpu = gpuarray.zeros(dshape, np.uint32)
+    data_gpu = cp.asarray(np.float32(image))
+    centers_gpu = cp.zeros((n_centers, n_features + 3), cp.float32)
+    labels_gpu = cp.zeros(dshape, cp.uint32)
 
     __dirname__ = op.dirname(__file__)
     with open(op.join(__dirname__, "kernels", "slic3d_template.cu"), "r") as f:
-        template = Template(f.read()).render(n_features=n_features)
-        _mod_conv = SourceModule(template)
+        template = Template(f.read()).render(
+            n_features=n_features,
+            n_clusters=n_centers,
+            sp_shape=sp_shape,
+            sp_grid=sp_grid,
+            im_shape=im_shape,
+            spacing=spacing,
+            m=m,
+            S=S,
+        )
+        template = 'extern "C" { ' + template + " }"
+        _mod_conv = cp.RawModule(code=template, options=("-std=c++14",))
         gpu_slic_init = _mod_conv.get_function("init_clusters")
         gpu_slic_expectation = _mod_conv.get_function("expectation")
         gpu_slic_maximization = _mod_conv.get_function("maximization")
@@ -176,45 +188,34 @@ def slic(
     cblock, cgrid = flat_kernel_config(int(np.prod(_sp_grid)))
 
     gpu_slic_init(
-        data_gpu,
-        centers_gpu,
-        n_centers,
-        sp_grid,
-        sp_shape,
-        block=cblock,
-        grid=cgrid,
+        cgrid,
+        cblock,
+        (
+            data_gpu,
+            centers_gpu,
+        ),
     )
-    cuda.Context.synchronize()
 
     for _ in range(max_iter):
         gpu_slic_expectation(
-            data_gpu,
-            centers_gpu,
-            labels_gpu,
-            m,
-            S,
-            n_centers,
-            spacing,
-            sp_grid,
-            sp_shape,
-            im_shape,
-            block=vblock,
-            grid=vgrid,
+            vgrid,
+            vblock,
+            (
+                data_gpu,
+                centers_gpu,
+                labels_gpu,
+            ),
         )
-        cuda.Context.synchronize()
 
         gpu_slic_maximization(
-            data_gpu,
-            labels_gpu,
-            centers_gpu,
-            n_centers,
-            sp_grid,
-            sp_shape,
-            im_shape,
-            block=cblock,
-            grid=cgrid,
+            cgrid,
+            cblock,
+            (
+                data_gpu,
+                labels_gpu,
+                centers_gpu,
+            ),
         )
-        cuda.Context.synchronize()
 
     labels = np.asarray(labels_gpu.get(), dtype=np.intp)
     if enforce_connectivity:

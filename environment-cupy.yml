@@ -1,0 +1,31 @@
+name: cupy-slic
+channels:
+- conda-forge
+- default
+
+dependencies:
+- python=3.7
+- pip
+- numpy
+- scikit-image
+- jinja2
+- cupy
+- cudatoolkit=10.1
+
+# # test requirements
+# - twine
+- pytest
+# - ipython
+- tox
+# # linting requirements
+# - flake8
+# - black
+# - isort
+# # notebook requirements
+# - notebook
+# - jupyter
+# - ipywidgets
+
+- pip:
+  # test requirements
+  - -e .
