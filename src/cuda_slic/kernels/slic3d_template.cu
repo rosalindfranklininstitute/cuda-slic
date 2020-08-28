@@ -36,22 +36,46 @@ idx.x = linear_idx % y_stride
 
 #define DLIMIT 99999999
 #define N_FEATURES {{ n_features }}
+#define N_CLUSTERS {{ n_clusters }}
+#define MM {{ m }}
+#define SS {{ S }}
 
 #define __min(a, b) (((a) < (b)) ? (a) : (b))
 #define __max(a, b) (((a) >= (b)) ? (a) : (b))
 
 
-__device__
-float at(const float* data, const int4& P, const int3& S) {
-    long s2d = S.y * S.x, s3d = S.z * S.y * S.x;
-    return data[P.w * s3d + P.z * s2d + P.y * S.x + P.x];
-}
+__constant__ __device__ int3 SP_GRID 
+{
+    {{ sp_grid[0] }},
+    {{ sp_grid[1] }},
+    {{ sp_grid[2] }}
+};
+
+__constant__ __device__ int3 SP_SHAPE
+{ 
+    {{ sp_shape[0] }},
+    {{ sp_shape[1] }},
+    {{ sp_shape[2] }}
+};
+
+__constant__ __device__ int3 IM_SHAPE
+{ 
+    {{ im_shape[0] }},
+    {{ im_shape[1] }},
+    {{ im_shape[2] }}
+};
+
+__constant__ __device__ float3 SPACING
+{ 
+    {{ spacing[0] }},
+    {{ spacing[1] }},
+    {{ spacing[2] }}
+};
 
 __device__
 float slic_distance(const int3 idx,
                     const long pixel_addr, const float* data,
                     const long center_addr, const float* centers,
-                    const float m, const float S,
                     const float3 spacing)
 {
     // Color diff
@@ -68,24 +92,27 @@ float slic_distance(const int3 idx,
     pd.x = (idx.x - centers[center_addr + N_FEATURES + 2]) * spacing.x;
 
     float position_diff = pd.z * pd.z + pd.y * pd.y + pd.x * pd.x;
-    float dist = color_diff / (m * m) +
-                 position_diff / (S * S);
+    float dist = color_diff / (MM * MM) +
+                 position_diff / (SS * SS);
     return dist;
 }
 
 
 __global__
 void init_clusters(const float* data,
-                   float* centers,
-                   const int n_clusters,
-                   const int3 sp_grid,
-                   const int3 sp_shape)
+                   float* centers
+)
+
 {
     const long linear_cidx = threadIdx.x + (blockIdx.x * blockDim.x);
 
-    if ( linear_cidx >= n_clusters ) {
+    if ( linear_cidx >= N_CLUSTERS ) {
         return;
     }
+    const int3 sp_grid = SP_GRID;
+    const int3 sp_shape = SP_SHAPE;
+    const int3 im_shape = IM_SHAPE;
+    const float3 spacing = SPACING;
 
     // calculating the (0,0,0) index of each superpixel block
     // using linear to cartesian index transformation
@@ -113,16 +140,17 @@ void init_clusters(const float* data,
 __global__
 void expectation(const float* data,
                  const float* centers,
-                 unsigned int* labels,
-                 const float m, const float S,
-                 const int n_clusters,
-                 const float3 spacing,
-                 const int3 sp_grid,
-                 const int3 sp_shape,
-                 const int3 im_shape)
+                 unsigned int* labels
+)
+
 {
     const long linear_idx = threadIdx.x + (blockIdx.x * blockDim.x);
     const long pixel_addr = linear_idx * N_FEATURES;
+
+    const int3 sp_grid = SP_GRID;
+    const int3 sp_shape = SP_SHAPE;
+    const int3 im_shape = IM_SHAPE;
+    const float3 spacing = SPACING;
 
     if ( linear_idx >= im_shape.x * im_shape.y * im_shape.z ) {
         return;
@@ -173,7 +201,6 @@ void expectation(const float* data,
                 float dist = slic_distance(idx,
                                            pixel_addr, data,
                                            iter_center_addr, centers,
-                                           m, S,
                                            spacing);
 
                 // Wrapup
@@ -192,17 +219,20 @@ void expectation(const float* data,
 __global__
 void maximization(const float* data,
                   const unsigned int* labels,
-                  float* centers,
-                  int n_clusters,
-                  const int3 sp_grid,
-                  const int3 sp_shape,
-                  const int3 im_shape)
+                  float* centers
+)
+
 {
     const long linear_cidx = threadIdx.x + (blockIdx.x * blockDim.x);
     const int c_stride = N_FEATURES + 3;
     const long center_addr = linear_cidx * c_stride;
 
-    if ( linear_cidx >= n_clusters ) { return; }
+    const int3 sp_grid = SP_GRID;
+    const int3 sp_shape = SP_SHAPE;
+    const int3 im_shape = IM_SHAPE;
+    const float3 spacing = SPACING;
+
+    if ( linear_cidx >= N_CLUSTERS ) { return; }
 
     int3 cidx;
     cidx.z = (int) centers[center_addr + N_FEATURES + 0];

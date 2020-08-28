@@ -166,8 +166,17 @@ def slic(
 
     __dirname__ = op.dirname(__file__)
     with open(op.join(__dirname__, "kernels", "slic3d_template.cu"), "r") as f:
-        template = Template(f.read()).render(n_features=n_features)
-        _mod_conv = SourceModule(template)
+        template = Template(f.read()).render(
+            n_features=n_features,
+            n_clusters=n_centers,
+            sp_shape=sp_shape,
+            sp_grid=sp_grid,
+            im_shape=im_shape,
+            spacing=spacing,
+            m=m,
+            S=S,
+        )
+        _mod_conv = SourceModule(template, options=["-std=c++11",])
         gpu_slic_init = _mod_conv.get_function("init_clusters")
         gpu_slic_expectation = _mod_conv.get_function("expectation")
         gpu_slic_maximization = _mod_conv.get_function("maximization")
@@ -178,9 +187,6 @@ def slic(
     gpu_slic_init(
         data_gpu,
         centers_gpu,
-        n_centers,
-        sp_grid,
-        sp_shape,
         block=cblock,
         grid=cgrid,
     )
@@ -191,13 +197,6 @@ def slic(
             data_gpu,
             centers_gpu,
             labels_gpu,
-            m,
-            S,
-            n_centers,
-            spacing,
-            sp_grid,
-            sp_shape,
-            im_shape,
             block=vblock,
             grid=vgrid,
         )
@@ -207,10 +206,6 @@ def slic(
             data_gpu,
             labels_gpu,
             centers_gpu,
-            n_centers,
-            sp_grid,
-            sp_shape,
-            im_shape,
             block=cblock,
             grid=cgrid,
         )
