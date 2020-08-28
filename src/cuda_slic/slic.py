@@ -149,16 +149,16 @@ def slic(
     )
     _sp_grid = (dshape + _sp_shape - 1) // _sp_shape
 
-    sp_shape = np.asarray(tuple(_sp_shape[::-1]), int3)
-    sp_grid = np.asarray(tuple(_sp_grid[::-1]), int3)
+    sp_shape = np.asarray(tuple(_sp_shape[::-1]), np.int32)
+    sp_grid = np.asarray(tuple(_sp_grid[::-1]), np.int32)
 
     m = np.float32(compactness)
     S = np.float32(np.max(_sp_shape))
 
     n_centers = np.int32(np.prod(_sp_grid))
     n_features = np.int32(image.shape[-1])
-    im_shape = np.asarray(tuple(dshape[::-1]), int3)
-    spacing = np.asarray(tuple(spacing[::-1]), float3)
+    im_shape = np.asarray(tuple(dshape[::-1]), np.int32)
+    spacing = np.asarray(tuple(spacing[::-1]), np.float32)
 
     data_gpu = gpuarray.to_gpu(np.float32(image))
     centers_gpu = gpuarray.zeros((n_centers, n_features + 3), np.float32)
