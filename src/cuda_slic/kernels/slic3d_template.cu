@@ -44,39 +44,29 @@ idx.x = linear_idx % y_stride
 #define __max(a, b) (((a) >= (b)) ? (a) : (b))
 
 
-#define SP_GRID \
-{\
-    {{ sp_grid[0] }},\
-    {{ sp_grid[1] }},\
-    {{ sp_grid[2] }}\
-};
+#define sp_grid_x {{ sp_grid[0] }}
+#define sp_grid_y {{ sp_grid[1] }}
+#define sp_grid_z {{ sp_grid[2] }}
 
-#define SP_SHAPE \
-{ \
-    {{ sp_shape[0] }},\
-    {{ sp_shape[1] }},\
-    {{ sp_shape[2] }}\
-};
+#define sp_shape_x {{ sp_shape[0] }}
+#define sp_shape_y {{ sp_shape[1] }}
+#define sp_shape_z {{ sp_shape[2] }}
 
-#define IM_SHAPE \
-{ \
-    {{ im_shape[0] }},\
-    {{ im_shape[1] }},\
-    {{ im_shape[2] }}\
-};
+#define im_shape_x {{ im_shape[0] }}
+#define im_shape_y {{ im_shape[1] }}
+#define im_shape_z {{ im_shape[2] }}
 
-#define SPACING \
-{ \
-    {{ spacing[0] }},\
-    {{ spacing[1] }},\
-    {{ spacing[2] }}\
-};
+#define spacing_x {{ spacing[0] }}
+#define spacing_y {{ spacing[1] }}
+#define spacing_z {{ spacing[2] }}
+
 
 __device__
 float slic_distance(const int3 idx,
                     const long pixel_addr, const float* data,
-                    const long center_addr, const float* centers,
-                    const float3 spacing)
+                    const long center_addr, const float* centers
+)
+
 {
     // Color diff
     float color_diff = 0;
@@ -87,9 +77,9 @@ float slic_distance(const int3 idx,
 
     // Position diff
     float3 pd;
-    pd.z = (idx.z - centers[center_addr + N_FEATURES + 0]) * spacing.z;
-    pd.y = (idx.y - centers[center_addr + N_FEATURES + 1]) * spacing.y;
-    pd.x = (idx.x - centers[center_addr + N_FEATURES + 2]) * spacing.x;
+    pd.z = (idx.z - centers[center_addr + N_FEATURES + 0]) * spacing_z;
+    pd.y = (idx.y - centers[center_addr + N_FEATURES + 1]) * spacing_y;
+    pd.x = (idx.x - centers[center_addr + N_FEATURES + 2]) * spacing_x;
 
     float position_diff = pd.z * pd.z + pd.y * pd.y + pd.x * pd.x;
     float dist = color_diff / (MM * MM) +
@@ -109,22 +99,20 @@ void init_clusters(const float* data,
     if ( linear_cidx >= N_CLUSTERS ) {
         return;
     }
-    constexpr int3 sp_grid SP_GRID;
-    constexpr int3 sp_shape SP_SHAPE;
 
     // calculating the (0,0,0) index of each superpixel block
     // using linear to cartesian index transformation
     int3 cidx;
-    int plane_size = sp_grid.y * sp_grid.x;
+    int plane_size = sp_grid_y * sp_grid_x;
     cidx.z = linear_cidx / plane_size;
     int plane_idx = linear_cidx % plane_size;
-    cidx.y = plane_idx / sp_grid.x;
-    cidx.x = plane_idx % sp_grid.x;
+    cidx.y = plane_idx / sp_grid_x;
+    cidx.x = plane_idx % sp_grid_x;
 
     // centering index into middle of suprepixel block
-    cidx.z = cidx.z * sp_shape.z + sp_shape.z / 2;
-    cidx.y = cidx.y * sp_shape.y + sp_shape.y / 2;
-    cidx.x = cidx.x * sp_shape.x + sp_shape.x / 2;
+    cidx.z = cidx.z * sp_shape_z + sp_shape_z / 2;
+    cidx.y = cidx.y * sp_shape_y + sp_shape_y / 2;
+    cidx.x = cidx.x * sp_shape_x + sp_shape_x / 2;
 
     //saving cluster center positions
     // note: the color is not initialized, but is kept at zero.
@@ -145,22 +133,17 @@ void expectation(const float* data,
     const long linear_idx = threadIdx.x + (blockIdx.x * blockDim.x);
     const long pixel_addr = linear_idx * N_FEATURES;
 
-    constexpr int3 sp_grid SP_GRID;
-    constexpr int3 sp_shape SP_SHAPE;
-    constexpr int3 im_shape IM_SHAPE;
-    constexpr float3 spacing SPACING;
-
-    if ( linear_idx >= im_shape.x * im_shape.y * im_shape.z ) {
+    if ( linear_idx >= im_shape_x * im_shape_y * im_shape_z ) {
         return;
     }
 
     // linear to cartesian index transformation per pixel
     int3 idx;
-    int plane_size = im_shape.y * im_shape.x;
+    int plane_size = im_shape_y * im_shape_x;
     idx.z = linear_idx / plane_size;
     int plane_idx = linear_idx % plane_size;
-    idx.y = plane_idx / im_shape.x;
-    idx.x = plane_idx % im_shape.x;
+    idx.y = plane_idx / im_shape_x;
+    idx.x = plane_idx % im_shape_x;
 ;
 
     int4 cidx, iter_cidx;
@@ -168,9 +151,9 @@ void expectation(const float* data,
     long closest_linear_cidx = 0;
 
     // approx center grid positoin
-    cidx.z = __max(0, __min(idx.z / sp_shape.z, sp_grid.z - 1));
-    cidx.y = __max(0, __min(idx.y / sp_shape.y, sp_grid.y - 1));
-    cidx.x = __max(0, __min(idx.x / sp_shape.x, sp_grid.x - 1));
+    cidx.z = __max(0, __min(idx.z / sp_shape_z, sp_grid_z - 1));
+    cidx.y = __max(0, __min(idx.y / sp_shape_y, sp_grid_y - 1));
+    cidx.x = __max(0, __min(idx.x / sp_shape_x, sp_grid_x - 1));
 
     float minimum_distance = DLIMIT;
     const int c_stride = N_FEATURES + 3;
@@ -183,12 +166,12 @@ void expectation(const float* data,
                 iter_cidx.y = cidx.y + j;
                 iter_cidx.x = cidx.x + i;
 
-                if ( iter_cidx.y < 0 || iter_cidx.y >= sp_grid.y || 
-                     iter_cidx.z < 0 || iter_cidx.z >= sp_grid.z ||
-                     iter_cidx.x < 0 || iter_cidx.x >= sp_grid.x ) {continue;}
+                if ( iter_cidx.y < 0 || iter_cidx.y >= sp_grid_y || 
+                     iter_cidx.z < 0 || iter_cidx.z >= sp_grid_z ||
+                     iter_cidx.x < 0 || iter_cidx.x >= sp_grid_x ) {continue;}
 
-                iter_linear_cidx = iter_cidx.z * sp_grid.y * sp_grid.x +
-                                   iter_cidx.y * sp_grid.x +
+                iter_linear_cidx = iter_cidx.z * sp_grid_y * sp_grid_x +
+                                   iter_cidx.y * sp_grid_x +
                                    iter_cidx.x;
                 long iter_center_addr = iter_linear_cidx * c_stride;
 
@@ -198,8 +181,7 @@ void expectation(const float* data,
 
                 float dist = slic_distance(idx,
                                            pixel_addr, data,
-                                           iter_center_addr, centers,
-                                           spacing);
+                                           iter_center_addr, centers);
 
                 // Wrapup
                 if ( dist < minimum_distance ) {
@@ -225,9 +207,6 @@ void maximization(const float* data,
     const int c_stride = N_FEATURES + 3;
     const long center_addr = linear_cidx * c_stride;
 
-    constexpr int3 sp_shape SP_SHAPE;
-    constexpr int3 im_shape IM_SHAPE;
-
     if ( linear_cidx >= N_CLUSTERS ) { return; }
 
     int3 cidx;
@@ -238,21 +217,21 @@ void maximization(const float* data,
     float ratio = 2.0f;
 
     int3 from;
-    from.z = __max(cidx.z - sp_shape.z * ratio, 0);
-    from.y = __max(cidx.y - sp_shape.y * ratio, 0);
-    from.x = __max(cidx.x - sp_shape.x * ratio, 0);
+    from.z = __max(cidx.z - sp_shape_z * ratio, 0);
+    from.y = __max(cidx.y - sp_shape_y * ratio, 0);
+    from.x = __max(cidx.x - sp_shape_x * ratio, 0);
 
     int3 to;
-    to.z = __min(cidx.z + sp_shape.z * ratio, im_shape.z);
-    to.y = __min(cidx.y + sp_shape.y * ratio, im_shape.y);
-    to.x = __min(cidx.x + sp_shape.x * ratio, im_shape.x);
+    to.z = __min(cidx.z + sp_shape_z * ratio, im_shape_z);
+    to.y = __min(cidx.y + sp_shape_y * ratio, im_shape_y);
+    to.x = __min(cidx.x + sp_shape_x * ratio, im_shape_x);
 
 
     float f[c_stride];
     for ( int k = 0; k < c_stride; k++ ) {f[k] = 0;}
 
-    long z_stride = im_shape.x * im_shape.y;
-    long y_stride = im_shape.x;
+    long z_stride = im_shape_x * im_shape_y;
+    long y_stride = im_shape_x;
 
     long count = 0;
     int3 p;
