@@ -44,32 +44,32 @@ idx.x = linear_idx % y_stride
 #define __max(a, b) (((a) >= (b)) ? (a) : (b))
 
 
-constexpr __device__ int3 SP_GRID() 
-{ 
-    return make_int3({{ sp_grid[0] }},
-                     {{ sp_grid[1] }},
-                     {{ sp_grid[2] }}); 
+__constant__ __device__ int3 SP_GRID 
+{
+    {{ sp_grid[0] }},
+    {{ sp_grid[1] }},
+    {{ sp_grid[2] }}
 };
 
-constexpr __device__ int3 SP_SHAPE() 
+__constant__ __device__ int3 SP_SHAPE
 { 
-    return make_int3({{ sp_shape[0] }},
-                     {{ sp_shape[1] }},
-                     {{ sp_shape[2] }}); 
+    {{ sp_shape[0] }},
+    {{ sp_shape[1] }},
+    {{ sp_shape[2] }}
 };
 
-constexpr __device__ int3 IM_IMAGE() 
+__constant__ __device__ int3 IM_SHAPE
 { 
-    return make_int3({{ im_shape[0] }},
-                     {{ im_shape[1] }},
-                     {{ im_shape[2] }}); 
+    {{ im_shape[0] }},
+    {{ im_shape[1] }},
+    {{ im_shape[2] }}
 };
 
-constexpr __device__ float3 SPACING() 
+__constant__ __device__ float3 SPACING
 { 
-    return make_float3({{ spacing[0] }},
-                       {{ spacing[1] }},
-                       {{ spacing[2] }});
+    {{ spacing[0] }},
+    {{ spacing[1] }},
+    {{ spacing[2] }}
 };
 
 
@@ -109,8 +109,8 @@ void init_clusters(const float* data,
     if ( linear_cidx >= N_CLUSTERS ) {
         return;
     }
-    const int3 sp_grid = SP_GRID();
-    const int3 sp_shape = SP_SHAPE();
+    const int3 sp_grid = SP_GRID;
+    const int3 sp_shape = SP_SHAPE;
 
     // calculating the (0,0,0) index of each superpixel block
     // using linear to cartesian index transformation
@@ -144,10 +144,10 @@ void expectation(const float* data,
     const long linear_idx = threadIdx.x + (blockIdx.x * blockDim.x);
     const long pixel_addr = linear_idx * N_FEATURES;
 
-    const int3 sp_grid = SP_GRID();
-    const int3 sp_shape = SP_SHAPE();
-    const int3 im_shape = IM_IMAGE();
-    const float3 spacing = SPACING();
+    const int3 sp_grid = SP_GRID;
+    const int3 sp_shape = SP_SHAPE;
+    const int3 im_shape = IM_SHAPE;
+    const float3 spacing = SPACING;
 
     if ( linear_idx >= im_shape.x * im_shape.y * im_shape.z ) {
         return;
@@ -222,10 +222,10 @@ void maximization(const float* data,
     const int c_stride = N_FEATURES + 3;
     const long center_addr = linear_cidx * c_stride;
 
-    const int3 sp_grid = SP_GRID();
-    const int3 sp_shape = SP_SHAPE();
-    const int3 im_shape = IM_IMAGE();
-    const float3 spacing = SPACING();
+    const int3 sp_grid = SP_GRID;
+    const int3 sp_shape = SP_SHAPE;
+    const int3 im_shape = IM_SHAPE;
+    const float3 spacing = SPACING;
 
     if ( linear_cidx >= N_CLUSTERS ) { return; }
 

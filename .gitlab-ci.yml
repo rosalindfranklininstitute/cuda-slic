@@ -34,7 +34,7 @@ unit-tests:
     - gpu
   script:
     - conda env create -f environment-cupy.yml -v
-    - conda activate cuda-slic
+    - conda activate cupy-slic
     - pytest
 
 benchmark:
@@ -42,6 +42,6 @@ benchmark:
     - gpu
   script:
     - conda env create -f environment-cupy.yml -v
-    - conda activate cuda-slic
+    - conda activate cupy-slic
     - python -m perf_analysis.compare_slic
     - ipython perf_analysis/throughput.ipy

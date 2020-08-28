@@ -162,9 +162,9 @@ def slic(
     im_shape = np.asarray(tuple(dshape[::-1]), np.int32)
     spacing = np.asarray(tuple(spacing[::-1]), np.float32)
 
-    data_gpu = cp.asarray(np.float32(image))
-    centers_gpu = cp.zeros((n_centers, n_features + 3), cp.float32)
-    labels_gpu = cp.zeros(dshape, cp.uint32)
+    data_gpu = cp.asarray(np.float32(image), dtype=cp.float32)
+    centers_gpu = cp.zeros((n_centers, n_features + 3), dtype=cp.float32)
+    labels_gpu = cp.zeros(dshape, dtype=cp.uint32)
 
     __dirname__ = op.dirname(__file__)
     with open(op.join(__dirname__, "kernels", "slic3d_template.cu"), "r") as f:
@@ -179,11 +179,11 @@ def slic(
             S=S,
         )
         template = 'extern "C" { ' + template + " }"
-        _mod_conv = cp.RawModule(code=template, options=("-std=c++14",))
+        _mod_conv = cp.RawModule(code=template, options=("-std=c++11",))
         gpu_slic_init = _mod_conv.get_function("init_clusters")
         gpu_slic_expectation = _mod_conv.get_function("expectation")
         gpu_slic_maximization = _mod_conv.get_function("maximization")
-
+        
     vblock, vgrid = flat_kernel_config(int(np.prod(dshape)))
     cblock, cgrid = flat_kernel_config(int(np.prod(_sp_grid)))
 
@@ -195,6 +195,7 @@ def slic(
             centers_gpu,
         ),
     )
+    cp.cuda.runtime.deviceSynchronize()
 
     for _ in range(max_iter):
         gpu_slic_expectation(
@@ -206,6 +207,7 @@ def slic(
                 labels_gpu,
             ),
         )
+        cp.cuda.runtime.deviceSynchronize()
 
         gpu_slic_maximization(
             cgrid,
@@ -216,6 +218,7 @@ def slic(
                 centers_gpu,
             ),
         )
+        cp.cuda.runtime.deviceSynchronize()
 
     labels = np.asarray(labels_gpu.get(), dtype=np.intp)
     if enforce_connectivity:

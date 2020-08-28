@@ -9,23 +9,22 @@ dependencies:
 - numpy
 - scikit-image
 - jinja2
-- cupy
-- cudatoolkit=10.1
 
 # # test requirements
 # - twine
 - pytest
-# - ipython
+- ipython
 - tox
 # # linting requirements
 # - flake8
 # - black
 # - isort
 # # notebook requirements
-# - notebook
-# - jupyter
-# - ipywidgets
+- notebook
+- jupyter
+- ipywidgets
 
 - pip:
   # test requirements
+  - cupy-cuda101
   - -e .

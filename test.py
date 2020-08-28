@@ -3,15 +3,18 @@ import cupy as cp
 
 kernel = """
 extern "C" {
+    constexpr __device__ int3 ii{1,2,3};
+
     __global__
     void init_vec() {
-    int3 i = make_int3(1,2,3);
+    const int3 i = ii;
     printf("i.x == %d", i.x);
     }
 
 }
 """
-vv = cp.RawKernel(kernel, "init_vec")
+mod = cp.RawModule(code=kernel, options=("-std=c++14",))
+vv = mod.get_function('vv')
 vv(
     (1,),
     (1,),
