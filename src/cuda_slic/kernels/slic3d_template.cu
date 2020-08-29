@@ -42,16 +42,10 @@ idx.x = linear_idx % y_stride
 
 
 __device__
-float at(const float* data, const int4& P, const int3& S) {
-    long s2d = S.y * S.x, s3d = S.z * S.y * S.x;
-    return data[P.w * s3d + P.z * s2d + P.y * S.x + P.x];
-}
-
-__device__
 float slic_distance(const int3 idx,
                     const long pixel_addr, const float* data,
                     const long center_addr, const float* centers,
-                    const float m, const float S,
+                    const float S,
                     const float3 spacing)
 {
     // Color diff
@@ -68,7 +62,7 @@ float slic_distance(const int3 idx,
     pd.x = (idx.x - centers[center_addr + N_FEATURES + 2]) * spacing.x;
 
     float position_diff = pd.z * pd.z + pd.y * pd.y + pd.x * pd.x;
-    float dist = color_diff / (m * m) +
+    float dist = color_diff +
                  position_diff / (S * S);
     return dist;
 }
@@ -114,7 +108,7 @@ __global__
 void expectation(const float* data,
                  const float* centers,
                  unsigned int* labels,
-                 const float m, const float S,
+                 const float S,
                  const int n_clusters,
                  const float3 spacing,
                  const int3 sp_grid,
@@ -173,7 +167,7 @@ void expectation(const float* data,
                 float dist = slic_distance(idx,
                                            pixel_addr, data,
                                            iter_center_addr, centers,
-                                           m, S,
+                                           S,
                                            spacing);
 
                 // Wrapup

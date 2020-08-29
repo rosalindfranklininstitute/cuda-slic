@@ -160,7 +160,9 @@ def slic(
     im_shape = np.asarray(tuple(dshape[::-1]), int3)
     spacing = np.asarray(tuple(spacing[::-1]), float3)
 
-    data_gpu = gpuarray.to_gpu(np.float32(image))
+    image = np.float32(image)
+    image *= 1/m # do color scaling once outside of kernel
+    data_gpu = gpuarray.to_gpu(image)
     centers_gpu = gpuarray.zeros((n_centers, n_features + 3), np.float32)
     labels_gpu = gpuarray.zeros(dshape, np.uint32)
 
@@ -191,7 +193,6 @@ def slic(
             data_gpu,
             centers_gpu,
             labels_gpu,
-            m,
             S,
             n_centers,
             spacing,
