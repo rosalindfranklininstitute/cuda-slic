@@ -37,8 +37,7 @@ idx.x = linear_idx % y_stride
 #define DLIMIT 99999999
 #define N_FEATURES {{ n_features }}
 #define N_CLUSTERS {{ n_clusters }}
-#define MM {{ m }}
-#define SS {{ S }}
+#define SS {{ SS }}f
 
 #define __min(a, b) (((a) < (b)) ? (a) : (b))
 #define __max(a, b) (((a) >= (b)) ? (a) : (b))
@@ -82,8 +81,8 @@ float slic_distance(const int3 idx,
     pd.x = (idx.x - centers[center_addr + N_FEATURES + 2]) * spacing_x;
 
     float position_diff = pd.z * pd.z + pd.y * pd.y + pd.x * pd.x;
-    float dist = color_diff / (MM * MM) +
-                 position_diff / (SS * SS);
+    float dist = color_diff  +
+                 position_diff / (SS);
     return dist;
 }
 

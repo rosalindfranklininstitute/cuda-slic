@@ -160,7 +160,9 @@ def slic(
     im_shape = np.asarray(tuple(dshape[::-1]), np.int32)
     spacing = np.asarray(tuple(spacing[::-1]), np.float32)
 
-    data_gpu = gpuarray.to_gpu(np.float32(image))
+    image = np.float32(image)
+    data_gpu = gpuarray.to_gpu(image)
+    data_gpu *= 1/(m) # Do color scaling outside of kernel
     centers_gpu = gpuarray.zeros((n_centers, n_features + 3), np.float32)
     labels_gpu = gpuarray.zeros(dshape, np.uint32)
 
@@ -173,8 +175,7 @@ def slic(
             sp_grid=sp_grid,
             im_shape=im_shape,
             spacing=spacing,
-            m=m,
-            S=S,
+            SS=S*S,
         )
         _mod_conv = SourceModule(template, options=["-std=c++11",])
         gpu_slic_init = _mod_conv.get_function("init_clusters")
