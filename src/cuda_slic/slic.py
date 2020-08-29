@@ -20,6 +20,14 @@ def flat_kernel_config(threads_total, block_size=128):
     grid = ((threads_total + block_size - 1) // block_size, 1, 1)
     return block, grid
 
+def block_kernel_config(im_shape, block=(2, 2, 32)):
+    grid = (
+        (im_shape[0] + block[0] - 1) // block[0],
+        (im_shape[1] + block[1] - 1) // block[1],
+        (im_shape[2] + block[2] - 1) // block[2],
+    )
+    return block, grid
+
 
 def slic(
     image,
@@ -162,7 +170,7 @@ def slic(
 
     image = np.float32(image)
     data_gpu = gpuarray.to_gpu(image)
-    data_gpu *= 1/(m) # Do color scaling outside of kernel
+    data_gpu *= 1 / (m)  # Do color scaling outside of kernel
     centers_gpu = gpuarray.zeros((n_centers, n_features + 3), np.float32)
     labels_gpu = gpuarray.zeros(dshape, np.uint32)
 
@@ -175,7 +183,7 @@ def slic(
             sp_grid=sp_grid,
             im_shape=im_shape,
             spacing=spacing,
-            SS=S*S,
+            SS=S * S,
         )
         _mod_conv = SourceModule(template, options=["-std=c++11",])
         gpu_slic_init = _mod_conv.get_function("init_clusters")
@@ -184,31 +192,21 @@ def slic(
 
     vblock, vgrid = flat_kernel_config(int(np.prod(dshape)))
     cblock, cgrid = flat_kernel_config(int(np.prod(_sp_grid)))
+    bblock, bgrid = block_kernel_config(image.shape[:3])
 
     gpu_slic_init(
-        data_gpu,
-        centers_gpu,
-        block=cblock,
-        grid=cgrid,
+        data_gpu, centers_gpu, block=cblock, grid=cgrid,
     )
     cuda.Context.synchronize()
 
     for _ in range(max_iter):
         gpu_slic_expectation(
-            data_gpu,
-            centers_gpu,
-            labels_gpu,
-            block=vblock,
-            grid=vgrid,
+            data_gpu, centers_gpu, labels_gpu, block=bblock, grid=bgrid,
         )
         cuda.Context.synchronize()
 
         gpu_slic_maximization(
-            data_gpu,
-            labels_gpu,
-            centers_gpu,
-            block=cblock,
-            grid=cgrid,
+            data_gpu, labels_gpu, centers_gpu, block=cblock, grid=cgrid,
         )
         cuda.Context.synchronize()
 

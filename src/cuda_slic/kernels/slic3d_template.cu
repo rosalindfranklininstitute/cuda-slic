@@ -129,21 +129,32 @@ void expectation(const float* data,
 )
 
 {
-    const long linear_idx = threadIdx.x + (blockIdx.x * blockDim.x);
-    const long pixel_addr = linear_idx * N_FEATURES;
+    
+    int3 idx;
+    idx.z = threadIdx.x + (blockIdx.x * blockDim.x);
+    idx.y = threadIdx.y + (blockIdx.y * blockDim.y);
+    idx.x = threadIdx.z + (blockIdx.z * blockDim.z);
 
-    if ( linear_idx >= im_shape_x * im_shape_y * im_shape_z ) {
+    if ( idx.x >= im_shape_x ||
+         idx.y >= im_shape_y ||
+         idx.z >= im_shape_z ) {
         return;
     }
 
+    long z_stride = im_shape_x * im_shape_y;
+    long y_stride = im_shape_x;
+
+    const long linear_idx = idx.z * z_stride + idx.y * y_stride + idx.x;
+    const long pixel_addr = linear_idx * N_FEATURES;
+
+
     // linear to cartesian index transformation per pixel
-    int3 idx;
-    int plane_size = im_shape_y * im_shape_x;
-    idx.z = linear_idx / plane_size;
-    int plane_idx = linear_idx % plane_size;
-    idx.y = plane_idx / im_shape_x;
-    idx.x = plane_idx % im_shape_x;
-;
+    // int3 idx;
+    // int plane_size = im_shape_y * im_shape_x;
+    // idx.z = linear_idx / plane_size;
+    // int plane_idx = linear_idx % plane_size;
+    // idx.y = plane_idx / im_shape_x;
+    // idx.x = plane_idx % im_shape_x;
 
     int4 cidx, iter_cidx;
     long iter_linear_cidx;
