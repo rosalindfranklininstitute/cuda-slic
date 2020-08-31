@@ -43,7 +43,7 @@ idx.x = linear_idx % y_stride
 
 __device__
 float slic_distance(const int3 idx,
-                    const long pixel_addr, const float* data,
+                    const float* pixel,
                     const long center_addr, const float* centers,
                     const float S,
                     const float3 spacing)
@@ -51,7 +51,7 @@ float slic_distance(const int3 idx,
     // Color diff
     float color_diff = 0;
     for ( int w = 0; w < N_FEATURES; w++ ) {
-        float d = data[pixel_addr + w] - centers[center_addr + w];
+        float d = pixel[w] - centers[center_addr + w];
         color_diff += d * d;
     }
 
@@ -118,6 +118,11 @@ void expectation(const float* data,
     const long linear_idx = threadIdx.x + (blockIdx.x * blockDim.x);
     const long pixel_addr = linear_idx * N_FEATURES;
 
+    float pixel[N_FEATURES];
+    for ( int w = 0; w < N_FEATURES; w++ ) {
+        pixel[w] = data[pixel_addr + w];
+    }
+
     if ( linear_idx >= im_shape.x * im_shape.y * im_shape.z ) {
         return;
     }
@@ -129,7 +134,6 @@ void expectation(const float* data,
     int plane_idx = linear_idx % plane_size;
     idx.y = plane_idx / im_shape.x;
     idx.x = plane_idx % im_shape.x;
-;
 
     int4 cidx, iter_cidx;
     long iter_linear_cidx;
@@ -164,8 +168,7 @@ void expectation(const float* data,
                     continue;
                 }
 
-                float dist = slic_distance(idx,
-                                           pixel_addr, data,
+                float dist = slic_distance(idx, pixel,
                                            iter_center_addr, centers,
                                            S,
                                            spacing);
