@@ -62,7 +62,7 @@ idx.x = linear_idx % y_stride
 
 __device__
 float slic_distance(const int3 idx,
-                    const long pixel_addr, const float* data,
+                    const float* pixel,
                     const long center_addr, const float* centers
 )
 
@@ -70,7 +70,7 @@ float slic_distance(const int3 idx,
     // Color diff
     float color_diff = 0;
     for ( int w = 0; w < N_FEATURES; w++ ) {
-        float d = data[pixel_addr + w] - centers[center_addr + w];
+        float d = pixel[w] - centers[center_addr + w];
         color_diff += d * d;
     }
 
@@ -147,14 +147,10 @@ void expectation(const float* data,
     const long linear_idx = idx.z * z_stride + idx.y * y_stride + idx.x;
     const long pixel_addr = linear_idx * N_FEATURES;
 
-
-    // linear to cartesian index transformation per pixel
-    // int3 idx;
-    // int plane_size = im_shape_y * im_shape_x;
-    // idx.z = linear_idx / plane_size;
-    // int plane_idx = linear_idx % plane_size;
-    // idx.y = plane_idx / im_shape_x;
-    // idx.x = plane_idx % im_shape_x;
+    float pixel[N_FEATURES];
+    for ( int w = 0; w < N_FEATURES; w++ ) {
+        pixel[w] = data[pixel_addr + w];
+    }
 
     int4 cidx, iter_cidx;
     long iter_linear_cidx;
@@ -165,9 +161,8 @@ void expectation(const float* data,
     cidx.y = __max(0, __min(idx.y / sp_shape_y, sp_grid_y - 1));
     cidx.x = __max(0, __min(idx.x / sp_shape_x, sp_grid_x - 1));
 
-    float minimum_distance = DLIMIT;
     const int c_stride = N_FEATURES + 3;
-
+    float minimum_distance = DLIMIT;
     const int R = 2;
     for ( int k = -R; k <= R; k++ ) {
         for ( int j = -R; j <= R; j++ ) {
@@ -189,8 +184,7 @@ void expectation(const float* data,
                     continue;
                 }
 
-                float dist = slic_distance(idx,
-                                           pixel_addr, data,
+                float dist = slic_distance(idx, pixel,
                                            iter_center_addr, centers);
 
                 // Wrapup
