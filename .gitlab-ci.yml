@@ -20,6 +20,7 @@ nvidia-debug:
   tags:
     - gpu
   script:
+    - conda install cudatoolkit-dev=10.1
     - nvcc --version
     - nvidia-smi
 
