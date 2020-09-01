@@ -37,12 +37,14 @@ idx.x = linear_idx % y_stride
 #define DLIMIT 99999999
 #define N_FEATURES {{ n_features }}
 #define N_CLUSTERS {{ n_clusters }}
-#define MM {{ m }}
-#define SS {{ S }}
+// #define MM {{ m }}f
+// #define SS {{ S }}f
 
 #define __min(a, b) (((a) < (b)) ? (a) : (b))
 #define __max(a, b) (((a) >= (b)) ? (a) : (b))
 
+__constant__ __device__ float MM = {{ m }}f;
+__constant__ __device__ float SS = {{ S }}f;
 
 __constant__ __device__ int3 SP_GRID 
 {
