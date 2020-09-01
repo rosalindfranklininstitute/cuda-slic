@@ -16,10 +16,8 @@ extern "C" {
 }
 """
 mod = cp.RawModule(code=kernel, options=("-std=c++14",))
-vv = mod.get_function('init_vec')
-ii = cp.asarray([1,2,3], dtype=cp.int32)
+vv = mod.get_function("init_vec")
+ii = cp.asarray([1, 2, 3], dtype=cp.int32)
 vv(
-    (1,),
-    (1,),
-    (ii),
+    (1,), (1,), (ii),
 )

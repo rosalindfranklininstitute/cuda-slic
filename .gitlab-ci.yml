@@ -1,5 +1,5 @@
-# image: continuumio/miniconda3
-image: condaforge/linux-anvil-cuda:10.1
+image: continuumio/miniconda3
+# image: condaforge/linux-anvil-cuda:10.1
 
 before_script:
   # - sudo yum install -y gcc gcc-c++  # these are pycuda depenencies

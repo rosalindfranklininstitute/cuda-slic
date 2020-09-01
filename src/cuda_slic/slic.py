@@ -183,40 +183,23 @@ def slic(
         gpu_slic_init = _mod_conv.get_function("init_clusters")
         gpu_slic_expectation = _mod_conv.get_function("expectation")
         gpu_slic_maximization = _mod_conv.get_function("maximization")
-        
+
     vblock, vgrid = flat_kernel_config(int(np.prod(dshape)))
     cblock, cgrid = flat_kernel_config(int(np.prod(_sp_grid)))
 
     gpu_slic_init(
-        cgrid,
-        cblock,
-        (
-            data_gpu,
-            centers_gpu,
-        ),
+        cgrid, cblock, (data_gpu, centers_gpu,),
     )
     cp.cuda.runtime.deviceSynchronize()
 
     for _ in range(max_iter):
         gpu_slic_expectation(
-            vgrid,
-            vblock,
-            (
-                data_gpu,
-                centers_gpu,
-                labels_gpu,
-            ),
+            vgrid, vblock, (data_gpu, centers_gpu, labels_gpu,),
         )
         cp.cuda.runtime.deviceSynchronize()
 
         gpu_slic_maximization(
-            cgrid,
-            cblock,
-            (
-                data_gpu,
-                labels_gpu,
-                centers_gpu,
-            ),
+            cgrid, cblock, (data_gpu, labels_gpu, centers_gpu,),
         )
         cp.cuda.runtime.deviceSynchronize()
 
