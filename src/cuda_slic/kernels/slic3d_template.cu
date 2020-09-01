@@ -118,13 +118,13 @@ void expectation(const float* data,
     const long linear_idx = threadIdx.x + (blockIdx.x * blockDim.x);
     const long pixel_addr = linear_idx * N_FEATURES;
 
+    if ( linear_idx >= im_shape.x * im_shape.y * im_shape.z ) {
+        return;
+    }
+
     float pixel[N_FEATURES];
     for ( int w = 0; w < N_FEATURES; w++ ) {
         pixel[w] = data[pixel_addr + w];
-    }
-
-    if ( linear_idx >= im_shape.x * im_shape.y * im_shape.z ) {
-        return;
     }
 
     // linear to cartesian index transformation per pixel
