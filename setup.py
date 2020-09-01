@@ -11,7 +11,12 @@ setup(
     package_dir={"": "src"},
     packages=find_packages(where="src"),
     include_package_data=True,
-    install_requires=["numpy", "jinja2", "scikit-image", "pycuda>=2019.1.2",],
+    install_requires=[
+        "numpy",
+        "jinja2",
+        "scikit-image",
+        "pycuda>=2019.1.2",
+    ],
     # metadata to display on PyPI
     author="Omar Elamin",
     author_email="omar.elamin@diamond.ac.uk",

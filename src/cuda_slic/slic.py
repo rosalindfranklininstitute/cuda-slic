@@ -44,7 +44,7 @@ def slic(
     compactness : float, optional
         Balances color proximity and space proximity. Higher values give
         more weight to space proximity, making superpixel shapes more
-        square/cubic. 
+        square/cubic.
         This parameter depends strongly on image contrast and on the
         shapes of objects in the image. We recommend exploring possible
         values on a log scale, e.g., 0.01, 0.1, 1, 10, 100, before
