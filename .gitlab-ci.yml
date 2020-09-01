@@ -1,11 +1,11 @@
-image: continuumio/miniconda3
-# image: condaforge/linux-anvil-cuda:10.1
+# image: continuumio/miniconda3
+image: condaforge/linux-anvil-cuda:10.1
 
 before_script:
   # - sudo yum install -y gcc gcc-c++  # these are pycuda depenencies
   - conda init bash
-  - source /root/.bashrc  # activate base miniconda environment
-  # - source /home/conda/.bashrc  # activate base miniconda environment
+  # - source /root/.bashrc  # activate base miniconda environment
+  - source /home/conda/.bashrc  # activate base miniconda environment
 
 style-check:
   tags:
@@ -20,7 +20,6 @@ nvidia-debug:
   tags:
     - gpu
   script:
-    - conda install cudatoolkit-dev=10.1
     - nvcc --version
     - nvidia-smi
 
@@ -28,7 +27,6 @@ tox:
   tags:
     - gpu
   script:
-    - conda install cudatoolkit=10.1
     - pip install tox
     - tox
 
