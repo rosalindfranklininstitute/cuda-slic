@@ -35,6 +35,15 @@ unit-tests:
     - conda activate cuda-slic
     - pytest
 
+memory-check:
+  tags:
+    - gpu
+  script:
+    - conda env create -f environment.yml -v
+    - conda activate cuda-slic
+    - export PYCUDA_DEFAULT_NVCC_FLAGS="-lineinfo"
+    - cuda-memcheck -- pytest
+
 benchmark:
   tags:
     - gpu
