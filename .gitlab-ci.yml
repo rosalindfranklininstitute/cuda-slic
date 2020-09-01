@@ -27,6 +27,7 @@ tox:
   tags:
     - gpu
   script:
+    - conda install cudatoolkit=10.1
     - pip install tox
     - tox
 
