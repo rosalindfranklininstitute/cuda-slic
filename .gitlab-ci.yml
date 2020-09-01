@@ -4,7 +4,8 @@ image: continuumio/miniconda3
 before_script:
   # - sudo yum install -y gcc gcc-c++  # these are pycuda depenencies
   - conda init bash
-  - source /home/conda/.bashrc  # activate base miniconda environment
+  - source /root/.bashrc  # activate base miniconda environment
+  # - source /home/conda/.bashrc  # activate base miniconda environment
 
 style-check:
   tags:
