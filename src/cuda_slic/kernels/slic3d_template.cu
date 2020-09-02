@@ -43,7 +43,6 @@ idx.x = linear_idx % y_stride
 #define __min(a, b) (((a) < (b)) ? (a) : (b))
 #define __max(a, b) (((a) >= (b)) ? (a) : (b))
 
-__constant__ __device__ float MM = {{ m }}f;
 __constant__ __device__ float SS = {{ S }}f;
 
 __constant__ __device__ int3 SP_GRID 
@@ -77,14 +76,14 @@ __constant__ __device__ float3 SPACING
 
 __device__
 float slic_distance(const int3 idx,
-                    const long pixel_addr, const float* data,
+                    const float* pixel,
                     const long center_addr, const float* centers,
                     const float3 spacing)
 {
     // Color diff
     float color_diff = 0;
     for ( int w = 0; w < N_FEATURES; w++ ) {
-        float d = data[pixel_addr + w] - centers[center_addr + w];
+        float d = pixel[w] - centers[center_addr + w];
         color_diff += d * d;
     }
 
@@ -95,8 +94,7 @@ float slic_distance(const int3 idx,
     pd.x = (idx.x - centers[center_addr + N_FEATURES + 2]) * spacing.x;
 
     float position_diff = pd.z * pd.z + pd.y * pd.y + pd.x * pd.x;
-    float dist = color_diff / (MM * MM) +
-                 position_diff / (SS * SS);
+    float dist = color_diff + position_diff / (SS * SS);
     return dist;
 }
 
@@ -144,7 +142,6 @@ void expectation(const float* data,
                 )
 {
     const long linear_idx = threadIdx.x + (blockIdx.x * blockDim.x);
-    const long pixel_addr = linear_idx * N_FEATURES;
 
     const int3 sp_grid = SP_GRID;
     const int3 sp_shape = SP_SHAPE;
@@ -154,6 +151,13 @@ void expectation(const float* data,
     if ( linear_idx >= im_shape.x * im_shape.y * im_shape.z ) {
         return;
     }
+
+    const long pixel_addr = linear_idx * N_FEATURES;
+    float pixel[N_FEATURES];
+    for ( int w = 0; w < N_FEATURES; w++ ) {
+        pixel[w] = data[pixel_addr + w];
+    }
+
 
     // linear to cartesian index transformation per pixel
     int3 idx;
@@ -197,7 +201,7 @@ void expectation(const float* data,
                 }
 
                 float dist = slic_distance(idx,
-                                           pixel_addr, data,
+                                           pixel,
                                            iter_center_addr, centers,
                                            spacing);
 
