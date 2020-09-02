@@ -162,7 +162,9 @@ def slic(
     im_shape = np.asarray(tuple(dshape[::-1]), np.int32)
     spacing = np.asarray(tuple(spacing[::-1]), np.float32)
 
-    data_gpu = cp.asarray(np.float32(image), dtype=cp.float32)
+    image = np.float32(image)
+    image *= 1 / m  # Do color scaling outside of kernel
+    data_gpu = cp.asarray(image)
     centers_gpu = cp.zeros((n_centers, n_features + 3), dtype=cp.float32)
     labels_gpu = cp.zeros(dshape, dtype=cp.uint32)
 
@@ -175,7 +177,6 @@ def slic(
             sp_grid=sp_grid,
             im_shape=im_shape,
             spacing=spacing,
-            m=m,
             S=S,
         )
         template = 'extern "C" { ' + template + " }"
