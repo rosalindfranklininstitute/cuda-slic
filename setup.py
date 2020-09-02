@@ -15,7 +15,7 @@ setup(
         "numpy",
         "jinja2",
         "scikit-image",
-        "cupy-cuda101",
+        "cupy",
     ],
     # metadata to display on PyPI
     author="Omar Elamin",

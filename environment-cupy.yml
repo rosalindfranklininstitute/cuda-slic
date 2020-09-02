@@ -9,6 +9,8 @@ dependencies:
 - numpy
 - scikit-image
 - jinja2
+- cupy
+- cudatoolkit=10.1
 
 # # test requirements
 # - twine
@@ -26,5 +28,5 @@ dependencies:
 
 - pip:
   # test requirements
-  - cupy-cuda101
+  # - cupy-cuda101
   - -e .
