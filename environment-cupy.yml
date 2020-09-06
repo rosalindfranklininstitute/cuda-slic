@@ -9,7 +9,7 @@ dependencies:
 - numpy
 - scikit-image
 - jinja2
-- cupy
+- cupy>=7
 - cudatoolkit=10.1
 
 # # test requirements

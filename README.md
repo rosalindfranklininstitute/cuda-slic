@@ -1,4 +1,4 @@
-# cuda-slic: A CUDA implementation of the SLIC Superpixel algorithm
+# gpu-slic: A CUDA implementation of the SLIC Superpixel algorithm
 
 ## SLIC
 SLIC stands for __simple linear iterative clustering__. SLIC uses
@@ -10,23 +10,27 @@ detectors at the [Diamond Light Source](https://diamond.ac.uk). These images
 can be up to 500 GB so using a serial CPU code is out of the question.
 
 To speed up processing we use GPU acceleration to achieve great speed
-improvements over alternative implementations. `cuda-slic` borrows its API
+improvements over alternative implementations. `gpu-slic` borrows its API
 from `skimage.segmentation.slic`.
 
 ## Install
 ```bash
-pip install cuda-slic
+pip install gpu-slic
 ```
-`cuda-slic` uses the pycuda which has the following non-python
+`gpu-slic` uses cupy which has the following non-python
 build dependencies:
-1. gcc and g++/gcc-c++ on Linux.
-
-and the following runtime dependencies:
 1. gcc and g++/gcc-c++ on Linux.
 2. the cudatoolkit for linking with cuda libraries.
 3. the nvcc compiler. Ships with newer cudatoolkit versions.
 
-See the [pycuda docs](https://wiki.tiker.net/PyCuda/Installation/) for 
+Note that when pip installing gpu-slic, cupy is installed as `sdist`
+meaning that your host must meet the compiling and linking requirements
+of cupy.
+
+If you are on linux check if gpu-slic is available on conda-forge to get
+precompiled binaries.
+
+See also [cupy docs](https://docs.cupy.dev/en/stable/install.html) for 
 installation instructions.
 
 ## Usage
@@ -60,13 +64,13 @@ labels = slic(vol, n_segments=100, multichannel=True, compactness=1)
 We use `conda` as a dependency installer and virtual env manager.
 A development environment can be created with
 ```bash
-conda env create -f environment.yml
+conda env create -f environment-cupy.yml
 ```
-now you can activate the virtual env with `conda activate cuda-slic`,
+now you can activate the virtual env with `conda activate cupy-slic`,
 and deactivate with `conda deactivate`.
-To add a dependency, add it to the [environment.yml](environment.yml) file, then you can run
+To add a dependency, add it to the [environment-cupy.yml](environment.yml) file, then you can run
 ```bash
-conda env update -f environment.yml
+conda env update -f environment-cupy.yml
 ```
 
 ## Tests
@@ -76,11 +80,11 @@ where the segmentation algorithm can be visually inspected.
 Our unit-testing framework of choice is [Py.test](https://docs.pytest.org/en/latest/).
 The unit-tests can be run with
 ```bash
-conda activate cuda-slic
+conda activate cupy-slic
 pytest
 ```
 or
 ```bash
-conda activate cuda-slic
+conda activate cupy-slic
 tox
 ```
