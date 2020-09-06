@@ -1,2 +1,2 @@
-recursive-include src *.cu
-LICENCE
+recursive-include src *template.cu
+include LICENSE

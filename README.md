@@ -23,7 +23,7 @@ build dependencies:
 2. the cudatoolkit for linking with cuda libraries.
 3. the nvcc compiler. Ships with newer cudatoolkit versions.
 
-Note that when pip installing gpu-slic cupy is installed as `sdist`
+Note that when pip installing gpu-slic, cupy is installed as `sdist`
 meaning that your host must meet the compiling and linking requirements
 of cupy.
 
