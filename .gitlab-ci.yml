@@ -27,10 +27,9 @@ tox:
   tags:
     - gpu
   script:
-    - sudo yum install centos-release-scl -y
-    - sudo yum install devtoolset-7-gcc-c++ -y
-    - source /opt/rh/devtoolset-7/enable
-    - export NVCC="nvcc --compiler-bidir gcc-7"
+    - export CUDA_PATH=/usr/local/cuda
+    - export LD_LIBRARY_PATH=$CUDA_PATH/lib64:$LD_LIBRARY_PATH
+    
     - pip install tox
     - tox
 
