@@ -27,6 +27,7 @@ tox:
   tags:
     - gpu
   script:
+    - export CFLAGS="-I/usr/local/cuda/include"
     - export CUDA_PATH=/usr/local/cuda
     - export LD_LIBRARY_PATH=$CUDA_PATH/lib64:$LD_LIBRARY_PATH
     
