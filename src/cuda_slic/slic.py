@@ -15,12 +15,17 @@ from skimage.segmentation.slic_superpixels import (
 from .types import float3, int3
 
 
-def flat_kernel_config(threads_total, block_size=128):
+def line_kernel_config(threads_total, block_size=128):
     block = (block_size, 1, 1)
     grid = ((threads_total + block_size - 1) // block_size, 1, 1)
     return block, grid
 
-def block_kernel_config(im_shape, block=(2, 2, 32)):
+def box_kernel_config(im_shape, block=(2, 4, 32)):
+    '''
+    block = (z=2,y=4,x=32) was hand tested to be very fast
+    on the Quadro P2000, might not be the fastest config for other
+    cards
+    '''
     grid = (
         (im_shape[0] + block[0] - 1) // block[0],
         (im_shape[1] + block[1] - 1) // block[1],
@@ -190,9 +195,8 @@ def slic(
         gpu_slic_expectation = _mod_conv.get_function("expectation")
         gpu_slic_maximization = _mod_conv.get_function("maximization")
 
-    vblock, vgrid = flat_kernel_config(int(np.prod(dshape)))
-    cblock, cgrid = flat_kernel_config(int(np.prod(_sp_grid)))
-    bblock, bgrid = block_kernel_config(image.shape[:3])
+    cblock, cgrid = line_kernel_config(int(np.prod(_sp_grid)))
+    bblock, bgrid = box_kernel_config(image.shape[:3])
 
     gpu_slic_init(
         data_gpu, centers_gpu, block=cblock, grid=cgrid,
