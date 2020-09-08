@@ -15,9 +15,23 @@ from skimage.segmentation.slic_superpixels import (
 from .types import float3, int3
 
 
-def flat_kernel_config(threads_total, block_size=128):
+def line_kernel_config(threads_total, block_size=128):
     block = (block_size, 1, 1)
     grid = ((threads_total + block_size - 1) // block_size, 1, 1)
+    return block, grid
+
+
+def box_kernel_config(im_shape, block=(2, 4, 32)):
+    """
+    block = (z=2,y=4,x=32) was hand tested to be very fast
+    on the Quadro P2000, might not be the fastest config for other
+    cards
+    """
+    grid = (
+        (im_shape[0] + block[0] - 1) // block[0],
+        (im_shape[1] + block[1] - 1) // block[1],
+        (im_shape[2] + block[2] - 1) // block[2],
+    )
     return block, grid
 
 
@@ -149,16 +163,16 @@ def slic(
     )
     _sp_grid = (dshape + _sp_shape - 1) // _sp_shape
 
-    sp_shape = np.asarray(tuple(_sp_shape[::-1]), int3)
-    sp_grid = np.asarray(tuple(_sp_grid[::-1]), int3)
+    sp_shape = np.asarray(tuple(_sp_shape[::-1]), np.int32)
+    sp_grid = np.asarray(tuple(_sp_grid[::-1]), np.int32)
 
     m = np.float32(compactness)
     S = np.float32(np.max(_sp_shape))
 
     n_centers = np.int32(np.prod(_sp_grid))
     n_features = np.int32(image.shape[-1])
-    im_shape = np.asarray(tuple(dshape[::-1]), int3)
-    spacing = np.asarray(tuple(spacing[::-1]), float3)
+    im_shape = np.asarray(tuple(dshape[::-1]), np.int32)
+    spacing = np.asarray(tuple(spacing[::-1]), np.float32)
 
     image = np.float32(image)
     image *= 1 / m  # do color scaling once outside of kernel
@@ -168,52 +182,36 @@ def slic(
 
     __dirname__ = op.dirname(__file__)
     with open(op.join(__dirname__, "kernels", "slic3d_template.cu"), "r") as f:
-        template = Template(f.read()).render(n_features=n_features)
-        _mod_conv = SourceModule(template)
+        template = Template(f.read()).render(
+            n_features=n_features,
+            n_clusters=n_centers,
+            sp_shape=sp_shape,
+            sp_grid=sp_grid,
+            im_shape=im_shape,
+            spacing=spacing,
+            SS=S * S,
+        )
+        _mod_conv = SourceModule(template, options=["-std=c++11",])
         gpu_slic_init = _mod_conv.get_function("init_clusters")
         gpu_slic_expectation = _mod_conv.get_function("expectation")
         gpu_slic_maximization = _mod_conv.get_function("maximization")
 
-    vblock, vgrid = flat_kernel_config(int(np.prod(dshape)))
-    cblock, cgrid = flat_kernel_config(int(np.prod(_sp_grid)))
+    cblock, cgrid = line_kernel_config(int(np.prod(_sp_grid)))
+    bblock, bgrid = box_kernel_config(image.shape[:3])
 
     gpu_slic_init(
-        data_gpu,
-        centers_gpu,
-        n_centers,
-        sp_grid,
-        sp_shape,
-        block=cblock,
-        grid=cgrid,
+        data_gpu, centers_gpu, block=cblock, grid=cgrid,
     )
     cuda.Context.synchronize()
 
     for _ in range(max_iter):
         gpu_slic_expectation(
-            data_gpu,
-            centers_gpu,
-            labels_gpu,
-            S,
-            n_centers,
-            spacing,
-            sp_grid,
-            sp_shape,
-            im_shape,
-            block=vblock,
-            grid=vgrid,
+            data_gpu, centers_gpu, labels_gpu, block=bblock, grid=bgrid,
         )
         cuda.Context.synchronize()
 
         gpu_slic_maximization(
-            data_gpu,
-            labels_gpu,
-            centers_gpu,
-            n_centers,
-            sp_grid,
-            sp_shape,
-            im_shape,
-            block=cblock,
-            grid=cgrid,
+            data_gpu, labels_gpu, centers_gpu, block=cblock, grid=cgrid,
         )
         cuda.Context.synchronize()
 

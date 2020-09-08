@@ -15,5 +15,5 @@ def test_slic_grayscale_runs(n=200, sp_size=5):
 
 if __name__ == "__main__":
     pycuda.driver.start_profiler()
-    test_slic_grayscale_runs(n=300)
+    test_slic_grayscale_runs(n=200)
     pycuda.driver.stop_profiler()
