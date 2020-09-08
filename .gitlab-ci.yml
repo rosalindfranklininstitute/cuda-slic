@@ -7,6 +7,8 @@ before_script:
   - source /home/conda/.bashrc  # activate base miniconda environment
 
 style-check:
+  tags:
+    - gpu
   script:
     - pip install black
     - pip install isort

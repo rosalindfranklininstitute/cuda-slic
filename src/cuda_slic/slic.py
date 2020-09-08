@@ -1,4 +1,4 @@
-import os.path as op
+import os
 
 import numpy as np
 import pycuda.autoinit
@@ -33,6 +33,82 @@ def box_kernel_config(im_shape, block=(2, 4, 32)):
         (im_shape[2] + block[2] - 1) // block[2],
     )
     return block, grid
+
+
+def _slic(image, sp_shape, sp_grid, spacing, compactness, max_iter):
+    im_shape_zyx = image.shape[:3]
+
+    im_shape_xyz = im_shape_zyx[::-1]
+    sp_grid_xyz = sp_grid[::-1]
+    sp_shape_xyz = sp_shape[::-1]
+    spacing_xyz = spacing[::-1]
+
+    spacial_weight = float(np.max(sp_shape_xyz))
+    n_centers = int(np.prod(sp_grid_xyz))
+    n_features = image.shape[-1]
+
+    cblock, cgrid = line_kernel_config(int(np.prod(sp_grid)))
+    bblock, bgrid = box_kernel_config(im_shape_zyx)
+
+    image = np.float32(image)
+    image *= 1 / compactness  # do color scaling once outside of kernel
+
+    __dirname__ = os.path.dirname(__file__)
+    with open(
+        os.path.join(__dirname__, "kernels", "slic3d_template.cu"), "r"
+    ) as f:
+        template = Template(f.read()).render(
+            n_features=n_features,
+            n_clusters=n_centers,
+            sp_shape=sp_shape_xyz,
+            sp_grid=sp_grid_xyz,
+            im_shape=im_shape_xyz,
+            spacing=spacing_xyz,
+            SS=spacial_weight * spacial_weight,
+        )
+        module = SourceModule(
+            template,
+            options=[
+                "-std=c++11",
+            ],
+        )
+        gpu_slic_init = module.get_function("init_clusters")
+        gpu_slic_expectation = module.get_function("expectation")
+        gpu_slic_maximization = module.get_function("maximization")
+
+    data_gpu = gpuarray.to_gpu(image)
+    centers_gpu = gpuarray.zeros((n_centers, n_features + 3), np.float32)
+    labels_gpu = gpuarray.zeros(image.shape[:3], np.uint32)
+
+    gpu_slic_init(
+        data_gpu,
+        centers_gpu,
+        block=cblock,
+        grid=cgrid,
+    )
+    cuda.Context.synchronize()
+
+    for _ in range(max_iter):
+        gpu_slic_expectation(
+            data_gpu,
+            centers_gpu,
+            labels_gpu,
+            block=bblock,
+            grid=bgrid,
+        )
+        cuda.Context.synchronize()
+
+        gpu_slic_maximization(
+            data_gpu,
+            labels_gpu,
+            centers_gpu,
+            block=cblock,
+            grid=cgrid,
+        )
+        cuda.Context.synchronize()
+
+    labels = np.asarray(labels_gpu.get(), dtype=np.intp)
+    return labels
 
 
 def slic(
@@ -149,11 +225,11 @@ def slic(
             image = rgb2lab(image)
 
     depth, height, width = image.shape[:3]
-    dshape = np.array([depth, height, width])
+    im_shape_zyx = np.array([depth, height, width])
 
     power = 1 / 2 if is_2d else 1 / 3
-    sp_size = int(np.ceil((np.prod(dshape) / n_segments) ** power))
-    _sp_shape = np.array(
+    sp_size = int(np.ceil((np.prod(im_shape_zyx) / n_segments) ** power))
+    sp_shape = np.array(
         [
             # don't allow sp_shape to be larger than image sides
             min(depth, sp_size),
@@ -161,63 +237,13 @@ def slic(
             min(width, sp_size),
         ]
     )
-    _sp_grid = (dshape + _sp_shape - 1) // _sp_shape
+    sp_grid = (im_shape_zyx + sp_shape - 1) // sp_shape
+    n_centers = np.prod(sp_grid)
 
-    sp_shape = np.asarray(tuple(_sp_shape[::-1]), np.int32)
-    sp_grid = np.asarray(tuple(_sp_grid[::-1]), np.int32)
+    labels = _slic(image, sp_shape, sp_grid, spacing, compactness, max_iter)
 
-    m = np.float32(compactness)
-    S = np.float32(np.max(_sp_shape))
-
-    n_centers = np.int32(np.prod(_sp_grid))
-    n_features = np.int32(image.shape[-1])
-    im_shape = np.asarray(tuple(dshape[::-1]), np.int32)
-    spacing = np.asarray(tuple(spacing[::-1]), np.float32)
-
-    image = np.float32(image)
-    image *= 1 / m  # do color scaling once outside of kernel
-    data_gpu = gpuarray.to_gpu(image)
-    centers_gpu = gpuarray.zeros((n_centers, n_features + 3), np.float32)
-    labels_gpu = gpuarray.zeros(dshape, np.uint32)
-
-    __dirname__ = op.dirname(__file__)
-    with open(op.join(__dirname__, "kernels", "slic3d_template.cu"), "r") as f:
-        template = Template(f.read()).render(
-            n_features=n_features,
-            n_clusters=n_centers,
-            sp_shape=sp_shape,
-            sp_grid=sp_grid,
-            im_shape=im_shape,
-            spacing=spacing,
-            SS=S * S,
-        )
-        _mod_conv = SourceModule(template, options=["-std=c++11",])
-        gpu_slic_init = _mod_conv.get_function("init_clusters")
-        gpu_slic_expectation = _mod_conv.get_function("expectation")
-        gpu_slic_maximization = _mod_conv.get_function("maximization")
-
-    cblock, cgrid = line_kernel_config(int(np.prod(_sp_grid)))
-    bblock, bgrid = box_kernel_config(image.shape[:3])
-
-    gpu_slic_init(
-        data_gpu, centers_gpu, block=cblock, grid=cgrid,
-    )
-    cuda.Context.synchronize()
-
-    for _ in range(max_iter):
-        gpu_slic_expectation(
-            data_gpu, centers_gpu, labels_gpu, block=bblock, grid=bgrid,
-        )
-        cuda.Context.synchronize()
-
-        gpu_slic_maximization(
-            data_gpu, labels_gpu, centers_gpu, block=cblock, grid=cgrid,
-        )
-        cuda.Context.synchronize()
-
-    labels = np.asarray(labels_gpu.get(), dtype=np.intp)
     if enforce_connectivity:
-        segment_size = np.prod(dshape) / n_centers
+        segment_size = np.prod(im_shape_zyx) / n_centers
         min_size = int(min_size_factor * segment_size)
         max_size = int(max_size_factor * segment_size)
         labels = _enforce_label_connectivity_cython(
