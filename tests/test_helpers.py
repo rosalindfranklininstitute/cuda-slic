@@ -1,5 +1,4 @@
-from cuda_slic.slic import line_kernel_config
-from cuda_slic.slic import box_kernel_config
+from cuda_slic.slic import box_kernel_config, line_kernel_config
 
 
 def test_line_kernel_config_when_not_tiles():
@@ -19,15 +18,16 @@ def test_line_kernel_config_when_tiles():
 
 
 def test_box_kernel_config_when_not_tiles():
-    im_shape = (33,33,33)
-    block_shape = (32,32,32)
+    im_shape = (33, 33, 33)
+    block_shape = (32, 32, 32)
     block, grid = box_kernel_config(im_shape, block=block_shape)
     assert block == (32, 32, 32)
     assert grid == (2, 2, 2)
 
+
 def test_box_kernel_config_when_tiles():
-    im_shape = (64,64,64)
-    block_shape = (32,32,32)
+    im_shape = (64, 64, 64)
+    block_shape = (32, 32, 32)
     block, grid = box_kernel_config(im_shape, block=block_shape)
     assert block == (32, 32, 32)
     assert grid == (2, 2, 2)

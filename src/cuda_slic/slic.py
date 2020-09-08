@@ -20,12 +20,13 @@ def line_kernel_config(threads_total, block_size=128):
     grid = ((threads_total + block_size - 1) // block_size, 1, 1)
     return block, grid
 
+
 def box_kernel_config(im_shape, block=(2, 4, 32)):
-    '''
+    """
     block = (z=2,y=4,x=32) was hand tested to be very fast
     on the Quadro P2000, might not be the fastest config for other
     cards
-    '''
+    """
     grid = (
         (im_shape[0] + block[0] - 1) // block[0],
         (im_shape[1] + block[1] - 1) // block[1],
