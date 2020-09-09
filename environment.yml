@@ -9,11 +9,11 @@ dependencies:
 - numpy
 - scikit-image
 - jinja2
-- cupy
+- cupy>=7.0.0
+- cudatoolkit=10.1
 # the presence of cudatoolkit and the nvcc compiler is assumed
 # otherwise you can try to uncomment the following two lines
 # be warned conda will likely fail to solve the env with these
-# - cudatoolkit
 # - cudatoolkit-dev
 
 # test requirements
