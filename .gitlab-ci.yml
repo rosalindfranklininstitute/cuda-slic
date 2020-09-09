@@ -59,3 +59,6 @@ benchmark:
     - conda install ipython
     - python -m perf_analysis.compare_slic
     - ipython perf_analysis/throughput.ipy
+    - pip uninstall pycuda # lets benchmark cupy code too
+    - python -m perf_analysis.compare_slic
+    - ipython perf_analysis/throughput.ipy
