@@ -1,12 +1,16 @@
-
-
 import numpy as np
 
 from ._rag import _extract_neighbours_2d, _extract_neighbours_3d
 
 
-def create_rag(rlabels, connectivity=1, min_boundary=None,
-               norm_counts='unit', margin=0, return_counts=False):
+def create_rag(
+    rlabels,
+    connectivity=1,
+    min_boundary=None,
+    norm_counts="unit",
+    margin=0,
+    return_counts=False,
+):
     """Creates a Region Adjacency Graph between superpixels.
 
     Parameters
@@ -42,17 +46,18 @@ def create_rag(rlabels, connectivity=1, min_boundary=None,
     """
     n_labels = rlabels.max() + 1
 
-    if (rlabels.ndim == 2 and connectivity not in (4, 8)) or \
-       (rlabels.ndim == 3 and connectivity not in (6, 18, 26)):
-        raise Exception('Only {1, 2} values are supported for `connectivity`')
+    if (rlabels.ndim == 2 and connectivity not in (4, 8)) or (
+        rlabels.ndim == 3 and connectivity not in (6, 18, 26)
+    ):
+        raise Exception("Only {1, 2} values are supported for `connectivity`")
 
     if rlabels.ndim == 2:
         nodes, neighbors = _extract_neighbours_2d(rlabels, connectivity)
     else:
         nodes, neighbors = _extract_neighbours_3d(rlabels, connectivity)
 
-    nodes = np.tile(nodes, connectivity//2)
-    neighbors = neighbors.flatten('f')
+    nodes = np.tile(nodes, connectivity // 2)
+    neighbors = neighbors.flatten("f")
 
     idx = (neighbors != -1) & (neighbors != nodes)
     nodes = nodes[idx]
@@ -61,7 +66,7 @@ def create_rag(rlabels, connectivity=1, min_boundary=None,
     idx = nodes > neighbors
     nodes[idx], neighbors[idx] = neighbors[idx], nodes[idx]
 
-    n_nodes = np.int64(rlabels.max()+1)
+    n_nodes = np.int64(rlabels.max() + 1)
     crossing_hash = nodes + neighbors.astype(np.int64) * n_nodes
     if min_boundary is not None or return_counts:
         unique_hash, counts = np.unique(crossing_hash, return_counts=True)
@@ -72,14 +77,14 @@ def create_rag(rlabels, connectivity=1, min_boundary=None,
     neighbors = neighbors.astype(np.int32)
 
     if min_boundary is not None:
-        idx = (counts >= min_boundary)
+        idx = counts >= min_boundary
         neighbors = neighbors[idx]
         counts = counts[idx]
 
     if return_counts:
-        if norm_counts == 'unit':
+        if norm_counts == "unit":
             counts = counts / float(counts.max())
-        elif norm_counts == 'margin':
+        elif norm_counts == "margin":
             counts = np.minimum(counts, margin) / float(margin)
         return neighbors, counts.astype(np.float32)
 

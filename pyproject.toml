@@ -1,0 +1,17 @@
+
+[tool.black]
+line-length = 79
+
+
+[tool.isort]
+profile = "black"
+atomic=true
+force_grid_wrap=0
+include_trailing_comma=true
+lines_after_imports=2
+lines_between_types=1
+multi_line_output=3
+skip = ["build", ".tox", "dist", "*.pyx"]
+skip_glob = ["*.pyx"]
+use_parentheses=true
+line_length=79

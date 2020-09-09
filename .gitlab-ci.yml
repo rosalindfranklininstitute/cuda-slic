@@ -6,6 +6,15 @@ before_script:
   - conda init bash
   - source /home/conda/.bashrc  # activate base miniconda environment
 
+style-check:
+  tags:
+    - gpu
+  script:
+    - pip install black
+    - pip install isort
+    - isort --diff --check .
+    - black --diff --check .
+
 nvidia-debug:
   tags:
     - gpu
@@ -24,17 +33,26 @@ unit-tests:
   tags:
     - gpu
   script:
-    - conda env create -f gitlab-ci-environment.yml -v
-    - conda activate gitlab-ci
-    - pip install -e .
-    - pytest
+    - conda env create -f environment.yml -v
+    - conda activate cuda-slic
+    - pytest # test with pycuda
+    - pip uninstall pycuda
+    - pytest # test with cupy
+
+memory-check:
+  tags:
+    - gpu
+  script:
+    - conda env create -f environment.yml -v
+    - conda activate cuda-slic
+    - export PYCUDA_DEFAULT_NVCC_FLAGS="-lineinfo"
+    - cuda-memcheck -- pytest
 
 benchmark:
   tags:
     - gpu
   script:
-    - conda env create -f gitlab-ci-environment.yml -v
-    - conda activate gitlab-ci
-    - pip install -e .
+    - conda env create -f environment.yml -v
+    - conda activate cuda-slic
     - python -m perf_analysis.compare_slic
     - ipython perf_analysis/throughput.ipy

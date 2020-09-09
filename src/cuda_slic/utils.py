@@ -1,15 +1,15 @@
-
-
-import time
 import logging
+import time
 
-from math import ceil
+from functools import partial, wraps
 from itertools import product
-from functools import wraps, partial
+from math import ceil
 
-import yaml
-import numpy as np
 import dask.array as da
+import numpy as np
+import yaml
+
+
 # from dask.array.core import slices_from_chunks
 
 # from ..config import Config
@@ -44,23 +44,28 @@ def asnparray(data, dtype=None, contiguous=True):
 
     if isinstance(data, da.Array):
         newdata = data.compute()
-    elif hasattr(data, 'get'):  # is a pycuda.gpuarray.GPUArray
+    elif hasattr(data, "get"):  # is a pycuda.gpuarray.GPUArray
         newdata = data.get()
     elif isinstance(data, np.ndarray):
         newdata = data
 
     if newdata is not None:
         if newdata.dtype != dtype:
-            logger.warn('Transforming data type from {} to {}:'
-                        .format(np.dtype(newdata.dtype).name, np.dtype(dtype).name))
+            logger.warn(
+                "Transforming data type from {} to {}:".format(
+                    np.dtype(newdata.dtype).name, np.dtype(dtype).name
+                )
+            )
             newdata = newdata.astype(dtype, copy=False)
         elif newdata.flags.c_contiguous == False and contiguous:
             newdata = newdata.copy()
         return newdata
     else:
-        logger.warn('Transforming unkown data to a numpy array. '
-                    'Expected pycuda.gpuarray.GPUArray, dask.array.Array '
-                    'or numpy.ndarray.')
+        logger.warn(
+            "Transforming unkown data to a numpy array. "
+            "Expected pycuda.gpuarray.GPUArray, dask.array.Array "
+            "or numpy.ndarray."
+        )
         return np.asarray(data[...], dtype=dtype)
 
 
