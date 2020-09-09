@@ -10,24 +10,11 @@ dependencies:
 - scikit-image
 - jinja2
 - cupy>=7.0.0
-- cudatoolkit=10.1
-# the presence of cudatoolkit and the nvcc compiler is assumed
-# otherwise you can try to uncomment the following two lines
-# be warned conda will likely fail to solve the env with these
-# - cudatoolkit-dev
-
-# test requirements
-- twine
-- pytest
-- ipython
-- tox
-# notebook requirements
-- notebook
-- jupyter
-- ipywidgets
 
 - pip:
-  # gcc and g++/gcc-c++ are a requirement for pip installing pycuda
+  # gcc and g++/gcc-c++ are a requirement for pip installing pycuda on Linux
+  # as well as cuda.h must be on include path. On Windows you need MSVC++ compiler
+  # and C++ build tools
   - pycuda==2019.1.2
   # test requirements
   - -e .
