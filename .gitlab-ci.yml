@@ -35,7 +35,9 @@ unit-tests:
   script:
     - conda env create -f environment.yml -v
     - conda activate cuda-slic
-    - pytest
+    - pytest # test with pycuda
+    - pip uninstall pycuda
+    - pytest # test with cupy
 
 memory-check:
   tags:
