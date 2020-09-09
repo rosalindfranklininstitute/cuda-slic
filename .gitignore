@@ -2,11 +2,11 @@
 *.sublime-*
 .vscode
 .cache/
+.nfs*
 
 # UI
 node_modules/
 .nuxt/
-data/
 
 
 # Byte-compiled / optimized / DLL files
