@@ -7,26 +7,56 @@ of superpixels/supervoxels.
 
 This library was designed to segment large 3D images coming from different
 detectors at the [Diamond Light Source](https://diamond.ac.uk). These images
-can be up to 500 GB so using a serial CPU code is out of the question.
+can be very large so using a serial CPU code is out of the question.
 
 To speed up processing we use GPU acceleration to achieve great speed
 improvements over alternative implementations. `cuda-slic` borrows its API
 from `skimage.segmentation.slic`.
 
-## Install
+This liberary uses JIT compilation to covert CUDA kernels into GPU machine-code (PTX).
+This liberary comes in two varients:
+1. `cuda-slic` uses pycuda for JIT compilation.
+2. `gpu-slic` uses cupy for JIT compilation.
+
+The reason for supporting both is that depending on the host system installing
+PyCUDA or Cupy could hard or easy.
+
+## Installing cuda-slic (with PyCUDA)
 ```bash
 pip install cuda-slic
 ```
 `cuda-slic` uses the pycuda which has the following non-python
 build dependencies:
-1. gcc and g++/gcc-c++ on Linux.
+1. gcc and g++/gcc-c++ on Linux. MSVC++ compiler and C++ build-tools on Windows.
+2. the cudatoolkit for linking with `cuda.h`.
 
 and the following runtime dependencies:
-1. gcc and g++/gcc-c++ on Linux.
+1. gcc and g++/gcc-c++ on Linux. MSVC++ compiler and C++ build-tools on Windows.
 2. the cudatoolkit for linking with cuda libraries.
 3. the nvcc compiler. Ships with newer cudatoolkit versions.
 
 See the [pycuda docs](https://wiki.tiker.net/PyCuda/Installation/) for 
+installation instructions.
+
+## Installing gpu-slic (with Cupy)
+```bash
+pip install gpu-slic
+```
+`gpu-slic` uses Cupy which has the following non-python
+build dependencies:
+1. gcc and g++/gcc-c++ on Linux.
+2. the cudatoolkit for linking with cuda libraries.
+3. the nvcc compiler. Ships with newer cudatoolkit versions.
+
+Note that when pip installing gpu-slic, cupy is installed as `sdist`
+meaning that your host must meet the compiling and linking requirements
+of cupy.
+
+If you are on linux check if gpu-slic is available on conda-forge to get
+precompiled binaries of Cupy. Cupy binaries for Windows are not available
+on conda-forge.
+
+See also [cupy docs](https://docs.cupy.dev/en/stable/install.html) for 
 installation instructions.
 
 ## Usage
