@@ -10,6 +10,7 @@ dependencies:
 - scikit-image
 - jinja2
 - cupy>=7.0.0
+- cudatoolkit=10.2
 
 - pip:
   # gcc and g++/gcc-c++ are a requirement for pip installing pycuda on Linux
