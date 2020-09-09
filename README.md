@@ -18,7 +18,7 @@ This liberary comes in two varients:
 1. `cuda-slic` uses pycuda for JIT compilation.
 2. `gpu-slic` uses cupy for JIT compilation.
 
-The reason for supporting both is that depending on the host system installing
+The reason for supporting both is that depending on the host system, installing
 PyCUDA or Cupy could hard or easy.
 
 ## Installing cuda-slic (with PyCUDA)
@@ -52,9 +52,8 @@ Note that when pip installing gpu-slic, cupy is installed as `sdist`
 meaning that your host must meet the compiling and linking requirements
 of cupy.
 
-If you are on linux check if gpu-slic is available on conda-forge to get
-precompiled binaries of Cupy. Cupy binaries for Windows are not available
-on conda-forge.
+Check if gpu-slic is available on conda-forge to get
+precompiled binaries of Cupy.
 
 See also [cupy docs](https://docs.cupy.dev/en/stable/install.html) for 
 installation instructions.
