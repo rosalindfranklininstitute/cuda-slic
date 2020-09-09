@@ -68,6 +68,15 @@ To add a dependency, add it to the [environment.yml](environment.yml) file, then
 ```bash
 conda env update -f environment.yml
 ```
+to keep `environment.yml` file as lean as possible, development dependencies
+are kept in `requirements_dev.txt` and can be installed with
+```bash
+conda install --file requirements_dev.txt -c conda-forge
+```
+or
+```bash
+pip install -r requirements_dev.txt
+```
 
 ## Tests
 In the [notebooks](notebooks) folder there are Jupyter notebooks
@@ -77,10 +86,12 @@ Our unit-testing framework of choice is [Py.test](https://docs.pytest.org/en/lat
 The unit-tests can be run with
 ```bash
 conda activate cuda-slic
+pip install pytest
 pytest
 ```
 or
 ```bash
 conda activate cuda-slic
+pip install tox
 tox
 ```

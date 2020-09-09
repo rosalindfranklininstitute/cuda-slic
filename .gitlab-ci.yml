@@ -35,6 +35,7 @@ unit-tests:
   script:
     - conda env create -f environment.yml -v
     - conda activate cuda-slic
+    - pip install pytest
     - pytest # test with pycuda
     - pip uninstall pycuda
     - pytest # test with cupy
@@ -45,6 +46,7 @@ memory-check:
   script:
     - conda env create -f environment.yml -v
     - conda activate cuda-slic
+    - pip install pytest
     - export PYCUDA_DEFAULT_NVCC_FLAGS="-lineinfo"
     - cuda-memcheck -- pytest
 
@@ -54,5 +56,6 @@ benchmark:
   script:
     - conda env create -f environment.yml -v
     - conda activate cuda-slic
+    - conda install ipython
     - python -m perf_analysis.compare_slic
     - ipython perf_analysis/throughput.ipy
