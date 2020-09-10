@@ -6,11 +6,11 @@ channels:
 dependencies:
 - python=3.7
 - pip
-- numpy
-- scikit-image
-- jinja2
+- numpy=1.19.1
+- scikit-image=0.17.2
+- jinja2=2.11.2
 - cupy=7.8.0
-- cudatoolkit=10.1
+- cudatoolkit=10.2.89
 
 - pip:
   # gcc and g++/gcc-c++ are a requirement for pip installing pycuda on Linux

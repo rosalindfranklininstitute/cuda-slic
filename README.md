@@ -34,7 +34,8 @@ Two options are available for JIT compiliing CUDA code with python: Cupy or PyCU
 If PyCUDA is installed in the virtutalenv it is used by default. Otherwise Cupy is
 used.
 
-To ease distribution `cuda-slic` is packaged into two packages
+To ease distribution `cuda-slic` is packaged into two independent packages that share
+the same source-code but depend on a different libraries for JIT compilation:
 1. `cuda-slic` uses pycuda for JIT compilation.
 2. `gpu-slic` uses cupy for JIT compilation.
 
