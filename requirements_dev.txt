@@ -6,3 +6,6 @@ notebook
 jupyter
 ipywidgets
 ipython
+matplotlib
+h5py
+pandas
