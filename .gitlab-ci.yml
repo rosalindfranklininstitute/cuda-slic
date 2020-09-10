@@ -33,7 +33,7 @@ unit-tests:
   tags:
     - gpu
   script:
-    - conda env create -f environment.yml -v
+    - conda env create -f environment-gitlab-ci.yml -v
     - conda activate cuda-slic
     - pip install pytest
     - pytest # test with pycuda
@@ -44,7 +44,7 @@ memory-check:
   tags:
     - gpu
   script:
-    - conda env create -f environment.yml -v
+    - conda env create -f environment-gitlab-ci.yml -v
     - conda activate cuda-slic
     - pip install pytest
     - export PYCUDA_DEFAULT_NVCC_FLAGS="-lineinfo"
@@ -54,7 +54,7 @@ benchmark:
   tags:
     - gpu
   script:
-    - conda env create -f environment.yml -v
+    - conda env create -f environment-gitlab-ci.yml -v
     - conda activate cuda-slic
     - conda install ipython -y
     - python -m perf_analysis.compare_slic
