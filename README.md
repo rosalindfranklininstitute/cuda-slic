@@ -12,7 +12,7 @@ can be very large so using a serial CPU code is out of the question.
 To speed up processing we use GPU acceleration to achieve great speed
 improvements over alternative implementations. `cuda-slic` borrows its API
 from `skimage.segmentation.slic`.
-#### Benchmark
+###### Benchmark
 __Machine__: 8 Core Intel Xeon(R) W-2123 CPU @ 3.60GHz with NVIDIA Quadro P2000
 ```python
 from skimage import data
@@ -42,7 +42,7 @@ To ease distribution `cuda-slic` is packaged into two packages
 ```bash
 pip install cuda-slic
 ```
-`cuda-slic` uses the pycuda which has the following non-python
+`cuda-slic` uses pycuda which has the following non-python
 build dependencies:
 1. gcc and g++/gcc-c++ on Linux. MSVC++ compiler and C++ build-tools on Windows.
 2. the cudatoolkit for linking with `cuda.h`.
