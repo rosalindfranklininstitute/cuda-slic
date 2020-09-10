@@ -5,21 +5,38 @@ SLIC stands for __simple linear iterative clustering__. SLIC uses
 tiled k-means clustering to segment an input image into a set
 of superpixels/supervoxels.
 
-This library was designed to segment large 3D images coming from different
+This library was designed to segment large 2D/3D images coming from different
 detectors at the [Diamond Light Source](https://diamond.ac.uk). These images
 can be very large so using a serial CPU code is out of the question.
 
 To speed up processing we use GPU acceleration to achieve great speed
 improvements over alternative implementations. `cuda-slic` borrows its API
 from `skimage.segmentation.slic`.
+#### Benchmark
+__Machine__: 8 Core Intel Xeon(R) W-2123 CPU @ 3.60GHz with NVIDIA Quadro P2000
+```python
+from skimage import data
+from cuda_slic.slic import slic as cuda_slic
+from skimage.segmentation import slic as skimage_slic
 
-This liberary uses JIT compilation to covert CUDA kernels into GPU machine-code (PTX).
-This liberary comes in two varients:
+blob = data.binary_blobs(length=500, n_dim=3, seed=2)
+n_segments = 500**3/5**3 # super pixel shape = (5,5,5)
+
+%timeit -r1 -n1 skimage_slic(blob, n_segments=n_segments, multichannel=False, max_iter=5)
+# 2min 28s ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
+
+%timeit -r1 -n1 cuda_slic(blob, n_segments=n_segments, multichannel=False, max_iter=5)
+# 13.1 s ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
+```
+## CUDA JIT Compilation
+`cuda-slic` uses JIT compilation to covert CUDA kernels into GPU machine-code (PTX).
+Two options are available for JIT compiliing CUDA code with python: Cupy or PyCUDA.
+If PyCUDA is installed in the virtutalenv it is used by default. Otherwise Cupy is
+used.
+
+To ease distribution `cuda-slic` is packaged into two packages
 1. `cuda-slic` uses pycuda for JIT compilation.
 2. `gpu-slic` uses cupy for JIT compilation.
-
-The reason for supporting both is that depending on the host system, installing
-PyCUDA or Cupy could hard or easy.
 
 ## Installing cuda-slic (with PyCUDA)
 ```bash
@@ -48,7 +65,7 @@ build dependencies:
 2. the cudatoolkit for linking with cuda libraries.
 3. the nvcc compiler. Ships with newer cudatoolkit versions.
 
-Note that when pip installing gpu-slic, cupy is installed as `sdist`
+Note that when pip installing gpu-slic, cupy is installed as an `sdist`
 meaning that your host must meet the compiling and linking requirements
 of cupy.
 
