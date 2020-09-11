@@ -353,9 +353,17 @@ def slic(
         segment_size = np.prod(im_shape_zyx) / n_centers
         min_size = int(min_size_factor * segment_size)
         max_size = int(max_size_factor * segment_size)
-        labels = _enforce_label_connectivity_cython(
-            labels, min_size, max_size, start_label=0
-        )
+
+        try: # scikit-image >= 0.17.1
+            labels = _enforce_label_connectivity_cython(
+                labels, min_size, max_size, start_label=0
+            )
+        except TypeError: # scikit-image < 0.17
+            labels = _enforce_label_connectivity_cython(
+                labels, min_size, max_size
+            )
+        except:
+            raise
 
     if is_2d:
         labels = labels[0]
