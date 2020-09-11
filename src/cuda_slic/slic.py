@@ -354,11 +354,11 @@ def slic(
         min_size = int(min_size_factor * segment_size)
         max_size = int(max_size_factor * segment_size)
 
-        try: # scikit-image >= 0.17.1
+        try:  # scikit-image >= 0.17.1
             labels = _enforce_label_connectivity_cython(
                 labels, min_size, max_size, start_label=0
             )
-        except TypeError: # scikit-image < 0.17
+        except TypeError:  # scikit-image < 0.17
             labels = _enforce_label_connectivity_cython(
                 labels, min_size, max_size
             )
