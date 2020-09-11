@@ -1,5 +1,5 @@
 {% set name = "gpu-slic" %}
-{% set version = "0.0.1a1" %}
+{% set version = "0.0.1a3" %}
 
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/gpu_slic-{{ version }}.tar.gz
-  sha256: e9a98283b493f422181c6fdb2d7ca843b3c90216faa526fbbe36f9b025c89375
+  sha256: 79a99e5c96d1e52db112abc78f630782264e3d1f1840cfc2ca4bafffc9bfb382
 
 build:
   number: 0
@@ -20,7 +20,7 @@ requirements:
     - pip
     - python >=3.6
   run:
-    - cupy >=7.0.0
+    - cupy >=7.0.0,<8.0.0
     - jinja2
     - numpy
     - python >=3.6
@@ -40,8 +40,3 @@ about:
   summary: CUDA implementation of the SLIC segmentaion algorithm.
   license: Apache-2.0
   license_file: LICENSE
-
-extra:
-  recipe-maintainers:
-    - abonawas
-
