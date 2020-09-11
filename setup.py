@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
-    name="gpu_slic",
+    name="cuda_slic",
     version="0.0.1a3",
     python_requires=">=3.6",
     package_dir={"": "src"},
@@ -15,7 +15,7 @@ setup(
         "numpy",
         "jinja2",
         "scikit-image",
-        "cupy>=7.0.0,<8.0.0",
+        "pycuda>=2019.1.2",
     ],
     # metadata to display on PyPI
     author="Omar Elamin",
